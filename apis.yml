@@ -1,0 +1,89 @@
+aid: nar
+url: https://raw.githubusercontent.com/api-evangelist/nar/refs/heads/main/apis.yml
+name: National Association of REALTORS
+kind: company
+description: >-
+  The National Association of REALTORS (NAR) is the largest trade association in the United States,
+  representing roughly one million members across residential and commercial real estate. NAR is the
+  industry body that sits above the roughly 500 local Multiple Listing Services, and it is the reason
+  the US residential market has a machine-readable contract at all: MLS Policy Statement 7.90 requires
+  MLS organizations owned and operated by associations of REALTORS to implement the RESO Data Dictionary
+  and the RESO Web API and to stay current within one year of each ratification, with compliance
+  demonstrated through the RESO Certification Process. NAR mandates that standard rather than operating
+  it - RESO is a separate organization, and the listing data behind every certified endpoint is licensed
+  through MLS membership, an IDX or VOW agreement, a broker relationship, or a reseller. NAR itself holds
+  no RESO certification and publishes no self-serve developer portal. Its own API surface is REALTORS M1,
+  the members-first engagement system that replaces NRDS: the M1 Gateway External API is a live,
+  HTTP-Basic-authenticated REST API over member, office, association and data-extract records, whose
+  Swagger 2.0 definition and Postman collection NAR publishes openly on GitHub for external association
+  management system vendors and NAR partners, but whose credentials NAR issues only under a partner
+  relationship.
+image: https://avatars.githubusercontent.com/u/7168861?v=4
+tags:
+- Real Estate
+- United States
+- Industry Body
+- MLS
+- RESO
+- Standards
+- Membership
+- Property Listings
+- IDX
+- PropTech
+created: '2026-07-26'
+modified: '2026-07-26'
+specificationVersion: '0.19'
+apis:
+- aid: nar:nar-m1-gateway-external-api
+  name: REALTORS M1 Gateway External API
+  description: >-
+    The external surface of NAR's REALTORS M1 Gateway - the members-first engagement system that is the
+    single source of truth for REALTOR member data across state and local associations. The published
+    Swagger 2.0 definition documents 64 paths under /ext/ covering Association, Member, Member Address,
+    Certification, Code of Ethics, Demographic, Designation, Dues Payment, Education, Email, Fair Housing,
+    Field of Business, ISC Affiliation, Language, MLS, Military Service, Phone, Secondary and Single-Owned
+    MLS records, plus Office, Office Secondary, Data Extract Request and Data Extract Schedule. All calls
+    require HTTP Basic authentication with environment-specific credentials issued by NAR; PATCH operations
+    use a test/replace JSON Patch pattern where the test value must match the current stored value. The
+    definition and a Postman collection are published openly by NAR on GitHub for external AMS vendors and
+    NAR partners; the API host itself answers 401 without credentials and enforces a documented rate limit.
+  humanURL: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  baseURL: https://m1gateway.realtor
+  tags:
+  - Real Estate
+  - Membership
+  - Associations
+  - Members
+  - Offices
+  - United States
+  properties:
+  - type: OpenAPI
+    url: openapi/nar-m1-gateway-external-openapi.json
+  - type: PostmanCollection
+    url: collections/nar-m1-gateway-external.postman_collection.json
+  - type: Documentation
+    url: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  - type: Documentation
+    url: https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
+common:
+- type: Website
+  url: https://www.nar.realtor/
+- type: GitHubOrganization
+  url: https://github.com/NationalAssociationOfRealtors
+- type: LinkedIn
+  url: https://www.linkedin.com/company/national-association-of-realtors
+- type: Blog
+  url: https://www.nar.realtor/blogs
+- type: Newsroom
+  url: https://www.nar.realtor/newsroom
+- type: Policy
+  url: https://www.nar.realtor/handbook-on-multiple-listing-policy/operational-issues-section-12-real-estate-transaction-standards-rets-policy-statement-790
+- type: Policy
+  url: https://www.nar.realtor/about-nar/policies/mls-policy/real-estate-transaction-standards-rets-web-api
+- type: Documentation
+  url: https://www.nar.realtor/real-estate-transaction-standards-rets
+- type: Research
+  url: https://www.nar.realtor/research-and-statistics
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

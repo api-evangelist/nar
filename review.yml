@@ -1,0 +1,339 @@
+aid: nar
+name: National Association of REALTORS
+slug: nar
+homeMarket: United States
+tier: industry-body
+reviewer: API Evangelist
+reviewed: '2026-07-26'
+
+review:
+  question: >-
+    Does the National Association of REALTORS publish a reachable, documented public API surface, and
+    what is its RESO posture as the industry body that mandates the standard?
+  answer: >-
+    Partially. NAR publishes no self-serve developer portal and no open data API. It does publish, openly
+    and without authentication, a Swagger 2.0 definition and a Postman collection for the REALTORS M1
+    Gateway External API on its public GitHub organization, and the API host is live but answers 401
+    without NAR-issued HTTP Basic credentials. NAR itself holds no RESO certification; it is the body that
+    REQUIRES association-owned MLSs to hold one.
+  date: '2026-07-26'
+
+sectorPosture:
+  resoPosture: >-
+    Mandator, not certificand. NAR MLS Policy Statement 7.90 (Handbook on Multiple Listing Policy,
+    Operational Issues Section 12, amended 11/20) states verbatim: "MLS organizations owned and operated by
+    associations of REALTORS(R) will implement the RESO Standards including: the RESO Data Dictionary by
+    January 1, 2016; the RESO Web API by June 30, 2016 and will keep current by implementing new releases
+    of RESO Standards within one (1) year from ratification. Compliance with this requirement can be
+    demonstrated using the Real Estate Standards Organization (RESO) compliance Certification Process. Web
+    API data access provided to participants and subscribers must have no less than the same data available
+    via data access methods such as RETS or FTP systems, and MLS fields that exist in the RESO Data
+    Dictionary must be delivered in conformance with the standard." NAR created RETS in 2002 and spun the
+    standards work out to RESO, incorporated as an independent nonprofit in 2011. NAR is therefore the
+    industry body that imposes a machine-readable contract on the US residential market without operating
+    one itself.
+  resoCertified: false
+  resoCertifiedEvidence: >-
+    The public RESO certificate directory at https://www.reso.org/certificates/ (HTTP 200, fetched
+    2026-07-26, 416,233 bytes) contains no certificate entry for the National Association of REALTORS or
+    for REALTORS Property Resource. The only occurrences of the string "RPR" in that page are navigation
+    links to the RPR Connections Grant, not certificate records. NAR does not operate an MLS, so there is
+    nothing for it to certify.
+  resoArtifactsProbed:
+  - url: https://www.reso.org/
+    status: 200
+    note: RESO organisation site, publicly reachable.
+  - url: https://www.reso.org/certification/
+    status: 200
+    note: >-
+      Public certification page. Certifies Web API Core 2.0.0, Data Dictionary 2.0, and RESO Common Format
+      (RCF). Points at the certificate directory and at RESO Analytics.
+  - url: https://www.reso.org/certificates/
+    status: 200
+    note: Public directory of certified organizations, freely browsable, no login.
+  - url: https://transport.reso.org/
+    status: 200
+    note: Public home of the RESO Web API / transport specifications.
+  - url: https://certification.reso.org/
+    status: 400
+    note: >-
+      RESO Analytics live certification reports. Bare host returns 400; individual summaries are linked
+      per-certificate from https://www.reso.org/certificates/ (e.g. /summary/M00000001).
+  - url: https://ddwiki.reso.org/
+    status: 200
+    note: Redirects to https://dd.reso.org/ - the public Data Dictionary wiki.
+  - url: https://api.reso.org/
+    status: 000
+    note: Does not resolve. No RESO-operated API host.
+  - url: https://api.reso.org/$metadata
+    status: 000
+    note: >-
+      No OData $metadata document is served by RESO or by NAR. RESO $metadata documents belong to
+      individual certified MLSs and resellers, each behind a licence.
+  - url: https://www.nar.realtor/reso
+    status: 404
+    note: NAR has no dedicated RESO landing page under that path.
+  standardsFreelyDownloadable: true
+  standardsAccessNote: >-
+    The RESO Data Dictionary wiki (dd.reso.org) and the transport/Web API specifications (transport.reso.org)
+    are publicly reachable without membership, and the certificate directory is public. NAR's own page on
+    RETS explicitly frames this as open standards providing "free access to the specifications". The
+    SPECIFICATION is free; the DATA behind a certified endpoint is not.
+  universalPropertyIdentifier:
+    found: false
+    note: >-
+      https://www.reso.org/universal-property-identifier/ redirects (200) to
+      https://www.reso.org/universal-parcel-identifier/. No UPI reference and no UPI artifact is published
+      on any NAR-controlled host. NAR's GitHub org does hold an archived 2017 experiment,
+      NationalAssociationOfRealtors/PropertyUniqueIdentifier ("An Ethereum based distributed ledger to
+      register, track, and query property unique identifiers"), last pushed 2017-08-06 - historical only,
+      not a live artifact.
+
+accessGate:
+  classification: partner-only
+  whatADeveloperMustSignOrJoin: >-
+    There is no public sign-up for anything NAR operates. (1) For the M1 Gateway External API, the
+    published Postman collection states plainly: "Credentials are environment-specific - test credentials
+    must not be used against production, and vice versa. NAR will supply your credentials." The audience is
+    named in the repo description as "external AMSs and NAR partners" - i.e. association management system
+    vendors serving REALTOR associations, under a commercial/partner relationship with NAR. No application
+    form, pricing page, or self-serve console exists on any NAR host. (2) For the MLS listing data that NAR
+    mandates be exposed over RESO Web API, NAR is not the grantor at all: a developer must obtain access
+    from an individual MLS through MLS membership, an IDX or VOW agreement, a broker or agent sponsorship,
+    or a commercial reseller (Bridge, Trestle, MLS Grid, Spark). (3) REALTORS Property Resource
+    (www.narrpr.com), NAR's wholly-owned property data subsidiary, is a benefit gated behind NAR
+    membership; api.narrpr.com and developer.narrpr.com both resolve but serve an identical wildcard "RPR -
+    Maintenance Underway!" holding page that JavaScript-redirects to www.narrpr.com - they are not
+    developer surfaces.
+  gated: true
+  selfServePortal: false
+
+openData:
+  exists: false
+  note: >-
+    NAR publishes extensive housing research (https://www.nar.realtor/research-and-statistics, HTTP 200)
+    including Existing-Home Sales and county median home price series, but it is distributed as reports and
+    spreadsheets under NAR citation guidelines, not as an open API, and https://www.nar.realtor/robots.txt
+    disallows crawling of .pdf/.doc/.xls assets. https://www.nar.realtor/data returns 404. There is no US
+    open-data counterweight here comparable to HM Land Registry Price Paid or Ordnance Survey open products;
+    in the United States the listing corpus is private cooperative property.
+
+authModel:
+  scheme: HTTP Basic
+  evidence: >-
+    The harvested Swagger 2.0 document declares a single securityDefinition, {"basic": {"type": "basic",
+    "description": "Basic Authorization header using user and password"}}, and applies it globally via
+    security: [{"basic": []}]. The Postman collection carries a collection variable authBasicExternal with
+    the placeholder "Basic YOUR_BASE64_CREDENTIALS_HERE".
+  oauth: false
+  openidConnect:
+    probed:
+    - url: https://www.nar.realtor/.well-known/openid-configuration
+      status: 404
+    - url: https://nar.m1gateway.realtor/.well-known/openid-configuration
+      status: 401
+      note: Returns 401 rather than a discovery document - the gateway rejects unauthenticated requests wholesale.
+    - url: https://nar.m1.realtor/.well-known/openid-configuration
+      status: 200
+      note: Returns text/html (the M1 SPA shell), not a JSON discovery document. Not an OIDC endpoint.
+    found: false
+  rateLimits: >-
+    Live and advertised in response headers on an unauthenticated 401 from
+    https://nar.m1gateway.realtor/ext/Member: X-Rate-Limit-Limit: 600s, X-Rate-Limit-Remaining: 5999,
+    X-Rate-Limit-Reset: 2026-07-26T22:45:11Z.
+
+probes:
+  identity:
+  - url: https://www.nar.realtor/
+    status: 200
+  - url: https://nar.realtor/
+    status: 200
+    note: Redirects to https://www.nar.realtor/
+  - url: https://www.nar.realtor/about-nar
+    status: 200
+  - url: https://www.nar.realtor/robots.txt
+    status: 200
+    note: 'Allow: / with Disallow: /api/* (CMS-internal, not a developer API) and Disallow on office-document extensions.'
+  - url: https://www.nar.realtor/sitemap.xml
+    status: 200
+    note: >-
+      Six sitemap pages, 10,144 unique URLs harvested and grepped. Zero developer-portal, API-reference,
+      swagger, or openapi pages. The only RESO/RETS pages are the two policy pages and one video.
+  developerSubdomains:
+  - url: https://developer.nar.realtor/
+    status: 000
+    note: Does not resolve.
+  - url: https://developers.nar.realtor/
+    status: 000
+    note: Does not resolve.
+  - url: https://api.nar.realtor/
+    status: 000
+    note: Does not resolve.
+  - url: https://docs.nar.realtor/
+    status: 000
+    note: Does not resolve.
+  contractPaths:
+  - url: https://www.nar.realtor/developers
+    status: 404
+  - url: https://www.nar.realtor/api
+    status: 404
+  - url: https://www.nar.realtor/openapi.json
+    status: 404
+  - url: https://www.nar.realtor/swagger.json
+    status: 404
+  - url: https://www.nar.realtor/.well-known/security.txt
+    status: 404
+  m1Gateway:
+  - url: https://m1gateway.realtor/
+    status: 401
+    note: Redirects to https://nar.m1gateway.realtor/ and returns 401 Unauthorized. Host is live.
+  - url: https://nar.m1gateway.realtor/ext/Member
+    status: 401
+    note: >-
+      Live API endpoint. 401 with Content-Length 0, Azure ARRAffinity cookies, and X-Rate-Limit-* headers.
+      Confirms the base URL published in the Postman collection is real and in production.
+  - url: https://nar.m1gateway.realtor/swagger/v1/swagger.json
+    status: 000
+    note: Connection refused/reset. Swagger UI is not exposed publicly on the gateway host.
+  - url: https://nar.m1gateway.realtor/swagger/index.html
+    status: 000
+    note: Connection refused/reset.
+  - url: https://m1.realtor/
+    status: 200
+    note: Redirects to https://nar.m1.realtor/ - the M1 web application (login), not a developer surface.
+  rpr:
+  - url: https://www.narrpr.com/
+    status: 200
+    note: REALTORS Property Resource - NAR member benefit, Angular SPA behind login.
+  - url: https://api.narrpr.com/
+    status: 200
+    note: Wildcard "RPR - Maintenance Underway!" holding page that JS-redirects to www.narrpr.com. Not an API.
+  - url: https://developer.narrpr.com/
+    status: 200
+    note: Identical wildcard holding page. Not a developer portal.
+  github:
+  - url: https://api.github.com/orgs/NationalAssociationOfRealtors
+    status: 200
+    note: >-
+      Real NAR GitHub organization, created 2014-04-04, 61 public repos, org updated 2026-07-03, blog
+      https://www.nar.realtor/. Avatar used as the provider image.
+  - url: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+    status: 200
+    note: >-
+      Created and pushed 2026-07-08. Description "Included are the Postman and Swagger files to help with
+      testing and implementation for external AMSs and NAR partners". Three files, no licence. This is the
+      closest thing NAR has to a developer portal - a public GitHub repo, not a self-serve console.
+  historicalOpenSource:
+  - repo: libRETS
+    note: RETS client library in C++, last pushed 2023-12-13. NAR's original RETS-era tooling.
+  - repo: ezRETS
+    note: ODBC driver connecting to RETS servers, last pushed 2019-08-23.
+  - repo: reso-api-server
+    note: An OData server supporting RESO's RETS Web API, last pushed 2018-11-08. Reference implementation, not a NAR service.
+  - repo: reso-api-oauth2-server
+    note: An OAuth2 server supporting RESO's RETS Web API, last pushed 2014-09-25.
+  - repo: reso-data-dictionary
+    note: RESO Data Dictionary shaped to drive JayData OData clients/servers, last pushed 2015-06-05.
+  - repo: variman
+    note: Java RETS server exported from Google Code, last pushed 2020-10-04.
+
+harvest:
+  specsCount: 1
+  collectionsCount: 1
+  artifacts:
+  - path: openapi/nar-m1-gateway-external-openapi.json
+    type: OpenAPI
+    specVersion: Swagger 2.0
+    sourceURL: https://raw.githubusercontent.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs/main/M1Gateway-external-swagger.json
+    httpStatus: 200
+    fetched: '2026-07-26'
+    bytes: 218121
+    verbatim: true
+    parsed: true
+    title: M1Gateway - External
+    version: v1
+    pathCount: 64
+    definitionCount: 99
+    securityDefinitions: basic
+    tags:
+    - Association
+    - DataExtractRequest
+    - DataExtractSchedule
+    - Member
+    - MemberAddress
+    - MemberCertification
+    - MemberCoe
+    - MemberDemographic
+    - MemberDesignation
+    - MemberDuesPayment
+    - MemberEducation
+    - MemberEducationLevel
+    - MemberEmail
+    - MemberFairHousing
+    - MemberFieldOfBusiness
+    - MemberIscAffiliation
+    - MemberLanguage
+    - MemberMLS
+    - MemberMilitaryService
+    - MemberPhone
+    - MemberSecondary
+    - MemberSingleOwnedMLS
+    - Office
+    - OfficeSecondary
+    note: >-
+      The document declares no host, basePath or schemes, so it carries no base URL of its own. The base URL
+      recorded in apis.yml comes from the sibling Postman collection variable baseUrl =
+      https://m1gateway.realtor, independently confirmed live (401).
+  - path: collections/nar-m1-gateway-external.postman_collection.json
+    type: PostmanCollection
+    schema: https://schema.getpostman.com/json/collection/v2.1.0/collection.json
+    sourceURL: https://raw.githubusercontent.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs/main/M1_Gateway_External_AMS.postman_collection.json
+    httpStatus: 200
+    fetched: '2026-07-26'
+    bytes: 89161
+    verbatim: true
+    parsed: true
+    name: M1 Gateway - External (AMS)
+    variables:
+    - baseUrl = https://m1gateway.realtor
+    - authBasicExternal = Basic YOUR_BASE64_CREDENTIALS_HERE
+
+absences:
+  webhooks: >-
+    None. No webhook, callback, event or subscription path appears in the M1 Gateway Swagger document, and
+    no NAR host publishes an AsyncAPI or event catalogue. Change delivery in M1 is pull-based via the
+    DataExtractRequest and DataExtractSchedule resources.
+  sdks: >-
+    None current. NAR ships no client SDK for the M1 Gateway API. The only NAR-authored client libraries on
+    GitHub are the RETS-era libRETS (C++) and ezRETS (ODBC), which target the deprecated RETS protocol, not
+    M1 and not RESO Web API.
+  graphql: None found.
+  mcp: None found.
+  statusPage: None found on any NAR-controlled host.
+  changelog: None published for the M1 Gateway API.
+  securityTxt: Absent - /.well-known/security.txt and /security.txt both 404.
+  vulnerabilityDisclosure: None published.
+  pricing: >-
+    None published for any NAR API. There is no plan, tier, or quota page; access is arranged directly with
+    NAR.
+
+findings:
+  summary: >-
+    NAR is the cleanest illustration in this sector study of certification not equalling reachability. It
+    is the only body in the whole study that imposes a mandated machine-readable contract on a market -
+    Policy Statement 7.90 forces every association-owned MLS onto the RESO Data Dictionary and the RESO Web
+    API and requires them to stay within one year of each ratification - and yet nothing NAR mandates is
+    callable by an ordinary developer, because the certified endpoint belongs to one of roughly 500 private
+    local cooperatives and the data behind it is licensed through MLS membership, an IDX or VOW agreement, a
+    broker relationship, or a reseller. NAR itself is not RESO-certified and never could be; it runs no MLS.
+    Separately, NAR does operate one genuine production API of its own - the REALTORS M1 Gateway, over
+    member, office and association records rather than listings - and in July 2026 it began publishing that
+    API's Swagger 2.0 definition and a Postman collection openly on GitHub. That artifact is public; the
+    credentials are not. The honest read is a real, well-documented, partner-gated membership API sitting
+    beside a mandated-but-unreachable listing standard, with no open data anywhere in the picture.
+  statusCall: built
+  statusRationale: >-
+    A real, parseable, publicly downloadable machine-readable contract (64-path Swagger 2.0) plus a Postman
+    collection were harvested from a NAR-controlled public source, and the API host was confirmed live.
+    That is more than an identity-only stub, even though onboarding is partner-gated and no self-serve
+    portal exists.
