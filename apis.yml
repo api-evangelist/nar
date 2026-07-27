@@ -65,7 +65,38 @@ apis:
     url: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
   - type: Documentation
     url: https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
+  - type: Overlay
+    url: overlays/nar-m1-gateway-external-overlay.yaml
+  - type: Examples
+    url: examples/nar-m1-gateway-external-examples.yml
 common:
+- type: DomainSecurity
+  url: security/nar-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/nar-agentic-access.yml
+- type: Authentication
+  url: authentication/nar-authentication.yml
+- type: Conventions
+  url: conventions/nar-conventions.yml
+- type: ErrorCatalog
+  url: errors/nar-error-codes.yml
+- type: RateLimits
+  url: rate-limits/nar-rate-limits.yml
+- type: Lifecycle
+  url: lifecycle/nar-lifecycle.yml
+- type: Conformance
+  url: conformance/nar-conformance.yml
+- type: DataModel
+  url: data-model/nar-data-model.yml
+- type: Packages
+  url: packages/nar-packages.yml
+- type: MCPServer
+  url: mcp/nar-mcp.yml
+- type: AgentSkill
+  name: REALTORS M1 Gateway agent skills
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/nar-llms.txt
 - type: Website
   url: https://www.nar.realtor/
 - type: GitHubOrganization
@@ -84,6 +115,12 @@ common:
   url: https://www.nar.realtor/real-estate-transaction-standards-rets
 - type: Research
   url: https://www.nar.realtor/research-and-statistics
+- type: Support
+  url: https://www.nar.realtor/contact-us
+- type: TermsOfService
+  url: https://www.nar.realtor/terms-of-use
+- type: PrivacyPolicy
+  url: https://www.nar.realtor/privacy-policy
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

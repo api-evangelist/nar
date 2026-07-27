@@ -1,0 +1,64 @@
+generated: '2026-07-26'
+method: generated
+source: openapi/nar-m1-gateway-external-openapi.json + collections/nar-m1-gateway-external.postman_collection.json
+api: REALTORS M1 Gateway External API
+note: >-
+  NAR publishes no agent skills or AGENTS.md of its own (searched the NAR GitHub organization and
+  nar.realtor, 2026-07-26). These are API Evangelist-generated operating instructions for the six marquee
+  M1 Gateway flows. Because NAR's Swagger 2.0 document declares no operationIds, every step is grounded in
+  a verified HTTP method + path from the published definition - each reference below was checked against
+  the spec. All flows require NAR-issued HTTP Basic credentials and touch membership PII.
+skills:
+  - file: nar-onboard-new-member.md
+    name: Onboard a new REALTOR member in M1
+    api: openapi/nar-m1-gateway-external-openapi.json
+    operations:
+      - GET /ext/Member/CheckDuplicateMember/{memberId}
+      - POST /ext/Member/CheckDuplicateEmail
+      - POST /ext/Member/ValidateReLicense
+      - POST /ext/Member/Full/{memberId}
+      - POST /ext/MemberAddress
+      - POST /ext/MemberPhone
+      - POST /ext/MemberEmail
+  - file: nar-update-member-record.md
+    name: Update an M1 member record with the test/replace JSON Patch pattern
+    api: openapi/nar-m1-gateway-external-openapi.json
+    operations:
+      - GET /ext/Member/{memberId}
+      - PATCH /ext/Member
+      - PATCH /ext/Member/Reinstate
+  - file: nar-transfer-member.md
+    name: Transfer or convert an M1 member between associations and offices
+    api: openapi/nar-m1-gateway-external-openapi.json
+    operations:
+      - GET /ext/Member/Prime/{memberId}
+      - POST /ext/Member/Transfer/{memberId}
+      - POST /ext/Member/ConvertIA/{memberId}
+      - POST /ext/MemberSecondary
+  - file: nar-record-ethics-and-education.md
+    name: Record Code of Ethics, education and designation compliance in M1
+    api: openapi/nar-m1-gateway-external-openapi.json
+    operations:
+      - GET /ext/MemberCoe/MemberId/{memberId}
+      - POST /ext/MemberCoe
+      - POST /ext/MemberEducation
+      - POST /ext/MemberDesignation
+      - POST /ext/MemberCertification
+      - POST /ext/MemberFairHousing
+  - file: nar-data-extract.md
+    name: Request and schedule an M1 data extract
+    api: openapi/nar-m1-gateway-external-openapi.json
+    operations:
+      - POST /ext/DataExtractRequest
+      - GET /ext/DataExtractRequest/Requester
+      - GET /ext/DataExtractRequest/DownloadFile/{id}
+      - POST /ext/DataExtractSchedule
+  - file: nar-manage-offices.md
+    name: Manage offices and associations in M1
+    api: openapi/nar-m1-gateway-external-openapi.json
+    operations:
+      - POST /ext/Office/Search
+      - GET /ext/Office/Full/{officeId}
+      - PATCH /ext/Office
+      - POST /ext/Office/Transfer/{officeId}
+      - GET /ext/Association/{id}

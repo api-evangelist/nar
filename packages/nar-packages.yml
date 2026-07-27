@@ -1,0 +1,76 @@
+generated: '2026-07-26'
+method: searched
+source: https://registry.npmjs.org
+sources:
+  - https://registry.npmjs.org/-/v1/search
+  - https://pypi.org
+  - https://github.com/NationalAssociationOfRealtors
+api: REALTORS M1 Gateway External API
+summary: >-
+  NAR ships no client library for the M1 Gateway External API. Searched npm, PyPI, Maven Central, NuGet,
+  pkg.go.dev, RubyGems, Packagist and crates.io on 2026-07-26 plus the NAR GitHub organization: the only
+  first-party packages NAR has ever published are RETS-era artifacts from the Center for REALTOR
+  Technology (CRT), last released in 2015, which target the deprecated RETS protocol and the RESO Web API
+  - not M1, and not any API NAR operates today. They are recorded here as provenance, not as a current
+  SDK. The supported integration path for the M1 Gateway is the raw HTTP surface plus NAR's published
+  Postman collection.
+sdk_for_current_api: false
+packages:
+  - language: javascript
+    registry: npm
+    name: jaydata-librets
+    url: https://www.npmjs.com/package/jaydata-librets
+    install: npm install jaydata-librets
+    version: 0.0.2
+    published: '2015-04-24'
+    official: true
+    status: historical
+    targets: RETS (libRETS driver)
+    repository: https://github.com/NationalAssociationOfRealtors/jaydata-librets
+    author: Mark Lesswing, Center for REALTOR Technology (mlesswing@crt.realtors.org)
+    note: A node.js driver for libRETS. First-party but abandoned; unrelated to the M1 Gateway API.
+  - language: javascript
+    registry: npm
+    name: jaydata-reso
+    url: https://www.npmjs.com/package/jaydata-reso
+    install: npm install jaydata-reso
+    version: 2.0.5
+    published: '2015-04-24'
+    official: true
+    status: historical
+    targets: RESO Web API (JayData fork)
+    author: Center for REALTOR Technology
+    note: >-
+      JayData fork for the RESO Web API, published by NAR's Center for REALTOR Technology. Client for the
+      standard NAR mandates, not for any NAR-operated API.
+  - language: javascript
+    registry: npm
+    name: reso-api-server
+    url: https://www.npmjs.com/package/reso-api-server
+    install: npm install reso-api-server
+    version: 0.1.44
+    published: '2015-04-24'
+    official: true
+    status: historical
+    kind: server-reference-implementation
+    targets: RESO Web API
+    author: Center for REALTOR Technology
+    note: >-
+      OData server supporting the RESO Web API - a reference implementation, not a client SDK. Mirrors
+      github.com/NationalAssociationOfRealtors/reso-api-server.
+source_code:
+  - name: libRETS
+    url: https://github.com/NationalAssociationOfRealtors/libRETS
+    language: C++
+    note: RETS client library; last pushed 2023-12-13. Not distributed through a package registry.
+  - name: ezRETS
+    url: https://github.com/NationalAssociationOfRealtors/ezRETS
+    language: C++
+    note: ODBC driver for RETS servers; last pushed 2019-08-23.
+  - name: variman
+    url: https://github.com/NationalAssociationOfRealtors/variman
+    language: Java
+    note: Java RETS server; last pushed 2020-10-04.
+absent:
+  - No M1 Gateway client library in any language or registry.
+  - No package published by NAR since 2015.

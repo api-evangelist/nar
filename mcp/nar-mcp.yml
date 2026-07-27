@@ -1,0 +1,378 @@
+generated: '2026-07-26'
+method: derived
+status: candidate
+source: openapi/nar-m1-gateway-external-openapi.json
+api: REALTORS M1 Gateway External API
+summary: 'No official or third-party MCP server for the National Association of REALTORS was found (searched
+  the web, the NAR GitHub organization and the MCP registry, 2026-07). This is a DERIVED candidate tool
+  list mapped one-to-one from the 88 operations in NAR''s published M1 Gateway Swagger 2.0 definition,
+  offered as a design sketch. It is NOT published and NOT hosted, and any server built from it would still
+  require NAR-issued HTTP Basic credentials, so every tool is partner-gated. Member records are PII: the
+  write tools below move real REALTOR membership, dues, education and ethics state and should be treated
+  as human-in-the-loop.'
+transport: null
+endpoint: null
+auth:
+  scheme: http-basic
+  header: Authorization
+  note: Environment-specific credentials issued by NAR to AMS vendors and partners.
+candidate_tools:
+- name: patch_association
+  maps_to: PATCH /ext/Association
+  category: Association
+  write: true
+- name: association_search
+  maps_to: POST /ext/Association/Search
+  category: Association
+  write: false
+- name: get_association
+  maps_to: GET /ext/Association/{id}
+  category: Association
+  write: false
+- name: create_data_extract_request
+  maps_to: POST /ext/DataExtractRequest
+  category: DataExtractRequest
+  write: true
+- name: data_extract_request_download_file
+  maps_to: GET /ext/DataExtractRequest/DownloadFile/{id}
+  category: DataExtractRequest
+  write: false
+- name: data_extract_request_file_location
+  maps_to: GET /ext/DataExtractRequest/FileLocation
+  category: DataExtractRequest
+  write: false
+- name: data_extract_request_requester
+  maps_to: GET /ext/DataExtractRequest/Requester
+  category: DataExtractRequest
+  write: false
+- name: create_data_extract_schedule
+  maps_to: POST /ext/DataExtractSchedule
+  category: DataExtractSchedule
+  write: true
+- name: get_data_extract_schedule_association_id
+  maps_to: GET /ext/DataExtractSchedule/AssociationId/{associationId}
+  category: DataExtractSchedule
+  write: false
+- name: delete_data_extract_schedule
+  maps_to: DELETE /ext/DataExtractSchedule/{id}
+  category: DataExtractSchedule
+  write: true
+- name: replace_data_extract_schedule
+  maps_to: PUT /ext/DataExtractSchedule/{scheduleId}
+  category: DataExtractSchedule
+  write: true
+- name: patch_member
+  maps_to: PATCH /ext/Member
+  category: Member
+  write: true
+- name: member_check_duplicate_email
+  maps_to: POST /ext/Member/CheckDuplicateEmail
+  category: Member
+  write: false
+- name: member_check_duplicate_member
+  maps_to: GET /ext/Member/CheckDuplicateMember/{memberId}
+  category: Member
+  write: false
+- name: member_convert_ia
+  maps_to: POST /ext/Member/ConvertIA/{memberId}
+  category: Member
+  write: true
+- name: member_full
+  maps_to: GET /ext/Member/Full/{memberId}
+  category: Member
+  write: false
+- name: member_full_2
+  maps_to: POST /ext/Member/Full/{memberId}
+  category: Member
+  write: true
+- name: member_prime
+  maps_to: GET /ext/Member/Prime/{memberId}
+  category: Member
+  write: false
+- name: member_reinstate
+  maps_to: PATCH /ext/Member/Reinstate
+  category: Member
+  write: true
+- name: member_search
+  maps_to: POST /ext/Member/Search
+  category: Member
+  write: false
+- name: member_transfer
+  maps_to: POST /ext/Member/Transfer/{memberId}
+  category: Member
+  write: true
+- name: member_validate_re_license
+  maps_to: POST /ext/Member/ValidateReLicense
+  category: Member
+  write: false
+- name: get_member
+  maps_to: GET /ext/Member/{memberId}
+  category: Member
+  write: false
+- name: patch_member_address
+  maps_to: PATCH /ext/MemberAddress
+  category: MemberAddress
+  write: true
+- name: create_member_address
+  maps_to: POST /ext/MemberAddress
+  category: MemberAddress
+  write: true
+- name: get_member_address_member_id
+  maps_to: GET /ext/MemberAddress/MemberId/{memberId}
+  category: MemberAddress
+  write: false
+- name: patch_member_certification
+  maps_to: PATCH /ext/MemberCertification
+  category: MemberCertification
+  write: true
+- name: create_member_certification
+  maps_to: POST /ext/MemberCertification
+  category: MemberCertification
+  write: true
+- name: delete_member_certification
+  maps_to: DELETE /ext/MemberCertification
+  category: MemberCertification
+  write: true
+- name: get_member_certification_member_id
+  maps_to: GET /ext/MemberCertification/MemberId/{memberId}
+  category: MemberCertification
+  write: false
+- name: patch_member_coe
+  maps_to: PATCH /ext/MemberCoe
+  category: MemberCoe
+  write: true
+- name: create_member_coe
+  maps_to: POST /ext/MemberCoe
+  category: MemberCoe
+  write: true
+- name: delete_member_coe
+  maps_to: DELETE /ext/MemberCoe
+  category: MemberCoe
+  write: true
+- name: get_member_coe_member_id
+  maps_to: GET /ext/MemberCoe/MemberId/{memberId}
+  category: MemberCoe
+  write: false
+- name: patch_member_demographic
+  maps_to: PATCH /ext/MemberDemographic
+  category: MemberDemographic
+  write: true
+- name: create_member_demographic
+  maps_to: POST /ext/MemberDemographic
+  category: MemberDemographic
+  write: true
+- name: delete_member_demographic
+  maps_to: DELETE /ext/MemberDemographic
+  category: MemberDemographic
+  write: true
+- name: get_member_demographic_member_id
+  maps_to: GET /ext/MemberDemographic/MemberId/{memberId}
+  category: MemberDemographic
+  write: false
+- name: patch_member_designation
+  maps_to: PATCH /ext/MemberDesignation
+  category: MemberDesignation
+  write: true
+- name: create_member_designation
+  maps_to: POST /ext/MemberDesignation
+  category: MemberDesignation
+  write: true
+- name: get_member_designation_member_id
+  maps_to: GET /ext/MemberDesignation/MemberId/{memberId}
+  category: MemberDesignation
+  write: false
+- name: create_member_dues_payment
+  maps_to: POST /ext/MemberDuesPayment
+  category: MemberDuesPayment
+  write: true
+- name: get_member_dues_payment_member_id
+  maps_to: GET /ext/MemberDuesPayment/MemberId/{memberId}
+  category: MemberDuesPayment
+  write: false
+- name: patch_member_education
+  maps_to: PATCH /ext/MemberEducation
+  category: MemberEducation
+  write: true
+- name: create_member_education
+  maps_to: POST /ext/MemberEducation
+  category: MemberEducation
+  write: true
+- name: delete_member_education
+  maps_to: DELETE /ext/MemberEducation
+  category: MemberEducation
+  write: true
+- name: get_member_education_member_id
+  maps_to: GET /ext/MemberEducation/MemberId/{memberId}
+  category: MemberEducation
+  write: false
+- name: create_member_education_level
+  maps_to: POST /ext/MemberEducationLevel
+  category: MemberEducationLevel
+  write: true
+- name: delete_member_education_level
+  maps_to: DELETE /ext/MemberEducationLevel
+  category: MemberEducationLevel
+  write: true
+- name: get_member_education_level_member_id
+  maps_to: GET /ext/MemberEducationLevel/MemberId/{memberId}
+  category: MemberEducationLevel
+  write: false
+- name: patch_member_email
+  maps_to: PATCH /ext/MemberEmail
+  category: MemberEmail
+  write: true
+- name: create_member_email
+  maps_to: POST /ext/MemberEmail
+  category: MemberEmail
+  write: true
+- name: get_member_email_member_id
+  maps_to: GET /ext/MemberEmail/MemberId/{memberId}
+  category: MemberEmail
+  write: false
+- name: patch_member_fair_housing
+  maps_to: PATCH /ext/MemberFairHousing
+  category: MemberFairHousing
+  write: true
+- name: create_member_fair_housing
+  maps_to: POST /ext/MemberFairHousing
+  category: MemberFairHousing
+  write: true
+- name: delete_member_fair_housing
+  maps_to: DELETE /ext/MemberFairHousing
+  category: MemberFairHousing
+  write: true
+- name: get_member_fair_housing_member_id
+  maps_to: GET /ext/MemberFairHousing/MemberId/{memberId}
+  category: MemberFairHousing
+  write: false
+- name: create_member_field_of_business
+  maps_to: POST /ext/MemberFieldOfBusiness
+  category: MemberFieldOfBusiness
+  write: true
+- name: patch_member_field_of_business
+  maps_to: PATCH /ext/MemberFieldOfBusiness
+  category: MemberFieldOfBusiness
+  write: true
+- name: get_member_field_of_business_member_id
+  maps_to: GET /ext/MemberFieldOfBusiness/MemberId/{memberId}
+  category: MemberFieldOfBusiness
+  write: false
+- name: patch_member_isc_affiliation
+  maps_to: PATCH /ext/MemberIscAffiliation
+  category: MemberIscAffiliation
+  write: true
+- name: create_member_isc_affiliation
+  maps_to: POST /ext/MemberIscAffiliation
+  category: MemberIscAffiliation
+  write: true
+- name: get_member_isc_affiliation_member_id
+  maps_to: GET /ext/MemberIscAffiliation/MemberId/{memberId}
+  category: MemberIscAffiliation
+  write: false
+- name: create_member_language
+  maps_to: POST /ext/MemberLanguage
+  category: MemberLanguage
+  write: true
+- name: delete_member_language
+  maps_to: DELETE /ext/MemberLanguage
+  category: MemberLanguage
+  write: true
+- name: get_member_language_member_id
+  maps_to: GET /ext/MemberLanguage/MemberId/{memberId}
+  category: MemberLanguage
+  write: false
+- name: patch_member_mls
+  maps_to: PATCH /ext/MemberMLS
+  category: MemberMLS
+  write: true
+- name: create_member_mls
+  maps_to: POST /ext/MemberMLS
+  category: MemberMLS
+  write: true
+- name: get_member_mls_member_id
+  maps_to: GET /ext/MemberMLS/MemberId/{memberId}
+  category: MemberMLS
+  write: false
+- name: create_member_military_service
+  maps_to: POST /ext/MemberMilitaryService
+  category: MemberMilitaryService
+  write: true
+- name: delete_member_military_service
+  maps_to: DELETE /ext/MemberMilitaryService
+  category: MemberMilitaryService
+  write: true
+- name: get_member_military_service_member_id
+  maps_to: GET /ext/MemberMilitaryService/MemberId/{memberId}
+  category: MemberMilitaryService
+  write: false
+- name: create_member_phone
+  maps_to: POST /ext/MemberPhone
+  category: MemberPhone
+  write: true
+- name: patch_member_phone
+  maps_to: PATCH /ext/MemberPhone
+  category: MemberPhone
+  write: true
+- name: get_member_phone_member_id
+  maps_to: GET /ext/MemberPhone/MemberId/{memberId}
+  category: MemberPhone
+  write: false
+- name: create_member_secondary
+  maps_to: POST /ext/MemberSecondary
+  category: MemberSecondary
+  write: true
+- name: patch_member_secondary
+  maps_to: PATCH /ext/MemberSecondary
+  category: MemberSecondary
+  write: true
+- name: get_member_secondary_member_id
+  maps_to: GET /ext/MemberSecondary/MemberId/{memberId}
+  category: MemberSecondary
+  write: false
+- name: create_member_single_owned_mls
+  maps_to: POST /ext/MemberSingleOwnedMLS
+  category: MemberSingleOwnedMLS
+  write: true
+- name: patch_office
+  maps_to: PATCH /ext/Office
+  category: Office
+  write: true
+- name: create_office
+  maps_to: POST /ext/Office
+  category: Office
+  write: true
+- name: office_full
+  maps_to: GET /ext/Office/Full/{officeId}
+  category: Office
+  write: false
+- name: office_search
+  maps_to: POST /ext/Office/Search
+  category: Office
+  write: false
+- name: office_transfer
+  maps_to: POST /ext/Office/Transfer/{officeId}
+  category: Office
+  write: true
+- name: get_office
+  maps_to: GET /ext/Office/{officeId}
+  category: Office
+  write: false
+- name: create_office_secondary
+  maps_to: POST /ext/OfficeSecondary
+  category: OfficeSecondary
+  write: true
+- name: patch_office_secondary
+  maps_to: PATCH /ext/OfficeSecondary
+  category: OfficeSecondary
+  write: true
+- name: get_office_secondary_office_id
+  maps_to: GET /ext/OfficeSecondary/OfficeId/{officeId}
+  category: OfficeSecondary
+  write: false
+coverage:
+  rest_operations: 88
+  candidate_tools: 88
+  read_tools: 34
+  write_tools: 54
+  note: POST /Search, /CheckDuplicateEmail and /ValidateReLicense are read/validate operations expressed
+    as POST because the criteria travel in the body; they are counted as reads.

@@ -1,0 +1,82 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the REALTORS M1 Gateway External API
+  version: 1.0.0
+extends: openapi/nar-m1-gateway-external-openapi.json
+x-apievangelist:
+  generated: '2026-07-26'
+  method: generated
+  source: >-
+    Derived from NAR's published Swagger 2.0 document plus the response-code table, PATCH rules and
+    endpoint descriptions NAR publishes inside its own Postman collection, and from live probes of
+    https://nar.m1gateway.realtor.
+  rationale: >-
+    NAR's published definition declares no host, no basePath, no schemes, no operationIds, no summaries and
+    only 200 responses. This overlay records the missing contract facts we verified - the production host
+    from NAR's own Postman baseUrl variable, the error table NAR publishes in prose, and the live
+    rate-limit headers - without mutating the harvested original.
+actions:
+  - target: $.info
+    update:
+      description: >-
+        The external (/ext/) surface of NAR's REALTORS M1 Gateway, the members-first engagement system
+        replacing NRDS as the single source of truth for REALTOR member data across state and local
+        associations. Access is partner-only: NAR issues environment-specific HTTP Basic credentials to
+        external association management system vendors and NAR partners. All PATCH operations use a
+        test/replace JSON Patch pattern in which the test value must match the currently stored value.
+      contact:
+        name: NAR M1 partner support
+        email: poesupport@nar.realtor
+        url: https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
+      x-apievangelist-rating-artifacts:
+        conventions: conventions/nar-conventions.yml
+        errors: errors/nar-error-codes.yml
+        data_model: data-model/nar-data-model.yml
+        rate_limits: rate-limits/nar-rate-limits.yml
+  - target: $
+    description: >-
+      The published document declares no host, basePath or schemes. The production base URL is the baseUrl
+      variable in NAR's own Postman collection, confirmed live (301 to nar.m1gateway.realtor, then 401).
+    update:
+      host: m1gateway.realtor
+      schemes:
+        - https
+  - target: $.securityDefinitions.basic
+    update:
+      x-credential-issuance: >-
+        Issued directly by NAR to external AMS vendors and partners, separately for test and production.
+        There is no self-serve sign-up.
+  - target: $.paths.*.*.responses
+    description: >-
+      NAR publishes this response-code table in the description of its Postman collection but declares none
+      of these responses in the machine-readable document. Added here so generated clients can handle them.
+    update:
+      '400':
+        description: >-
+          Bad request - missing or invalid fields. Inspect FieldValidationErrors in the body. On PATCH, a
+          test value that does not match the stored value fails here.
+      '401':
+        description: Not authorized for this service - HTTP Basic credentials missing, malformed or not entitled.
+      '403':
+        description: >-
+          Authorized but not permitted for this specific record, for example the caller's association has
+          no permission over the requested member or office.
+      '404':
+        description: Record not found.
+      '500':
+        description: Server error.
+  - target: $.paths['/ext/Member'].patch
+    update:
+      x-patch-pattern: >-
+        GET the current record first, then send an Updates array of JSON Patch test + replace pairs. The
+        test value must match the current database value exactly, and null must not be substituted for an
+        empty string.
+      x-idempotency: >-
+        No idempotency key. The test precondition makes a replayed PATCH fail rather than double-apply;
+        POST creates have no such guard - call GET /ext/Member/CheckDuplicateMember/{memberId} and
+        POST /ext/Member/CheckDuplicateEmail before creating.
+  - target: $.paths['/ext/Member/Search'].post
+    update:
+      x-search-constraints: >-
+        At least one search field is required, and name fields (FirstName, LastName) cannot be the only
+        criteria supplied.

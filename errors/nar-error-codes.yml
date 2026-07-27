@@ -1,0 +1,73 @@
+generated: '2026-07-26'
+method: searched
+source: https://raw.githubusercontent.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs/main/M1_Gateway_External_AMS.postman_collection.json
+sources:
+  - collections/nar-m1-gateway-external.postman_collection.json
+  - openapi/nar-m1-gateway-external-openapi.json
+  - live probe of https://nar.m1gateway.realtor/ext/Member (HTTP 401, 2026-07-26)
+api: REALTORS M1 Gateway External API
+format: http-status-codes
+problem_json: false
+summary: >-
+  NAR does not publish an RFC 9457 problem+json contract for the M1 Gateway External API, and the
+  harvested Swagger 2.0 document declares only 200 responses on all 88 operations - it carries no 4xx or
+  5xx response objects at all. The real error contract is published instead in the description of NAR's own
+  Postman collection, which enumerates the status codes the gateway returns and names the validation
+  envelope field. This catalog is that published table, captured verbatim, plus what a live unauthenticated
+  probe confirms.
+envelope:
+  validation_field: FieldValidationErrors
+  validation_schema: BizValidationFieldError
+  note: >-
+    On a 400 the response body carries a FieldValidationErrors collection identifying the offending
+    fields. The Swagger definition BizValidationFieldError is the shape returned by the
+    CheckDuplicateMember and CheckDuplicateEmail validation operations and is the same field-error shape
+    referenced by the published error table.
+errors:
+  - status: 200
+    title: Success
+    meaning: Data returned or operation completed.
+    source: postman-collection-description
+  - status: 400
+    title: Bad request
+    meaning: Missing or invalid fields.
+    remediation: >-
+      Inspect FieldValidationErrors in the response body. On PATCH, a mismatch between the JSON Patch
+      test value and the current stored value is a common cause; GET the record first and rebuild the
+      test/replace pairs. Preserve null versus empty string - NAR states they are not interchangeable.
+    source: postman-collection-description
+  - status: 401
+    title: Not authorized for this service
+    meaning: HTTP Basic credentials missing, malformed, or not entitled to the service.
+    remediation: >-
+      Send an Authorization header with Base64 credentials issued by NAR for the environment being
+      called; test credentials must not be used against production.
+    observed: >-
+      Confirmed live 2026-07-26 - https://nar.m1gateway.realtor/ext/Member returns 401 with Content-Length
+      0 and no response body, alongside X-Rate-Limit-* headers.
+    source: postman-collection-description
+  - status: 403
+    title: Not permitted for this record
+    meaning: >-
+      Authenticated and authorized for the service, but not permitted for this specific record - for
+      example the caller's association does not have permission over the member or office requested.
+    remediation: Call only against records owned by the associations your credentials cover.
+    source: postman-collection-description
+  - status: 404
+    title: Record not found
+    meaning: The identified record does not exist.
+    remediation: >-
+      Verify the MemberId, OfficeId, AssociationId or composite key fields. DELETE operations return 404
+      when the keyed record is absent.
+    source: postman-collection-description
+  - status: 500
+    title: Server error
+    meaning: Unhandled server-side failure.
+    remediation: Retry with backoff; escalate to NAR partner support (poesupport@nar.realtor).
+    source: postman-collection-description
+gaps:
+  - The published Swagger 2.0 document documents no 4xx/5xx responses; consumers cannot generate error
+    handling from the machine-readable contract alone.
+  - No machine-readable error-code registry (no application-level codes beyond HTTP status) is published.
+  - No RFC 9457 application/problem+json media type is used.
+  - No 429 response is documented even though the gateway emits X-Rate-Limit-* headers on every response.

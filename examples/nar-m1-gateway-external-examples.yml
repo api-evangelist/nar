@@ -1,0 +1,800 @@
+generated: '2026-07-26'
+method: derived
+source: collections/nar-m1-gateway-external.postman_collection.json
+source_url: https://raw.githubusercontent.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs/main/M1_Gateway_External_AMS.postman_collection.json
+api: REALTORS M1 Gateway External API
+summary: Request examples extracted verbatim from NAR's own published Postman collection for the M1 Gateway
+  External API - the only place NAR publishes example payloads, since the Swagger 2.0 document carries
+  no examples. NAR states in the collection that all request bodies contain obviously fake sample data
+  (e.g. MemberId 123456789) that must be replaced before sending. PATCH bodies show the test/replace JSON
+  Patch pairs NAR requires.
+example_count: 88
+examples:
+- name: GET Member
+  group: Member
+  method: GET
+  url: '{{baseUrl}}/ext/Member/{{memberId}}'
+- name: GET Member Full
+  group: Member
+  method: GET
+  url: '{{baseUrl}}/ext/Member/Full/{{memberId}}'
+- name: GET Member Prime
+  group: Member
+  method: GET
+  url: '{{baseUrl}}/ext/Member/Prime/{{memberId}}'
+- name: GET Check Duplicate Member
+  group: Member
+  method: GET
+  url: '{{baseUrl}}/ext/Member/CheckDuplicateMember/{{memberId}}'
+- name: POST Member Full (Create)
+  group: Member
+  method: POST
+  url: '{{baseUrl}}/ext/Member/Full/{{memberId}}'
+  request_body:
+    MemberId: 123456780
+    FirstName: John
+    LastName: Doe
+    MiddleName: null
+    JoinedDate: '2025-01-15'
+    MemberStatusCode: A
+    MemberTypeCode: R
+    PrimaryLocalAssociationId: 1234
+    PrimaryStateAssociationId: 5678
+    PrimaryOfficeId: 987654321
+    PreferredMailTypeCode: H
+    PreferredPublicationTypeCode: H
+    BusinessEmailAddress: john.doe@example.com
+    HomeAddressCity: Anytown
+    HomeAddressLine1: 100 Test Street
+    HomeAddressState: NY
+    HomeAddressZip: '10001'
+    PreferredPhoneTypeCode: C
+    PrimaryFieldOfBusinessId: 1
+    PrimaryReLicenseNumber: LIC0001234
+    PrimaryReLicenseState: NY
+    Gender: F
+    BirthDate: '1985-06-15'
+    CellPhoneNumber: '5551234567'
+    HomePhoneNumber: '5559876543'
+- name: PATCH Member
+  group: Member
+  method: PATCH
+  url: '{{baseUrl}}/ext/Member'
+  request_body:
+    MemberId: 123456789
+    Updates:
+    - op: test
+      path: /NickName
+      value: null
+    - op: replace
+      path: /NickName
+      value: Johnny
+- name: PATCH Member Reinstate
+  group: Member
+  method: PATCH
+  url: '{{baseUrl}}/ext/Member/Reinstate'
+  request_body:
+    MemberId: 123456789
+    MemberUpdates:
+    - op: test
+      path: /MemberStatusCode
+      value: I
+    - op: replace
+      path: /MemberStatusCode
+      value: A
+    - op: test
+      path: /MemberStatusDate
+      value: '2024-01-01'
+    - op: replace
+      path: /MemberStatusDate
+      value: '2025-06-01'
+- name: POST Member Transfer
+  group: Member
+  method: POST
+  url: '{{baseUrl}}/ext/Member/Transfer/{{memberId}}'
+  request_body:
+    NewAssociationId: 9999
+    NewOfficeId: 999900100
+    TransferDate: '2025-06-01'
+- name: POST Convert Member (IA)
+  group: Member
+  method: POST
+  url: '{{baseUrl}}/ext/Member/ConvertIA/{{memberId}}'
+  request_body:
+    ConvertToMemberTypeCode: R
+    ConvertDate: '2025-06-01'
+- name: POST Check Duplicate Email
+  group: Member
+  method: POST
+  url: '{{baseUrl}}/ext/Member/CheckDuplicateEmail'
+  request_body:
+    EmailAddress: john.doe@example.com
+    MemberId: 123456789
+- name: POST Validate RE License
+  group: Member
+  method: POST
+  url: '{{baseUrl}}/ext/Member/ValidateReLicense'
+  request_body:
+    LicenseNumber: LIC0005678
+    LicenseState: NY
+- name: POST Member Search
+  group: Member
+  method: POST
+  url: '{{baseUrl}}/ext/Member/Search'
+  request_body:
+    MemberId: 123456789
+- name: GET Member Addresses
+  group: Member Address
+  method: GET
+  url: '{{baseUrl}}/ext/MemberAddress/MemberId/{{memberId}}'
+- name: POST Member Address
+  group: Member Address
+  method: POST
+  url: '{{baseUrl}}/ext/MemberAddress'
+  request_body:
+    MemberId: 123456789
+    AddressLine1: 100 Test Street
+    AddressLine2: Apt 1
+    AddressCity: Anytown
+    AddressState: NY
+    AddressZip: '10001'
+    AddressZip6: null
+    AddressTypeCode: M
+- name: PATCH Member Address
+  group: Member Address
+  method: PATCH
+  url: '{{baseUrl}}/ext/MemberAddress'
+  request_body:
+    MemberId: 123456789
+    AddressTypeCode: H
+    Updates:
+    - op: test
+      path: /Address1
+      value: 100 Test Street
+    - op: replace
+      path: /Address1
+      value: 200 Mock Avenue
+- name: GET Member Certifications
+  group: Member Certification
+  method: GET
+  url: '{{baseUrl}}/ext/MemberCertification/MemberId/{{memberId}}'
+- name: POST Member Certification
+  group: Member Certification
+  method: POST
+  url: '{{baseUrl}}/ext/MemberCertification'
+  request_body:
+    MemberId: 123456789
+    CertificationCode: CIPS
+    CourseCompleteDate: '2025-03-15'
+    CourseNumber: CIPS101
+    EnteringAssociationId: 1234
+    SponsoringEntityId: 1234
+    CourseDescription: Certified International Property Specialist
+- name: PATCH Member Certification
+  group: Member Certification
+  method: PATCH
+  url: '{{baseUrl}}/ext/MemberCertification'
+  request_body:
+    MemberId: 123456789
+    CertificationCode: CIPS
+    CourseNumber: CIPS101
+    SponsoringEntityId: 1234
+    Updates:
+    - op: test
+      path: /CourseDescription
+      value: Certified International Property Specialist
+    - op: replace
+      path: /CourseDescription
+      value: CIPS — International Property Specialist
+- name: DELETE Member Certification
+  group: Member Certification
+  method: DELETE
+  url: '{{baseUrl}}/ext/MemberCertification'
+  request_body:
+    MemberId: 123456789
+    CertificationCode: CIPS
+    CourseNumber: CIPS101
+    SponsoringEntityId: 1234
+- name: GET Member COE
+  group: Member COE
+  method: GET
+  url: '{{baseUrl}}/ext/MemberCOE/MemberId/{{memberId}}'
+- name: POST Member COE
+  group: Member COE
+  method: POST
+  url: '{{baseUrl}}/ext/MemberCOE'
+  request_body:
+    MemberId: 123456789
+    CourseCode: COEC
+    CourseCompletionDate: '2025-04-10'
+    CycleNumber: '2025'
+    EnteringAssociationId: 1234
+    IsNewMemberFlag: N
+    YearTaken: '2025'
+    CourseDescription: Code of Ethics Continuing Education
+    SponsoringEntityId: 1234
+- name: PATCH Member COE
+  group: Member COE
+  method: PATCH
+  url: '{{baseUrl}}/ext/MemberCOE'
+  request_body:
+    MemberId: 123456789
+    CourseCode: COEC
+    CourseNumber: COE2025001
+    Updates:
+    - op: test
+      path: /CourseDescription
+      value: Code of Ethics Continuing Education
+    - op: replace
+      path: /CourseDescription
+      value: COE CE — 2025 Cycle
+- name: DELETE Member COE
+  group: Member COE
+  method: DELETE
+  url: '{{baseUrl}}/ext/MemberCOE'
+  request_body:
+    MemberId: 123456789
+    CourseCode: COEC
+    CourseNumber: COE2025001
+- name: GET Member Demographics
+  group: Member Demographic
+  method: GET
+  url: '{{baseUrl}}/ext/MemberDemographic/MemberId/{{memberId}}'
+- name: POST Member Demographic
+  group: Member Demographic
+  method: POST
+  url: '{{baseUrl}}/ext/MemberDemographic'
+  request_body:
+    MemberId: 123456789
+    Category: DISC
+    GroupCode: DISCA001
+    RecordingDate: '2025-05-01'
+    EnteredByAssociationId: 1234
+    Amount: 0
+    Comment: Disciplinary action recorded
+    Note: Resolved
+- name: PATCH Member Demographic
+  group: Member Demographic
+  method: PATCH
+  url: '{{baseUrl}}/ext/MemberDemographic'
+  request_body:
+    MemberId: 123456789
+    Category: DISC
+    GroupCode: DISCA001
+    RecordingDate: '2025-05-01'
+    Updates:
+    - op: test
+      path: /Comment
+      value: Disciplinary action recorded
+    - op: replace
+      path: /Comment
+      value: Disciplinary action — case closed
+- name: DELETE Member Demographic
+  group: Member Demographic
+  method: DELETE
+  url: '{{baseUrl}}/ext/MemberDemographic'
+  request_body:
+    MemberId: 123456789
+    Category: DISC
+    GroupCode: DISCA001
+    RecordingDate: '2025-05-01'
+    EnteredByAssociationId: 1234
+- name: GET Member Designations
+  group: Member Designation
+  method: GET
+  url: '{{baseUrl}}/ext/MemberDesignation/MemberId/{{memberId}}'
+- name: POST Member Designation
+  group: Member Designation
+  method: POST
+  url: '{{baseUrl}}/ext/MemberDesignation'
+  request_body:
+    MemberId: 123456789
+    DesignationCode: CRS
+    DesignationStatusCode: Y
+    DesignationStatusDate: '2025-02-01'
+- name: PATCH Member Designation
+  group: Member Designation
+  method: PATCH
+  url: '{{baseUrl}}/ext/MemberDesignation'
+  request_body:
+    MemberId: 123456789
+    DesignationCode: CRS
+    Updates:
+    - op: test
+      path: /DesignationStatusCode
+      value: Y
+    - op: replace
+      path: /DesignationStatusCode
+      value: N
+- name: GET Member Dues Payments
+  group: Member Dues Payment
+  method: GET
+  url: '{{baseUrl}}/ext/MemberDuesPayment/MemberId/{{memberId}}'
+- name: POST Member Dues Payment
+  group: Member Dues Payment
+  method: POST
+  url: '{{baseUrl}}/ext/MemberDuesPayment'
+  request_body:
+    MemberId: 123456789
+    BillingAssociationId: 1234
+    BillingYear: 2025
+    DuesPaidDate: '2025-01-15'
+    IncurringMemberId: 123456789
+    OfficeId: 987654321
+    PaymentAmount: 150.0
+    PaymentTypeCode: N
+- name: GET Member Education
+  group: Member Education
+  method: GET
+  url: '{{baseUrl}}/ext/MemberEducation/MemberId/{{memberId}}'
+- name: POST Member Education
+  group: Member Education
+  method: POST
+  url: '{{baseUrl}}/ext/MemberEducation'
+  request_body:
+    MemberId: 123456789
+    CourseCode: GRI
+    CourseNumber: GRI200
+    EnteredByAssociationId: 1234
+    GroupCode: GRI
+    CourseDescription: Graduate REALTOR Institute — Module 2
+    CourseCompleteDate: '2025-03-20'
+    StateCeHours: 15
+    SponsoringEntityId: 1234
+- name: PATCH Member Education
+  group: Member Education
+  method: PATCH
+  url: '{{baseUrl}}/ext/MemberEducation'
+  request_body:
+    MemberId: 123456789
+    CourseCode: GRI
+    CourseNumber: GRI200
+    EnteredByAssociationId: 1234
+    GroupCode: GRI
+    Updates:
+    - op: test
+      path: /CourseDescription
+      value: Graduate REALTOR Institute — Module 2
+    - op: replace
+      path: /CourseDescription
+      value: GRI Module 2 — Completed
+- name: DELETE Member Education
+  group: Member Education
+  method: DELETE
+  url: '{{baseUrl}}/ext/MemberEducation'
+  request_body:
+    MemberId: 123456789
+    CourseCode: GRI
+    CourseNumber: GRI200
+    EnteredByAssociationId: 1234
+    GroupCode: GRI
+- name: GET Member Education Levels
+  group: Member Education Level
+  method: GET
+  url: '{{baseUrl}}/ext/MemberEducationLevel/MemberId/{{memberId}}'
+- name: POST Member Education Level
+  group: Member Education Level
+  method: POST
+  url: '{{baseUrl}}/ext/MemberEducationLevel'
+  request_body:
+    MemberId: 123456789
+    EducationLevelCode: BACH
+- name: DELETE Member Education Level
+  group: Member Education Level
+  method: DELETE
+  url: '{{baseUrl}}/ext/MemberEducationLevel'
+  request_body:
+    MemberId: 123456789
+    EducationLevelCode: BACH
+- name: GET Member Emails
+  group: Member Email
+  method: GET
+  url: '{{baseUrl}}/ext/MemberEmail/MemberId/{{memberId}}'
+- name: POST Member Email
+  group: Member Email
+  method: POST
+  url: '{{baseUrl}}/ext/MemberEmail'
+  request_body:
+    MemberId: 123456789
+    EmailAddress: john.doe@example.com
+    EmailTypeCode: B
+- name: PATCH Member Email
+  group: Member Email
+  method: PATCH
+  url: '{{baseUrl}}/ext/MemberEmail'
+  request_body:
+    MemberId: 123456789
+    EmailTypeCode: B
+    Updates:
+    - op: test
+      path: /EmailAddress
+      value: john.doe@example.com
+    - op: replace
+      path: /EmailAddress
+      value: john.doe@updated-example.com
+- name: GET Member Fair Housing
+  group: Member Fair Housing
+  method: GET
+  url: '{{baseUrl}}/ext/MemberFairHousing/MemberId/{{memberId}}'
+- name: POST Member Fair Housing
+  group: Member Fair Housing
+  method: POST
+  url: '{{baseUrl}}/ext/MemberFairHousing'
+  request_body:
+    MemberId: 123456789
+    CourseCode: FAIRH
+    CourseCompletionDate: '2025-02-28'
+    CycleNumber: '2025'
+    EnteringAssociationId: 1234
+    CourseDescription: Fair Housing Training — Annual
+    SponsoringEntityId: 1234
+- name: PATCH Member Fair Housing
+  group: Member Fair Housing
+  method: PATCH
+  url: '{{baseUrl}}/ext/MemberFairHousing'
+  request_body:
+    MemberId: 123456789
+    CourseCode: FAIRH
+    CycleNumber: '2025'
+    EnteringAssociationId: 1234
+    Updates:
+    - op: test
+      path: /CourseDescription
+      value: Fair Housing Training — Annual
+    - op: replace
+      path: /CourseDescription
+      value: Fair Housing — Completed 2025
+- name: DELETE Member Fair Housing
+  group: Member Fair Housing
+  method: DELETE
+  url: '{{baseUrl}}/ext/MemberFairHousing'
+  request_body:
+    MemberId: 123456789
+    CourseCode: FAIRH
+    CycleNumber: '2025'
+    EnteringAssociationId: 1234
+- name: GET Member Fields of Business
+  group: Member Field of Business
+  method: GET
+  url: '{{baseUrl}}/ext/MemberFieldOfBusiness/MemberId/{{memberId}}'
+- name: POST Member Field of Business
+  group: Member Field of Business
+  method: POST
+  url: '{{baseUrl}}/ext/MemberFieldOfBusiness'
+  request_body:
+    MemberId: 123456789
+    FieldOfBusinessCode: RES
+    FieldOrder: 1
+    RelationshipTypeCode: S
+- name: PATCH Member Field of Business
+  group: Member Field of Business
+  method: PATCH
+  url: '{{baseUrl}}/ext/MemberFieldOfBusiness'
+  request_body:
+    MemberId: 123456789
+    FieldOrder: 1
+    Updates:
+    - op: test
+      path: /FieldOfBusinessCode
+      value: RES
+    - op: replace
+      path: /FieldOfBusinessCode
+      value: COM
+- name: GET Member ISC Affiliations
+  group: Member ISC Affiliation
+  method: GET
+  url: '{{baseUrl}}/ext/MemberIscAffiliation/MemberId/{{memberId}}'
+- name: POST Member ISC Affiliation
+  group: Member ISC Affiliation
+  method: POST
+  url: '{{baseUrl}}/ext/MemberIscAffiliation'
+  request_body:
+    MemberId: 123456789
+    AssociationId: 1234
+    MemberStatusCode: A
+    MemberStatusDate: '2025-01-01'
+    MemberTypeCode: R
+    OfficeId: 987654321
+- name: PATCH Member ISC Affiliation
+  group: Member ISC Affiliation
+  method: PATCH
+  url: '{{baseUrl}}/ext/MemberIscAffiliation'
+  request_body:
+    MemberId: 123456789
+    AssociationId: 1234
+    Updates:
+    - op: test
+      path: /MemberStatusCode
+      value: A
+    - op: replace
+      path: /MemberStatusCode
+      value: I
+- name: GET Member Languages
+  group: Member Language
+  method: GET
+  url: '{{baseUrl}}/ext/MemberLanguage/MemberId/{{memberId}}'
+- name: POST Member Language
+  group: Member Language
+  method: POST
+  url: '{{baseUrl}}/ext/MemberLanguage'
+  request_body:
+    MemberId: 123456789
+    LanguageCode: SPA
+- name: DELETE Member Language
+  group: Member Language
+  method: DELETE
+  url: '{{baseUrl}}/ext/MemberLanguage'
+  request_body:
+    MemberId: 123456789
+    LanguageCode: SPA
+- name: GET Member Military Service
+  group: Member Military Service
+  method: GET
+  url: '{{baseUrl}}/ext/MemberMilitaryService/MemberId/{{memberId}}'
+- name: POST Member Military Service
+  group: Member Military Service
+  method: POST
+  url: '{{baseUrl}}/ext/MemberMilitaryService'
+  request_body:
+    MemberId: 123456789
+    MilitaryServiceCode: ARMY
+- name: DELETE Member Military Service
+  group: Member Military Service
+  method: DELETE
+  url: '{{baseUrl}}/ext/MemberMilitaryService'
+  request_body:
+    MemberId: 123456789
+    MilitaryServiceCode: ARMY
+- name: GET Member MLS
+  group: Member MLS
+  method: GET
+  url: '{{baseUrl}}/ext/MemberMLS/MemberId/{{memberId}}'
+- name: POST Member MLS
+  group: Member MLS
+  method: POST
+  url: '{{baseUrl}}/ext/MemberMLS'
+  request_body:
+    MemberId: 123456789
+    AssociationId: 1234
+    MemberStatusCode: A
+    MemberStatusDate: '2025-01-01'
+    MemberTypeCode: R
+    OfficeId: 987654321
+- name: PATCH Member MLS
+  group: Member MLS
+  method: PATCH
+  url: '{{baseUrl}}/ext/MemberMLS'
+  request_body:
+    MemberId: 123456789
+    AssociationId: 1234
+    Updates:
+    - op: test
+      path: /MemberStatusCode
+      value: A
+    - op: replace
+      path: /MemberStatusCode
+      value: I
+- name: GET Member Phones
+  group: Member Phone
+  method: GET
+  url: '{{baseUrl}}/ext/MemberPhone/MemberId/{{memberId}}'
+- name: POST Member Phone
+  group: Member Phone
+  method: POST
+  url: '{{baseUrl}}/ext/MemberPhone'
+  request_body:
+    MemberId: 123456789
+    PhoneNumber: '5551112222'
+    PhoneType: C
+- name: PATCH Member Phone
+  group: Member Phone
+  method: PATCH
+  url: '{{baseUrl}}/ext/MemberPhone'
+  request_body:
+    MemberId: 123456789
+    PhoneType: C
+    Updates:
+    - op: test
+      path: /PhoneNumber
+      value: '5551112222'
+    - op: replace
+      path: /PhoneNumber
+      value: '5553334444'
+- name: GET Member Secondary
+  group: Member Secondary
+  method: GET
+  url: '{{baseUrl}}/ext/MemberSecondary/MemberId/{{memberId}}'
+- name: POST Member Secondary
+  group: Member Secondary
+  method: POST
+  url: '{{baseUrl}}/ext/MemberSecondary'
+  request_body:
+    MemberId: 123456789
+    AssociationId: 9999
+    LocalJoinDate: '2025-01-01'
+    MemberStatusCode: A
+    MemberStatusDate: '2025-01-01'
+    MemberTypeCode: R
+    OfficeId: 999900100
+- name: PATCH Member Secondary
+  group: Member Secondary
+  method: PATCH
+  url: '{{baseUrl}}/ext/MemberSecondary'
+  request_body:
+    MemberId: 123456789
+    AssociationId: 9999
+    Updates:
+    - op: test
+      path: /MemberStatusCode
+      value: A
+    - op: replace
+      path: /MemberStatusCode
+      value: I
+- name: POST Member Single Owned MLS
+  group: Member Single Owned MLS
+  method: POST
+  url: '{{baseUrl}}/ext/MemberSingleOwnedMLS'
+  request_body:
+    MemberId: 123456789
+    AssociationId: 1234
+    SingleOwnedMlsStatusCode: A
+    SingleOwnedMlsStatusDate: '2025-01-01'
+- name: GET Office
+  group: Office
+  method: GET
+  url: '{{baseUrl}}/ext/Office/{{officeId}}'
+- name: GET Office Full
+  group: Office
+  method: GET
+  url: '{{baseUrl}}/ext/Office/Full/{{officeId}}'
+- name: POST Office
+  group: Office
+  method: POST
+  url: '{{baseUrl}}/ext/Office'
+  request_body:
+    AssociationId: 1234
+    OfficeName: Sample Realty LLC
+    OfficeAddress1: 500 Test Boulevard
+    OfficeAddress2: Floor 2
+    OfficeCityName: Anytown
+    OfficeStateCode: NY
+    OfficeZipCode: '10001'
+    OfficePhone: '5550001111'
+    OfficeStatusCode: A
+    NmSalespersonCount: 0
+- name: PATCH Office
+  group: Office
+  method: PATCH
+  url: '{{baseUrl}}/ext/Office'
+  request_body:
+    OfficeId: 987654321
+    Updates:
+    - op: test
+      path: /OfficeName
+      value: Test Realty Group
+    - op: replace
+      path: /OfficeName
+      value: Test Realty Group — Updated Name
+- name: POST Office Transfer
+  group: Office
+  method: POST
+  url: '{{baseUrl}}/ext/Office/Transfer/{{officeId}}'
+  request_body:
+    NewAssociationId: 9999
+    TransferDate: '2025-06-01'
+- name: POST Office Search
+  group: Office
+  method: POST
+  url: '{{baseUrl}}/ext/Office/Search'
+  request_body:
+    OfficeId: 987654321
+- name: GET Office Secondary
+  group: Office Secondary
+  method: GET
+  url: '{{baseUrl}}/ext/OfficeSecondary/OfficeId/{{officeId}}'
+- name: POST Office Secondary
+  group: Office Secondary
+  method: POST
+  url: '{{baseUrl}}/ext/OfficeSecondary'
+  request_body:
+    OfficeId: 987654321
+    AssociationId: 9999
+    NmSalespersonCount: 0
+    OfficeStatusCode: A
+- name: PATCH Office Secondary
+  group: Office Secondary
+  method: PATCH
+  url: '{{baseUrl}}/ext/OfficeSecondary'
+  request_body:
+    OfficeId: 987654321
+    AssociationId: 9999
+    Updates:
+    - op: test
+      path: /NmSalespersonCount
+      value: 0
+    - op: replace
+      path: /NmSalespersonCount
+      value: 5
+- name: GET Association
+  group: Association
+  method: GET
+  url: '{{baseUrl}}/ext/Association/{{associationId}}'
+- name: PATCH Association
+  group: Association
+  method: PATCH
+  url: '{{baseUrl}}/ext/Association'
+  request_body:
+    AssociationId: 1234
+    Updates:
+    - op: test
+      path: /AssociationName
+      value: TEST ASSOCIATION OF REALTORS®
+    - op: replace
+      path: /AssociationName
+      value: Greater Anytown Association of REALTORS®
+- name: POST Association Search
+  group: Association
+  method: POST
+  url: '{{baseUrl}}/ext/Association/Search'
+  request_body:
+    AssociationState: NY
+    AssociationTypeCode: L
+- name: GET Data Extract Requests
+  group: Data Extract
+  method: GET
+  url: '{{baseUrl}}/ext/DataExtractRequest/Requester'
+- name: GET Data Extract Schedule
+  group: Data Extract
+  method: GET
+  url: '{{baseUrl}}/ext/DataExtractSchedule/AssociationId/{{associationId}}'
+- name: GET Data Extract File Location
+  group: Data Extract
+  method: GET
+  url: '{{baseUrl}}/ext/DataExtractRequest/FileLocation'
+- name: GET Data Extract Download File
+  group: Data Extract
+  method: GET
+  url: '{{baseUrl}}/ext/DataExtractRequest/DownloadFile/12345'
+- name: POST Data Extract Request
+  group: Data Extract
+  method: POST
+  url: '{{baseUrl}}/ext/DataExtractRequest'
+  request_body:
+    AssociationId: 1234
+    Delimiter: ','
+    ExtractType: Membership
+    FileList: Member,Office
+    IncludeColumnHeaders: Y
+    MemberStatusList: A,I
+    MemberTypeList: R,RA
+- name: POST Data Extract Schedule
+  group: Data Extract
+  method: POST
+  url: '{{baseUrl}}/ext/DataExtractSchedule'
+  request_body:
+    AssociationId: 1234
+    Delimiter: ','
+    ExtractType: Membership
+    FileList: Member,Office
+    IncludeColumnHeaders: Y
+    MemberStatusList: A,I
+    MemberTypeList: R,RA
+    ScheduleTypeCode: W
+- name: PUT Data Extract Schedule
+  group: Data Extract
+  method: PUT
+  url: '{{baseUrl}}/ext/DataExtractSchedule/12345'
+  request_body:
+    Id: 12345
+    AssociationId: 1234
+    Delimiter: ','
+    ExtractType: Membership
+    FileList: Member,MemberSecondary,Office
+    IncludeColumnHeaders: Y
+    MemberStatusList: A
+    MemberTypeList: R,RA,I
+    ScheduleTypeCode: M
+- name: DELETE Data Extract Schedule
+  group: Data Extract
+  method: DELETE
+  url: '{{baseUrl}}/ext/DataExtractSchedule/12345'

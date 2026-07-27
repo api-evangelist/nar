@@ -1,0 +1,61 @@
+generated: '2026-07-26'
+method: searched
+source: https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
+sources:
+  - https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  - openapi/nar-m1-gateway-external-openapi.json
+  - review.yml
+api: REALTORS M1 Gateway External API
+summary: >-
+  NAR runs the M1 Gateway as a partner integration surface, not as a productised developer platform, and
+  the lifecycle signals reflect that: there is a stated version (v1) with no version segment in any path,
+  no published deprecation policy, no Sunset or Deprecation header support, no SLA, no status page and no
+  changelog. The one lifecycle event NAR does publish is the platform-level one - M1 replaces the legacy
+  NRDS system, and NAR lists "API Transitions" among the M1 features still to come. Change communication
+  runs through association-executive channels and partner support rather than through a developer-facing
+  release feed.
+versioning:
+  scheme: none-in-path
+  current: v1
+  evidence: 'Swagger 2.0 info.version = "v1"; no version segment in any of the 64 paths.'
+  audience_prefix: /ext/
+  docs: null
+deprecation:
+  policy_url: null
+  sunset_header: false
+  deprecation_header: false
+  deprecated_operations: []
+  note: >-
+    No operation in the published Swagger document carries deprecated: true, and no deprecation or sunset
+    policy is published on any NAR host.
+predecessor:
+  system: NRDS (National REALTOR Database System)
+  status: being replaced by REALTORS M1
+  evidence: >-
+    NAR's M1 page states M1 replaces the current NRDS system and lists "API Transitions" among upcoming
+    features, alongside Association Portal, Committee Data Sharing, Transaction Lookup and AI
+    Applications.
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+status_page_note: >-
+  No status page exists on any NAR-controlled host - status.nar.realtor does not resolve and the M1
+  Gateway host answers 401 at every path.
+changelog: null
+changelog_note: >-
+  No changelog, release notes or version history is published for the M1 Gateway API. The supplemental
+  docs repository (created 2026-07-08) carries no CHANGELOG and no releases; the Swagger and Postman files
+  are the only revision signal.
+support:
+  email: poesupport@nar.realtor
+  phone: '+1-800-868-3225'
+  hours: Mon-Fri 8am-5pm Central
+  general: https://www.nar.realtor/contact-us
+artifact_history:
+  - date: '2026-07-08'
+    event: >-
+      NAR created the public M1-Developer-Guide-Supplemental-Docs repository and published the M1 Gateway
+      External Swagger 2.0 definition and the AMS Postman collection.
+  - date: '2026-07-26'
+    event: API Evangelist harvested both artifacts verbatim; gateway host confirmed live (401).

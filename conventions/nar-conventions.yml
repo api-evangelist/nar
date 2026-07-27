@@ -1,0 +1,121 @@
+generated: '2026-07-26'
+method: searched
+source: https://raw.githubusercontent.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs/main/M1_Gateway_External_AMS.postman_collection.json
+sources:
+  - collections/nar-m1-gateway-external.postman_collection.json
+  - openapi/nar-m1-gateway-external-openapi.json
+  - live probe of https://nar.m1gateway.realtor/ext/Member (2026-07-26)
+api: REALTORS M1 Gateway External API
+summary: >-
+  Cross-cutting request and response semantics for NAR's M1 Gateway External API, captured from the
+  description blocks NAR publishes inside its own Postman collection and confirmed against the harvested
+  Swagger 2.0 document and a live unauthenticated probe. The defining convention is the test/replace JSON
+  Patch pattern on every PATCH endpoint: the caller must GET the current record, then submit test +
+  replace pairs whose test value matches the stored value exactly. That is an optimistic-concurrency
+  precondition, not an idempotency key.
+authentication:
+  style: http-basic
+  header: Authorization
+  value_form: 'Basic <base64(user:password)>'
+  environment_scoped: true
+  note: >-
+    Credentials are environment-specific - NAR states test credentials must not be used against
+    production and vice versa - and are supplied by NAR, not self-issued.
+  artifact: authentication/nar-authentication.yml
+idempotency:
+  key_header: null
+  supported: false
+  mechanism: json-patch-test-precondition
+  detail: >-
+    NAR publishes no Idempotency-Key header and no request-replay contract. PATCH writes are guarded by a
+    JSON Patch test operation that must match the currently stored value, so a replayed PATCH fails rather
+    than double-applying, but POST creates carry no such guard - NAR's published mitigation for duplicate
+    creates is a pair of pre-flight lookups, GET /ext/Member/CheckDuplicateMember/{memberId} and
+    POST /ext/Member/CheckDuplicateEmail, which callers are told to run before creating. Agents must treat
+    POST as non-retryable.
+patch_pattern:
+  media_type: application/json
+  model: JSON Patch (RFC 6902) test/replace pairs
+  published_steps:
+    - GET the current record first.
+    - Build an Updates array of test + replace pairs; the test value must match the current database value exactly.
+    - Preserve null versus empty string - they are not interchangeable.
+  envelope_types:
+    - MemberJsonPatchDocument
+    - AssociationJsonPatchDocument
+    - Member_AddressJsonPatchDocument
+  note: >-
+    Each resource ships its own <Resource>Patch / <Resource>Operation / <Resource>JsonPatchDocument
+    definition in the Swagger document; identifiers travel in the patch body, not the URL.
+delete_pattern:
+  identifiers_in: request-body
+  detail: >-
+    DELETE operations on sub-records (MemberCertification, MemberCoe, MemberDemographic, MemberEducation,
+    MemberEducationLevel, MemberFairHousing, MemberLanguage, MemberMilitaryService) send the composite key
+    fields in the request body rather than the URL path.
+pagination:
+  supported: false
+  detail: >-
+    No page, offset, limit, cursor or sort parameter appears anywhere in the 88 published operations.
+    Collection reads return the full set for a member, office or association; broad retrieval is served by
+    the DataExtractRequest / DataExtractSchedule bulk surface instead.
+search:
+  style: post-body-criteria
+  operations:
+    - POST /ext/Member/Search
+    - POST /ext/Office/Search
+    - POST /ext/Association/Search
+  constraints: >-
+    At least one search field is required, and NAR states name fields (FirstName, LastName) cannot be the
+    only search criteria.
+versioning:
+  scheme: none-in-path
+  spec_version: v1
+  path_prefix: /ext/
+  detail: >-
+    The Swagger info.version is "v1" but no version segment appears in any path, no version header is
+    documented, and the document declares no host, basePath or schemes. The audience prefix /ext/ separates
+    the external (AMS/partner) surface from NAR-internal surfaces.
+  artifact: lifecycle/nar-lifecycle.yml
+rate_limiting:
+  signalled: true
+  headers:
+    - X-Rate-Limit-Limit
+    - X-Rate-Limit-Remaining
+    - X-Rate-Limit-Reset
+  documented: false
+  detail: >-
+    Rate-limit headers are emitted on every response including unauthenticated 401s (observed
+    X-Rate-Limit-Limit 600s, X-Rate-Limit-Remaining 5999, X-Rate-Limit-Reset as an ISO-8601 instant), but
+    no rate-limit policy is documented in the Swagger document or the Postman collection, and no 429
+    response is declared.
+  artifact: rate-limits/nar-rate-limits.yml
+request_tracing:
+  request_id_header: null
+  observed_headers:
+    - Request-Context
+  detail: >-
+    The gateway returns an Azure Application Insights Request-Context header (appId) and ARRAffinity
+    session cookies; NAR documents no correlation or request-id header for support escalation.
+errors:
+  envelope_field: FieldValidationErrors
+  problem_json: false
+  artifact: errors/nar-error-codes.yml
+content_types:
+  produces:
+    - application/json
+    - text/json
+    - text/plain
+  consumes:
+    - application/json
+    - text/json
+    - application/json-patch+json
+data_conventions:
+  null_vs_empty_string: >-
+    NAR states explicitly that null and "" are not interchangeable and must be preserved as stored.
+  member_id_prefix: >-
+    A newly created MemberId must begin with the local association's ID prefix.
+  code_tables: >-
+    Sub-records are keyed by short code values published in the collection folder descriptions - address
+    types H (home) / M (mailing), COE course codes COEC (continuing education) / COEN (new member),
+    member statuses A / P / I / T / S, member types R / RA / I.

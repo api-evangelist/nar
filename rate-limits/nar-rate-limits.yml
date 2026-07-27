@@ -1,0 +1,53 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+generated: '2026-07-26'
+method: probed
+provider: National Association of REALTORS
+providerId: nar
+api: REALTORS M1 Gateway External API
+source: live response headers from https://nar.m1gateway.realtor/ext/Member
+sources:
+  - https://nar.m1gateway.realtor/ext/Member
+description: >-
+  NAR publishes no rate-limit documentation for the M1 Gateway External API - neither the Swagger 2.0
+  document nor the Postman collection mentions throttling, and no 429 response is declared anywhere. The
+  gateway nevertheless advertises a live rate-limit budget in response headers on every request, including
+  unauthenticated 401s, which is where these values come from. The header set is the ASP.NET Core
+  AspNetCoreRateLimit convention: X-Rate-Limit-Limit carries the window ("600s"), X-Rate-Limit-Remaining
+  the calls left in it, and X-Rate-Limit-Reset the ISO-8601 instant the window rolls. Observed twice on
+  2026-07-26 with a remaining count of 5999 against a 600-second window, implying a 6,000-request budget
+  per 10 minutes on the unauthenticated path; the authenticated per-partner budget is not observable
+  without NAR-issued credentials.
+documented: false
+headers:
+  limit: X-Rate-Limit-Limit
+  remaining: X-Rate-Limit-Remaining
+  reset: X-Rate-Limit-Reset
+responseCodes:
+  throttled: null
+  note: No 429 response is documented in the published Swagger definition.
+limits:
+  - name: Observed gateway window (unauthenticated probe)
+    scope: client
+    metric: requests_per_window
+    limit: 6000
+    timeFrame: 600s
+    inferred: true
+    evidence: >-
+      X-Rate-Limit-Limit 600s with X-Rate-Limit-Remaining 5999 immediately after a single request,
+      observed 2026-07-26T22:45Z and 2026-07-27T00:01Z on https://nar.m1gateway.realtor/ext/Member.
+observations:
+  - date: '2026-07-26'
+    url: https://nar.m1gateway.realtor/ext/Member
+    status: 401
+    headers:
+      X-Rate-Limit-Limit: 600s
+      X-Rate-Limit-Remaining: '5999'
+      X-Rate-Limit-Reset: '2026-07-26T22:45:11Z'
+  - date: '2026-07-27'
+    url: https://nar.m1gateway.realtor/ext/Member
+    status: 401
+    headers:
+      X-Rate-Limit-Limit: 600s
+      X-Rate-Limit-Remaining: '5999'
+      X-Rate-Limit-Reset: '2026-07-27T00:11:16.7707553Z'

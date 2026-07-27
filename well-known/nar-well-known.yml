@@ -1,0 +1,52 @@
+generated: '2026-07-26'
+method: searched
+source: live probes of NAR web and API hosts
+summary: >-
+  No /.well-known/ discovery surface exists on any NAR host. The corporate site returns its 404 page (HTML)
+  for every well-known path including security.txt, and the M1 Gateway rejects unauthenticated requests
+  wholesale - it answers 401 with an empty body for every path under the host, so even the well-known
+  namespace is behind HTTP Basic. That 401 is a gateway-wide auth policy, not evidence that a document
+  exists. No security.txt, no OIDC or OAuth authorization-server metadata, no api-catalog, no ai-plugin
+  manifest.
+hosts:
+  - host: https://www.nar.realtor
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+  - host: https://nar.m1gateway.realtor
+    note: Gateway returns 401 with Content-Length 0 for every path; nothing is served anonymously.
+    documents:
+      - path: /.well-known/security.txt
+        status: 401
+      - path: /.well-known/oauth-authorization-server
+        status: 401
+      - path: /.well-known/api-catalog
+        status: 401
+      - path: /openapi.json
+        status: 401
+      - path: /api-docs
+        status: 401
+      - path: /swagger.json
+        status: 000
+        note: Connection refused/reset - Swagger UI is not exposed on the gateway host.
+      - path: /swagger/v1/swagger.json
+        status: 000
+        note: Connection refused/reset.
+  - host: https://m1gateway.realtor
+    documents:
+      - path: /.well-known/security.txt
+        status: 401
+        note: 301 redirect to nar.m1gateway.realtor, then 401.
+documents_found: 0

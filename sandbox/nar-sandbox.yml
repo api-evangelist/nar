@@ -1,0 +1,59 @@
+generated: '2026-07-26'
+method: searched
+source: https://raw.githubusercontent.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs/main/M1_Gateway_External_AMS.postman_collection.json
+sources:
+  - collections/nar-m1-gateway-external.postman_collection.json
+api: REALTORS M1 Gateway External API
+summary: >-
+  NAR operates separate test and production environments for the M1 Gateway and issues distinct
+  credentials for each, but neither the test host nor any test credential is published. There is no
+  self-serve sandbox, no console, no hosted playground and no public test data set - the sandbox exists
+  only inside a partner relationship. What NAR does publish openly is the Postman collection that drives
+  it, pre-populated with deliberately fake sample values.
+self_serve: false
+environments:
+  - name: production
+    base_url: https://m1gateway.realtor
+    resolved_host: https://nar.m1gateway.realtor
+    credentials: Issued by NAR, production-only.
+    verified: 'Live 2026-07-26 - returns HTTP 401 without credentials.'
+  - name: test
+    base_url: null
+    credentials: Issued by NAR, test-only.
+    published: false
+    note: >-
+      NAR states in the collection that "Credentials are environment-specific - test credentials must not
+      be used against production, and vice versa. NAR will supply your credentials." The test host itself
+      is not named in any public artifact.
+credential_issuance:
+  self_service: false
+  process: Direct issuance by NAR to external AMS vendors and NAR partners.
+  audience: External association management system vendors and NAR partners.
+tooling:
+  postman_collection:
+    file: collections/nar-m1-gateway-external.postman_collection.json
+    source_url: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+    variables:
+      - key: baseUrl
+        value: https://m1gateway.realtor
+      - key: authBasicExternal
+        value: 'Basic YOUR_BASE64_CREDENTIALS_HERE'
+        note: Placeholder shipped by NAR; replaced with issued credentials.
+    request_count: 88
+test_data:
+  policy: >-
+    NAR states that all request bodies in the published collection contain obviously fake sample data
+    (for example MemberId 123456789) that must be replaced with real values before sending. No magic test
+    identifiers, no reserved test ranges and no seeded fixture records are published.
+  published_placeholders:
+    - field: MemberId
+      value: '123456789'
+      note: NAR's own example of obviously fake sample data.
+  examples_artifact: examples/nar-m1-gateway-external-examples.yml
+absent:
+  - hosted console or API explorer
+  - published test host
+  - self-serve test credentials
+  - reserved/magic test identifiers
+  - time simulation or test clocks
+  - fixture or trigger tooling
