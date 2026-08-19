@@ -1,0 +1,1313 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "M1Gateway - External",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Association",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /ext/Association/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/Association/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/Association/Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/Association/Search"
+          }
+        },
+        {
+          "info": {
+            "name": "PATCH /ext/Association",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/ext/Association"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "DataExtractRequest",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /ext/DataExtractRequest/Requester",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/DataExtractRequest/Requester"
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/DataExtractRequest",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/DataExtractRequest"
+          }
+        },
+        {
+          "info": {
+            "name": "GET /ext/DataExtractRequest/DownloadFile/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/DataExtractRequest/DownloadFile/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "GET /ext/DataExtractRequest/FileLocation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/DataExtractRequest/FileLocation"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "DataExtractSchedule",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /ext/DataExtractSchedule/AssociationId/{associationId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/DataExtractSchedule/AssociationId/:associationId",
+            "params": [
+              {
+                "name": "associationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/DataExtractSchedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/DataExtractSchedule"
+          }
+        },
+        {
+          "info": {
+            "name": "PUT /ext/DataExtractSchedule/{scheduleId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/ext/DataExtractSchedule/:scheduleId",
+            "params": [
+              {
+                "name": "scheduleId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "DELETE /ext/DataExtractSchedule/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/ext/DataExtractSchedule/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Member",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /ext/Member/Full/{memberId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/Member/Full/:memberId",
+            "params": [
+              {
+                "name": "memberId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/Member/Full/{memberId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/Member/Full/:memberId",
+            "params": [
+              {
+                "name": "memberId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "GET /ext/Member/{memberId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/Member/:memberId",
+            "params": [
+              {
+                "name": "memberId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/Member/ConvertIA/{memberId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/Member/ConvertIA/:memberId",
+            "params": [
+              {
+                "name": "memberId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/Member/Transfer/{memberId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/Member/Transfer/:memberId",
+            "params": [
+              {
+                "name": "memberId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "PATCH /ext/Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/ext/Member"
+          }
+        },
+        {
+          "info": {
+            "name": "PATCH /ext/Member/Reinstate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/ext/Member/Reinstate"
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/Member/Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/Member/Search"
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/Member/ValidateReLicense",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/Member/ValidateReLicense"
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/Member/CheckDuplicateEmail",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/Member/CheckDuplicateEmail"
+          }
+        },
+        {
+          "info": {
+            "name": "GET /ext/Member/CheckDuplicateMember/{memberId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/Member/CheckDuplicateMember/:memberId",
+            "params": [
+              {
+                "name": "memberId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "GET /ext/Member/Prime/{memberId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/Member/Prime/:memberId",
+            "params": [
+              {
+                "name": "memberId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "MemberAddress",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /ext/MemberAddress/MemberId/{memberId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/MemberAddress/MemberId/:memberId",
+            "params": [
+              {
+                "name": "memberId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/MemberAddress",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/MemberAddress"
+          }
+        },
+        {
+          "info": {
+            "name": "PATCH /ext/MemberAddress",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/ext/MemberAddress"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "MemberCertification",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /ext/MemberCertification/MemberId/{memberId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/MemberCertification/MemberId/:memberId",
+            "params": [
+              {
+                "name": "memberId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/MemberCertification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/MemberCertification"
+          }
+        },
+        {
+          "info": {
+            "name": "PATCH /ext/MemberCertification",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/ext/MemberCertification"
+          }
+        },
+        {
+          "info": {
+            "name": "DELETE /ext/MemberCertification",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/ext/MemberCertification"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "MemberCoe",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /ext/MemberCoe/MemberId/{memberId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/MemberCoe/MemberId/:memberId",
+            "params": [
+              {
+                "name": "memberId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/MemberCoe",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/MemberCoe"
+          }
+        },
+        {
+          "info": {
+            "name": "PATCH /ext/MemberCoe",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/ext/MemberCoe"
+          }
+        },
+        {
+          "info": {
+            "name": "DELETE /ext/MemberCoe",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/ext/MemberCoe"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "MemberDemographic",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /ext/MemberDemographic/MemberId/{memberId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/MemberDemographic/MemberId/:memberId",
+            "params": [
+              {
+                "name": "memberId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/MemberDemographic",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/MemberDemographic"
+          }
+        },
+        {
+          "info": {
+            "name": "PATCH /ext/MemberDemographic",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/ext/MemberDemographic"
+          }
+        },
+        {
+          "info": {
+            "name": "DELETE /ext/MemberDemographic",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/ext/MemberDemographic"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "MemberDesignation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /ext/MemberDesignation/MemberId/{memberId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/MemberDesignation/MemberId/:memberId",
+            "params": [
+              {
+                "name": "memberId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/MemberDesignation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/MemberDesignation"
+          }
+        },
+        {
+          "info": {
+            "name": "PATCH /ext/MemberDesignation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/ext/MemberDesignation"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "MemberDuesPayment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /ext/MemberDuesPayment/MemberId/{memberId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/MemberDuesPayment/MemberId/:memberId",
+            "params": [
+              {
+                "name": "memberId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/MemberDuesPayment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/MemberDuesPayment"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "MemberEducation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /ext/MemberEducation/MemberId/{memberId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/MemberEducation/MemberId/:memberId",
+            "params": [
+              {
+                "name": "memberId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/MemberEducation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/MemberEducation"
+          }
+        },
+        {
+          "info": {
+            "name": "PATCH /ext/MemberEducation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/ext/MemberEducation"
+          }
+        },
+        {
+          "info": {
+            "name": "DELETE /ext/MemberEducation",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/ext/MemberEducation"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "MemberEducationLevel",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /ext/MemberEducationLevel/MemberId/{memberId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/MemberEducationLevel/MemberId/:memberId",
+            "params": [
+              {
+                "name": "memberId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/MemberEducationLevel",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/MemberEducationLevel"
+          }
+        },
+        {
+          "info": {
+            "name": "DELETE /ext/MemberEducationLevel",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/ext/MemberEducationLevel"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "MemberEmail",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /ext/MemberEmail/MemberId/{memberId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/MemberEmail/MemberId/:memberId",
+            "params": [
+              {
+                "name": "memberId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/MemberEmail",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/MemberEmail"
+          }
+        },
+        {
+          "info": {
+            "name": "PATCH /ext/MemberEmail",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/ext/MemberEmail"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "MemberFairHousing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /ext/MemberFairHousing/MemberId/{memberId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/MemberFairHousing/MemberId/:memberId",
+            "params": [
+              {
+                "name": "memberId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/MemberFairHousing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/MemberFairHousing"
+          }
+        },
+        {
+          "info": {
+            "name": "PATCH /ext/MemberFairHousing",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/ext/MemberFairHousing"
+          }
+        },
+        {
+          "info": {
+            "name": "DELETE /ext/MemberFairHousing",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/ext/MemberFairHousing"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "MemberFieldOfBusiness",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /ext/MemberFieldOfBusiness/MemberId/{memberId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/MemberFieldOfBusiness/MemberId/:memberId",
+            "params": [
+              {
+                "name": "memberId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/MemberFieldOfBusiness",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/MemberFieldOfBusiness"
+          }
+        },
+        {
+          "info": {
+            "name": "PATCH /ext/MemberFieldOfBusiness",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/ext/MemberFieldOfBusiness"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "MemberIscAffiliation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /ext/MemberIscAffiliation/MemberId/{memberId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/MemberIscAffiliation/MemberId/:memberId",
+            "params": [
+              {
+                "name": "memberId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/MemberIscAffiliation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/MemberIscAffiliation"
+          }
+        },
+        {
+          "info": {
+            "name": "PATCH /ext/MemberIscAffiliation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/ext/MemberIscAffiliation"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "MemberLanguage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /ext/MemberLanguage/MemberId/{memberId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/MemberLanguage/MemberId/:memberId",
+            "params": [
+              {
+                "name": "memberId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/MemberLanguage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/MemberLanguage"
+          }
+        },
+        {
+          "info": {
+            "name": "DELETE /ext/MemberLanguage",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/ext/MemberLanguage"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "MemberMilitaryService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /ext/MemberMilitaryService/MemberId/{memberId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/MemberMilitaryService/MemberId/:memberId",
+            "params": [
+              {
+                "name": "memberId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/MemberMilitaryService",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/MemberMilitaryService"
+          }
+        },
+        {
+          "info": {
+            "name": "DELETE /ext/MemberMilitaryService",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/ext/MemberMilitaryService"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "MemberMLS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /ext/MemberMLS/MemberId/{memberId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/MemberMLS/MemberId/:memberId",
+            "params": [
+              {
+                "name": "memberId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/MemberMLS",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/MemberMLS"
+          }
+        },
+        {
+          "info": {
+            "name": "PATCH /ext/MemberMLS",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/ext/MemberMLS"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "MemberPhone",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /ext/MemberPhone/MemberId/{memberId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/MemberPhone/MemberId/:memberId",
+            "params": [
+              {
+                "name": "memberId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/MemberPhone",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/MemberPhone"
+          }
+        },
+        {
+          "info": {
+            "name": "PATCH /ext/MemberPhone",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/ext/MemberPhone"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "MemberSecondary",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /ext/MemberSecondary/MemberId/{memberId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/MemberSecondary/MemberId/:memberId",
+            "params": [
+              {
+                "name": "memberId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/MemberSecondary",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/MemberSecondary"
+          }
+        },
+        {
+          "info": {
+            "name": "PATCH /ext/MemberSecondary",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/ext/MemberSecondary"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "MemberSingleOwnedMLS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "POST /ext/MemberSingleOwnedMLS",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/MemberSingleOwnedMLS"
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Office",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "POST /ext/Office/Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/Office/Search"
+          }
+        },
+        {
+          "info": {
+            "name": "GET /ext/Office/{officeId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/Office/:officeId",
+            "params": [
+              {
+                "name": "officeId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "GET /ext/Office/Full/{officeId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/Office/Full/:officeId",
+            "params": [
+              {
+                "name": "officeId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/Office",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/Office"
+          }
+        },
+        {
+          "info": {
+            "name": "PATCH /ext/Office",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/ext/Office"
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/Office/Transfer/{officeId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/Office/Transfer/:officeId",
+            "params": [
+              {
+                "name": "officeId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OfficeSecondary",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /ext/OfficeSecondary/OfficeId/{officeId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/ext/OfficeSecondary/OfficeId/:officeId",
+            "params": [
+              {
+                "name": "officeId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "POST /ext/OfficeSecondary",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/ext/OfficeSecondary"
+          }
+        },
+        {
+          "info": {
+            "name": "PATCH /ext/OfficeSecondary",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/ext/OfficeSecondary"
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

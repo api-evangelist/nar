@@ -376,3 +376,8 @@ coverage:
   write_tools: 54
   note: POST /Search, /CheckDuplicateEmail and /ValidateReLicense are read/validate operations expressed
     as POST because the criteria travel in the body; they are counted as reads.
+deployment:
+  mode: none
+  verified: derived
+  checked: '2026-08-12'
+  source: catalog MCP census
