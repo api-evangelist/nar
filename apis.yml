@@ -20,6 +20,17 @@ description: >-
   relationship.
 image: https://avatars.githubusercontent.com/u/7168861?v=4
 tags:
+- Real-Estate
+- United States
+- Industry Body
+- MLS
+- RESO
+- Standards
+- Membership
+- Property Listings
+- IDX
+- PropTech
+tags_raw:
 - Real Estate
 - United States
 - Industry Body
@@ -50,6 +61,13 @@ apis:
   humanURL: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
   baseURL: https://m1gateway.realtor
   tags:
+  - Real-Estate
+  - Membership
+  - Associations
+  - Members
+  - Offices
+  - United States
+  tags_raw:
   - Real Estate
   - Membership
   - Associations
