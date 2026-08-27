@@ -45,49 +45,485 @@ created: '2026-07-26'
 modified: '2026-07-26'
 specificationVersion: '0.23'
 apis:
-- aid: nar:nar-m1-gateway-external-api
-  name: REALTORS M1 Gateway External API
+- aid: nar:nar-association-api
+  name: National Association of REALTORS Association API
   description: >-
-    The external surface of NAR's REALTORS M1 Gateway - the members-first engagement system that is the
-    single source of truth for REALTOR member data across state and local associations. The published
-    Swagger 2.0 definition documents 64 paths under /ext/ covering Association, Member, Member Address,
-    Certification, Code of Ethics, Demographic, Designation, Dues Payment, Education, Email, Fair Housing,
-    Field of Business, ISC Affiliation, Language, MLS, Military Service, Phone, Secondary and Single-Owned
-    MLS records, plus Office, Office Secondary, Data Extract Request and Data Extract Schedule. All calls
-    require HTTP Basic authentication with environment-specific credentials issued by NAR; PATCH operations
-    use a test/replace JSON Patch pattern where the test value must match the current stored value. The
-    definition and a Postman collection are published openly by NAR on GitHub for external AMS vendors and
-    NAR partners; the API host itself answers 401 without credentials and enforces a documented rate limit.
+    The Association API from National Association of REALTORS — 3 operation(s) for association.
   humanURL: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
   baseURL: https://m1gateway.realtor
   tags:
-  - Real-Estate
-  - Membership
-  - Associations
-  - Members
-  - Offices
-  - United States
-  tags_raw:
-  - Real Estate
-  - Membership
-  - Associations
-  - Members
-  - Offices
-  - United States
+  - Association
   properties:
   - type: OpenAPI
-    url: openapi/nar-m1-gateway-external-openapi.json
+    url: openapi/nar-association-api-openapi.yml
   - type: PostmanCollection
     url: collections/nar-m1-gateway-external.postman_collection.json
   - type: Documentation
     url: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
   - type: Documentation
-    url: https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
-  - type: Overlay
-    url: overlays/nar-m1-gateway-external-overlay.yaml
+    url: >-
+      https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
+  - type: Examples
+    url: examples/nar-m1-gateway-external-examples.yml
+- aid: nar:nar-dataextractrequest-api
+  name: National Association of REALTORS Data Extract Request API
+  description: >-
+    The DataExtractRequest API from National Association of REALTORS — 4 operation(s) for dataextractrequest.
+  humanURL: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  baseURL: https://m1gateway.realtor
+  tags:
+  - DataExtractRequest
+  properties:
+  - type: OpenAPI
+    url: openapi/nar-dataextractrequest-api-openapi.yml
+  - type: PostmanCollection
+    url: collections/nar-m1-gateway-external.postman_collection.json
+  - type: Documentation
+    url: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  - type: Documentation
+    url: >-
+      https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
+  - type: Examples
+    url: examples/nar-m1-gateway-external-examples.yml
+- aid: nar:nar-dataextractschedule-api
+  name: National Association of REALTORS Data Extract Schedule API
+  description: >-
+    The DataExtractSchedule API from National Association of REALTORS — 4 operation(s) for dataextractschedule.
+  humanURL: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  baseURL: https://m1gateway.realtor
+  tags:
+  - DataExtractSchedule
+  properties:
+  - type: OpenAPI
+    url: openapi/nar-dataextractschedule-api-openapi.yml
+  - type: PostmanCollection
+    url: collections/nar-m1-gateway-external.postman_collection.json
+  - type: Documentation
+    url: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  - type: Documentation
+    url: >-
+      https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
+  - type: Examples
+    url: examples/nar-m1-gateway-external-examples.yml
+- aid: nar:nar-member-api
+  name: National Association of REALTORS Member API
+  description: The Member API from National Association of REALTORS — 11 operation(s) for member.
+  humanURL: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  baseURL: https://m1gateway.realtor
+  tags:
+  - Member
+  properties:
+  - type: OpenAPI
+    url: openapi/nar-member-api-openapi.yml
+  - type: PostmanCollection
+    url: collections/nar-m1-gateway-external.postman_collection.json
+  - type: Documentation
+    url: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  - type: Documentation
+    url: >-
+      https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
+  - type: Examples
+    url: examples/nar-m1-gateway-external-examples.yml
+- aid: nar:nar-memberaddress-api
+  name: National Association of REALTORS Member Address API
+  description: >-
+    The MemberAddress API from National Association of REALTORS — 2 operation(s) for memberaddress.
+  humanURL: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  baseURL: https://m1gateway.realtor
+  tags:
+  - MemberAddress
+  properties:
+  - type: OpenAPI
+    url: openapi/nar-memberaddress-api-openapi.yml
+  - type: PostmanCollection
+    url: collections/nar-m1-gateway-external.postman_collection.json
+  - type: Documentation
+    url: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  - type: Documentation
+    url: >-
+      https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
+  - type: Examples
+    url: examples/nar-m1-gateway-external-examples.yml
+- aid: nar:nar-membercertification-api
+  name: National Association of REALTORS Member Certification API
+  description: >-
+    The MemberCertification API from National Association of REALTORS — 2 operation(s) for membercertification.
+  humanURL: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  baseURL: https://m1gateway.realtor
+  tags:
+  - MemberCertification
+  properties:
+  - type: OpenAPI
+    url: openapi/nar-membercertification-api-openapi.yml
+  - type: PostmanCollection
+    url: collections/nar-m1-gateway-external.postman_collection.json
+  - type: Documentation
+    url: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  - type: Documentation
+    url: >-
+      https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
+  - type: Examples
+    url: examples/nar-m1-gateway-external-examples.yml
+- aid: nar:nar-membercoe-api
+  name: National Association of REALTORS Member Coe API
+  description: The MemberCoe API from National Association of REALTORS — 2 operation(s) for membercoe.
+  humanURL: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  baseURL: https://m1gateway.realtor
+  tags:
+  - MemberCoe
+  properties:
+  - type: OpenAPI
+    url: openapi/nar-membercoe-api-openapi.yml
+  - type: PostmanCollection
+    url: collections/nar-m1-gateway-external.postman_collection.json
+  - type: Documentation
+    url: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  - type: Documentation
+    url: >-
+      https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
+  - type: Examples
+    url: examples/nar-m1-gateway-external-examples.yml
+- aid: nar:nar-memberdemographic-api
+  name: National Association of REALTORS Member Demographic API
+  description: >-
+    The MemberDemographic API from National Association of REALTORS — 2 operation(s) for memberdemographic.
+  humanURL: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  baseURL: https://m1gateway.realtor
+  tags:
+  - MemberDemographic
+  properties:
+  - type: OpenAPI
+    url: openapi/nar-memberdemographic-api-openapi.yml
+  - type: PostmanCollection
+    url: collections/nar-m1-gateway-external.postman_collection.json
+  - type: Documentation
+    url: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  - type: Documentation
+    url: >-
+      https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
+  - type: Examples
+    url: examples/nar-m1-gateway-external-examples.yml
+- aid: nar:nar-memberdesignation-api
+  name: National Association of REALTORS Member Designation API
+  description: >-
+    The MemberDesignation API from National Association of REALTORS — 2 operation(s) for memberdesignation.
+  humanURL: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  baseURL: https://m1gateway.realtor
+  tags:
+  - MemberDesignation
+  properties:
+  - type: OpenAPI
+    url: openapi/nar-memberdesignation-api-openapi.yml
+  - type: PostmanCollection
+    url: collections/nar-m1-gateway-external.postman_collection.json
+  - type: Documentation
+    url: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  - type: Documentation
+    url: >-
+      https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
+  - type: Examples
+    url: examples/nar-m1-gateway-external-examples.yml
+- aid: nar:nar-memberduespayment-api
+  name: National Association of REALTORS Member Dues Payment API
+  description: >-
+    The MemberDuesPayment API from National Association of REALTORS — 2 operation(s) for memberduespayment.
+  humanURL: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  baseURL: https://m1gateway.realtor
+  tags:
+  - MemberDuesPayment
+  properties:
+  - type: OpenAPI
+    url: openapi/nar-memberduespayment-api-openapi.yml
+  - type: PostmanCollection
+    url: collections/nar-m1-gateway-external.postman_collection.json
+  - type: Documentation
+    url: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  - type: Documentation
+    url: >-
+      https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
+  - type: Examples
+    url: examples/nar-m1-gateway-external-examples.yml
+- aid: nar:nar-membereducation-api
+  name: National Association of REALTORS Member Education API
+  description: >-
+    The MemberEducation API from National Association of REALTORS — 2 operation(s) for membereducation.
+  humanURL: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  baseURL: https://m1gateway.realtor
+  tags:
+  - MemberEducation
+  properties:
+  - type: OpenAPI
+    url: openapi/nar-membereducation-api-openapi.yml
+  - type: PostmanCollection
+    url: collections/nar-m1-gateway-external.postman_collection.json
+  - type: Documentation
+    url: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  - type: Documentation
+    url: >-
+      https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
+  - type: Examples
+    url: examples/nar-m1-gateway-external-examples.yml
+- aid: nar:nar-membereducationlevel-api
+  name: National Association of REALTORS Member Education Level API
+  description: >-
+    The MemberEducationLevel API from National Association of REALTORS — 2 operation(s) for membereducationlevel.
+  humanURL: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  baseURL: https://m1gateway.realtor
+  tags:
+  - MemberEducationLevel
+  properties:
+  - type: OpenAPI
+    url: openapi/nar-membereducationlevel-api-openapi.yml
+  - type: PostmanCollection
+    url: collections/nar-m1-gateway-external.postman_collection.json
+  - type: Documentation
+    url: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  - type: Documentation
+    url: >-
+      https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
+  - type: Examples
+    url: examples/nar-m1-gateway-external-examples.yml
+- aid: nar:nar-memberemail-api
+  name: National Association of REALTORS Member Email API
+  description: >-
+    The MemberEmail API from National Association of REALTORS — 2 operation(s) for memberemail.
+  humanURL: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  baseURL: https://m1gateway.realtor
+  tags:
+  - MemberEmail
+  properties:
+  - type: OpenAPI
+    url: openapi/nar-memberemail-api-openapi.yml
+  - type: PostmanCollection
+    url: collections/nar-m1-gateway-external.postman_collection.json
+  - type: Documentation
+    url: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  - type: Documentation
+    url: >-
+      https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
+  - type: Examples
+    url: examples/nar-m1-gateway-external-examples.yml
+- aid: nar:nar-memberfairhousing-api
+  name: National Association of REALTORS Member Fair Housing API
+  description: >-
+    The MemberFairHousing API from National Association of REALTORS — 2 operation(s) for memberfairhousing.
+  humanURL: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  baseURL: https://m1gateway.realtor
+  tags:
+  - MemberFairHousing
+  properties:
+  - type: OpenAPI
+    url: openapi/nar-memberfairhousing-api-openapi.yml
+  - type: PostmanCollection
+    url: collections/nar-m1-gateway-external.postman_collection.json
+  - type: Documentation
+    url: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  - type: Documentation
+    url: >-
+      https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
+  - type: Examples
+    url: examples/nar-m1-gateway-external-examples.yml
+- aid: nar:nar-memberfieldofbusiness-api
+  name: National Association of REALTORS Member Field Of Business API
+  description: >-
+    The MemberFieldOfBusiness API from National Association of REALTORS — 2 operation(s) for memberfieldofbusiness.
+  humanURL: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  baseURL: https://m1gateway.realtor
+  tags:
+  - MemberFieldOfBusiness
+  properties:
+  - type: OpenAPI
+    url: openapi/nar-memberfieldofbusiness-api-openapi.yml
+  - type: PostmanCollection
+    url: collections/nar-m1-gateway-external.postman_collection.json
+  - type: Documentation
+    url: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  - type: Documentation
+    url: >-
+      https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
+  - type: Examples
+    url: examples/nar-m1-gateway-external-examples.yml
+- aid: nar:nar-memberiscaffiliation-api
+  name: National Association of REALTORS Member Isc Affiliation API
+  description: >-
+    The MemberIscAffiliation API from National Association of REALTORS — 2 operation(s) for memberiscaffiliation.
+  humanURL: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  baseURL: https://m1gateway.realtor
+  tags:
+  - MemberIscAffiliation
+  properties:
+  - type: OpenAPI
+    url: openapi/nar-memberiscaffiliation-api-openapi.yml
+  - type: PostmanCollection
+    url: collections/nar-m1-gateway-external.postman_collection.json
+  - type: Documentation
+    url: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  - type: Documentation
+    url: >-
+      https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
+  - type: Examples
+    url: examples/nar-m1-gateway-external-examples.yml
+- aid: nar:nar-memberlanguage-api
+  name: National Association of REALTORS Member Language API
+  description: >-
+    The MemberLanguage API from National Association of REALTORS — 2 operation(s) for memberlanguage.
+  humanURL: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  baseURL: https://m1gateway.realtor
+  tags:
+  - MemberLanguage
+  properties:
+  - type: OpenAPI
+    url: openapi/nar-memberlanguage-api-openapi.yml
+  - type: PostmanCollection
+    url: collections/nar-m1-gateway-external.postman_collection.json
+  - type: Documentation
+    url: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  - type: Documentation
+    url: >-
+      https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
+  - type: Examples
+    url: examples/nar-m1-gateway-external-examples.yml
+- aid: nar:nar-membermilitaryservice-api
+  name: National Association of REALTORS Member Military Service API
+  description: >-
+    The MemberMilitaryService API from National Association of REALTORS — 2 operation(s) for membermilitaryservice.
+  humanURL: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  baseURL: https://m1gateway.realtor
+  tags:
+  - MemberMilitaryService
+  properties:
+  - type: OpenAPI
+    url: openapi/nar-membermilitaryservice-api-openapi.yml
+  - type: PostmanCollection
+    url: collections/nar-m1-gateway-external.postman_collection.json
+  - type: Documentation
+    url: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  - type: Documentation
+    url: >-
+      https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
+  - type: Examples
+    url: examples/nar-m1-gateway-external-examples.yml
+- aid: nar:nar-membermls-api
+  name: National Association of REALTORS Member MLS API
+  description: The MemberMLS API from National Association of REALTORS — 2 operation(s) for membermls.
+  humanURL: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  baseURL: https://m1gateway.realtor
+  tags:
+  - MemberMLS
+  properties:
+  - type: OpenAPI
+    url: openapi/nar-membermls-api-openapi.yml
+  - type: PostmanCollection
+    url: collections/nar-m1-gateway-external.postman_collection.json
+  - type: Documentation
+    url: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  - type: Documentation
+    url: >-
+      https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
+  - type: Examples
+    url: examples/nar-m1-gateway-external-examples.yml
+- aid: nar:nar-memberphone-api
+  name: National Association of REALTORS Member Phone API
+  description: >-
+    The MemberPhone API from National Association of REALTORS — 2 operation(s) for memberphone.
+  humanURL: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  baseURL: https://m1gateway.realtor
+  tags:
+  - MemberPhone
+  properties:
+  - type: OpenAPI
+    url: openapi/nar-memberphone-api-openapi.yml
+  - type: PostmanCollection
+    url: collections/nar-m1-gateway-external.postman_collection.json
+  - type: Documentation
+    url: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  - type: Documentation
+    url: >-
+      https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
+  - type: Examples
+    url: examples/nar-m1-gateway-external-examples.yml
+- aid: nar:nar-membersecondary-api
+  name: National Association of REALTORS Member Secondary API
+  description: >-
+    The MemberSecondary API from National Association of REALTORS — 2 operation(s) for membersecondary.
+  humanURL: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  baseURL: https://m1gateway.realtor
+  tags:
+  - MemberSecondary
+  properties:
+  - type: OpenAPI
+    url: openapi/nar-membersecondary-api-openapi.yml
+  - type: PostmanCollection
+    url: collections/nar-m1-gateway-external.postman_collection.json
+  - type: Documentation
+    url: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  - type: Documentation
+    url: >-
+      https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
+  - type: Examples
+    url: examples/nar-m1-gateway-external-examples.yml
+- aid: nar:nar-membersingleownedmls-api
+  name: National Association of REALTORS Member Single Owned MLS API
+  description: >-
+    The MemberSingleOwnedMLS API from National Association of REALTORS — 1 operation(s) for membersingleownedmls.
+  humanURL: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  baseURL: https://m1gateway.realtor
+  tags:
+  - MemberSingleOwnedMLS
+  properties:
+  - type: OpenAPI
+    url: openapi/nar-membersingleownedmls-api-openapi.yml
+  - type: PostmanCollection
+    url: collections/nar-m1-gateway-external.postman_collection.json
+  - type: Documentation
+    url: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  - type: Documentation
+    url: >-
+      https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
+  - type: Examples
+    url: examples/nar-m1-gateway-external-examples.yml
+- aid: nar:nar-office-api
+  name: National Association of REALTORS Office API
+  description: The Office API from National Association of REALTORS — 5 operation(s) for office.
+  humanURL: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  baseURL: https://m1gateway.realtor
+  tags:
+  - Office
+  properties:
+  - type: OpenAPI
+    url: openapi/nar-office-api-openapi.yml
+  - type: PostmanCollection
+    url: collections/nar-m1-gateway-external.postman_collection.json
+  - type: Documentation
+    url: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  - type: Documentation
+    url: >-
+      https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
+  - type: Examples
+    url: examples/nar-m1-gateway-external-examples.yml
+- aid: nar:nar-officesecondary-api
+  name: National Association of REALTORS Office Secondary API
+  description: >-
+    The OfficeSecondary API from National Association of REALTORS — 2 operation(s) for officesecondary.
+  humanURL: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  baseURL: https://m1gateway.realtor
+  tags:
+  - OfficeSecondary
+  properties:
+  - type: OpenAPI
+    url: openapi/nar-officesecondary-api-openapi.yml
+  - type: PostmanCollection
+    url: collections/nar-m1-gateway-external.postman_collection.json
+  - type: Documentation
+    url: https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs
+  - type: Documentation
+    url: >-
+      https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system
   - type: Examples
     url: examples/nar-m1-gateway-external-examples.yml
 common:
+- type: Overlay
+  url: overlays/nar-m1-gateway-external-overlay.yaml
 - type: DomainSecurity
   url: security/nar-domain-security.yml
 - type: AgenticAccess
