@@ -18,6 +18,18 @@ description: >-
   Swagger 2.0 definition and Postman collection NAR publishes openly on GitHub for external association
   management system vendors and NAR partners, but whose credentials NAR issues only under a partner
   relationship.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://avatars.githubusercontent.com/u/7168861?v=4
 tags:
 - Real-Estate
