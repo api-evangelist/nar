@@ -1,0 +1,25 @@
+slug: nar
+provider: National Association of REALTORS
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Real Estate
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: MemberFairHousing
+  spec_file: nar-memberfairhousing-api-openapi.yml
+  capability_id: BC-4990.20
+  capability_id_l1: BC-4990
+  capability_name: Fair Housing & Anti-Discrimination Compliance
+  confidence: 0.75
+  evidence: GET /ext/MemberFairHousing/MemberId/{memberId}; schemas Member_Fair_Housing, Member_Fair_HousingJsonPatchDocument
+  reason: Maintains fair-housing (anti-discrimination) records/requirement status against each REALTOR
+    member, which is precisely the fair-housing compliance regime for real-estate practitioners. Only
+    a CRUD surface is shown, so confidence is short of near-certain.

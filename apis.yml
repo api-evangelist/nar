@@ -534,6 +534,9 @@ apis:
   - type: Examples
     url: examples/nar-m1-gateway-external-examples.yml
 common:
+- type: CapabilityMap
+  url: capabilities/nar-capability-edges.yml
+  name: National Association of REALTORS Business Capability Map
 - type: Overlay
   url: overlays/nar-m1-gateway-external-overlay.yaml
 - type: DomainSecurity
