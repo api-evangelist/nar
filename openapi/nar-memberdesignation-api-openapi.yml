@@ -1,0 +1,283 @@
+openapi: 3.2.0
+info:
+  title: M1Gateway - External Member Designation API
+  version: v1
+security:
+- basic: []
+tags:
+- name: MemberDesignation
+paths:
+  /ext/MemberDesignation/MemberId/{memberId}:
+    get:
+      tags:
+      - MemberDesignation
+      parameters:
+      - in: path
+        name: memberId
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BizMemberDesignation'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BizMemberDesignation'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BizMemberDesignation'
+  /ext/MemberDesignation:
+    patch:
+      tags:
+      - MemberDesignation
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Member_Designation'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Member_Designation'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Member_Designation'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/MemberDesignationPatch'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemberDesignationPatch'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MemberDesignationPatch'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/MemberDesignationPatch'
+    post:
+      tags:
+      - MemberDesignation
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BizMemberDesignation'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BizMemberDesignation'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BizMemberDesignation'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/BizMemberDesignation'
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/BizMemberDesignation'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/BizMemberDesignation'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/BizMemberDesignation'
+components:
+  schemas:
+    Member_DesignationOperation:
+      type: object
+      properties:
+        operationType:
+          $ref: '#/components/schemas/OperationType'
+        path:
+          type: string
+        op:
+          type: string
+        from:
+          type: string
+        value: {}
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+    MemberDesignationPatch:
+      type: object
+      properties:
+        member_Id:
+          format: int32
+          type: integer
+        designation_Code:
+          type: string
+        updates:
+          $ref: '#/components/schemas/Member_DesignationJsonPatchDocument'
+    Member_Designation:
+      type: object
+      properties:
+        first_Inserted_By:
+          type: string
+        first_Inserted_Datetime:
+          format: date-time
+          type: string
+        last_Changed_By:
+          type: string
+        last_Changed_Datetime:
+          format: date-time
+          type: string
+        source_System_Id:
+          format: int32
+          type: integer
+        source_Method_Id:
+          format: int32
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        coreEntityStatusCode:
+          type: string
+        canEdit:
+          type: string
+        sourceSystemDisplayName:
+          type: string
+        isInternal:
+          type: boolean
+        returnField:
+          type: boolean
+        isPubSub:
+          type: boolean
+        id:
+          format: int32
+          type: integer
+        member_Id:
+          format: int32
+          type: integer
+        designation_Code:
+          type: string
+        designation_Status_Code:
+          type: string
+        designation_Status_Date:
+          format: date-time
+          type: string
+        timestamp_Seq:
+          format: int64
+          type: integer
+        designationDescription:
+          type: string
+    BizMemberDesignation:
+      type: object
+      properties:
+        first_Inserted_By:
+          type: string
+        first_Inserted_Datetime:
+          format: date-time
+          type: string
+        last_Changed_By:
+          type: string
+        last_Changed_Datetime:
+          format: date-time
+          type: string
+        source_System_Id:
+          format: int32
+          type: integer
+        source_Method_Id:
+          format: int32
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        coreEntityStatusCode:
+          type: string
+        canEdit:
+          type: string
+        sourceSystemDisplayName:
+          type: string
+        isInternal:
+          type: boolean
+        returnField:
+          type: boolean
+        isPubSub:
+          type: boolean
+        totalAchieved:
+          format: int32
+          type: integer
+        id:
+          format: int32
+          type: integer
+        memberId:
+          format: int32
+          type: integer
+        designationCode:
+          type: string
+        designationDescription:
+          type: string
+        designationStatusCode:
+          type: string
+        designationStatusDate:
+          format: date-time
+          type: string
+        designationOwner:
+          format: int32
+          type: integer
+        primaryStateAssociationId:
+          format: int32
+          type: integer
+        timestamp_Seq:
+          format: int64
+          type: integer
+        memberStatusCode:
+          type: string
+    IContractResolver:
+      type: object
+    Member_DesignationJsonPatchDocument:
+      type: object
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member_DesignationOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
+  securitySchemes:
+    basic:
+      type: http
+      scheme: basic
+      description: Basic Authorization header using user and password

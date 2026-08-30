@@ -1,0 +1,198 @@
+openapi: 3.2.0
+info:
+  title: M1Gateway - External Data Extract Schedule API
+  version: v1
+security:
+- basic: []
+tags:
+- name: DataExtractSchedule
+paths:
+  /ext/DataExtractSchedule/AssociationId/{associationId}:
+    get:
+      tags:
+      - DataExtractSchedule
+      parameters:
+      - in: path
+        name: associationId
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Data_Extract_Schedule'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Data_Extract_Schedule'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Data_Extract_Schedule'
+  /ext/DataExtractSchedule:
+    post:
+      tags:
+      - DataExtractSchedule
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Data_Extract_Schedule'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Data_Extract_Schedule'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Data_Extract_Schedule'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Data_Extract_Schedule'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Data_Extract_Schedule'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Data_Extract_Schedule'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Data_Extract_Schedule'
+  /ext/DataExtractSchedule/{scheduleId}:
+    put:
+      tags:
+      - DataExtractSchedule
+      parameters:
+      - in: path
+        name: scheduleId
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Success
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Data_Extract_Schedule'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Data_Extract_Schedule'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Data_Extract_Schedule'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Data_Extract_Schedule'
+  /ext/DataExtractSchedule/{id}:
+    delete:
+      tags:
+      - DataExtractSchedule
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Data_Extract_Schedule'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Data_Extract_Schedule'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Data_Extract_Schedule'
+components:
+  schemas:
+    Data_Extract_Schedule:
+      type: object
+      properties:
+        first_Inserted_By:
+          type: string
+        first_Inserted_Datetime:
+          format: date-time
+          type: string
+        last_Changed_By:
+          type: string
+        last_Changed_Datetime:
+          format: date-time
+          type: string
+        source_System_Id:
+          format: int32
+          type: integer
+        source_Method_Id:
+          format: int32
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        coreEntityStatusCode:
+          type: string
+        canEdit:
+          type: string
+        sourceSystemDisplayName:
+          type: string
+        isInternal:
+          type: boolean
+        returnField:
+          type: boolean
+        isPubSub:
+          type: boolean
+        id:
+          format: int32
+          type: integer
+        association_Id:
+          format: int32
+          type: integer
+        delivery_Method:
+          type: string
+        member_Type_List:
+          type: string
+        member_Status_List:
+          type: string
+        include_Column_Headers:
+          type: string
+        delimiter:
+          type: string
+        file_List:
+          type: string
+        schedule_Type_Code:
+          type: string
+        scheduleTypeDescription:
+          type: string
+        lastRunDatetime:
+          format: date-time
+          type: string
+        lastRunStatusCode:
+          type: string
+        lastRunStatusDescription:
+          type: string
+        nextRunDatetime:
+          format: date-time
+          type: string
+        requesterName:
+          type: string
+  securitySchemes:
+    basic:
+      type: http
+      scheme: basic
+      description: Basic Authorization header using user and password

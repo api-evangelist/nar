@@ -1,0 +1,182 @@
+openapi: 3.2.0
+info:
+  title: M1Gateway - External Data Extract Request API
+  version: v1
+security:
+- basic: []
+tags:
+- name: DataExtractRequest
+paths:
+  /ext/DataExtractRequest/Requester:
+    get:
+      tags:
+      - DataExtractRequest
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Data_Extract_Request'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Data_Extract_Request'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Data_Extract_Request'
+  /ext/DataExtractRequest:
+    post:
+      tags:
+      - DataExtractRequest
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Data_Extract_Request'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Data_Extract_Request'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Data_Extract_Request'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Data_Extract_Request'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Data_Extract_Request'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Data_Extract_Request'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Data_Extract_Request'
+  /ext/DataExtractRequest/DownloadFile/{id}:
+    get:
+      tags:
+      - DataExtractRequest
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Success
+  /ext/DataExtractRequest/FileLocation:
+    get:
+      tags:
+      - DataExtractRequest
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string
+            text/json:
+              schema:
+                type: string
+components:
+  schemas:
+    Data_Extract_Request:
+      type: object
+      properties:
+        first_Inserted_By:
+          type: string
+        first_Inserted_Datetime:
+          format: date-time
+          type: string
+        last_Changed_By:
+          type: string
+        last_Changed_Datetime:
+          format: date-time
+          type: string
+        source_System_Id:
+          format: int32
+          type: integer
+        source_Method_Id:
+          format: int32
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        coreEntityStatusCode:
+          type: string
+        canEdit:
+          type: string
+        sourceSystemDisplayName:
+          type: string
+        isInternal:
+          type: boolean
+        returnField:
+          type: boolean
+        isPubSub:
+          type: boolean
+        id:
+          format: int32
+          type: integer
+        association_Id:
+          format: int32
+          type: integer
+        file_Format_Type:
+          type: string
+        request_Type:
+          type: string
+        extract_Type:
+          type: string
+        delivery_Method:
+          type: string
+        member_Type_List:
+          type: string
+        member_Status_List:
+          type: string
+        include_Column_Headers:
+          type: string
+        delimiter:
+          type: string
+        file_List:
+          type: string
+        status_Code:
+          type: string
+        attempt_Count:
+          format: int32
+          type: integer
+        processing_Start_Datetime:
+          format: date-time
+          type: string
+        processing_Complete_Datetime:
+          format: date-time
+          type: string
+        extract_File_Location:
+          type: string
+        extract_File_Name:
+          type: string
+        schedule_Id:
+          format: int32
+          type: integer
+        statusDescription:
+          type: string
+        requesterName:
+          type: string
+  securitySchemes:
+    basic:
+      type: http
+      scheme: basic
+      description: Basic Authorization header using user and password

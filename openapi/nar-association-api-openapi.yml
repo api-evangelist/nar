@@ -1,0 +1,431 @@
+openapi: 3.2.0
+info:
+  title: M1Gateway - External Association API
+  version: v1
+security:
+- basic: []
+tags:
+- name: Association
+paths:
+  /ext/Association/{id}:
+    get:
+      tags:
+      - Association
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Association'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Association'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Association'
+  /ext/Association/Search:
+    post:
+      tags:
+      - Association
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items: {}
+            application/json:
+              schema:
+                type: array
+                items: {}
+            text/json:
+              schema:
+                type: array
+                items: {}
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/BizAssociationSearch'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BizAssociationSearch'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/BizAssociationSearch'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/BizAssociationSearch'
+  /ext/Association:
+    patch:
+      tags:
+      - Association
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Association'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Association'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Association'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/AssociationPatch'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssociationPatch'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AssociationPatch'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/AssociationPatch'
+components:
+  schemas:
+    AssocMemberCount:
+      type: object
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+    Association:
+      type: object
+      properties:
+        first_Inserted_By:
+          type: string
+        first_Inserted_Datetime:
+          format: date-time
+          type: string
+        last_Changed_By:
+          type: string
+        last_Changed_Datetime:
+          format: date-time
+          type: string
+        source_System_Id:
+          format: int32
+          type: integer
+        source_Method_Id:
+          format: int32
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        coreEntityStatusCode:
+          type: string
+        canEdit:
+          type: string
+        sourceSystemDisplayName:
+          type: string
+        isInternal:
+          type: boolean
+        returnField:
+          type: boolean
+        isPubSub:
+          type: boolean
+        association_Id:
+          format: int32
+          type: integer
+        association_Name:
+          type: string
+        association_Type_Code:
+          type: string
+        association_Status_Code:
+          type: string
+        association_Status_Date:
+          format: date-time
+          type: string
+        ae_Id:
+          format: int64
+          type: integer
+        associationExecutive:
+          type: string
+        association_Fax_Number:
+          type: string
+        association_Phone_Number:
+          type: string
+        association_Email_Address:
+          type: string
+        last_Certification_Date:
+          format: date-time
+          type: string
+        mailing_Address_Line_1:
+          type: string
+        mailing_Address_Line_2:
+          type: string
+        mailing_City:
+          type: string
+        mailing_State:
+          type: string
+        mailing_Zip:
+          type: string
+        mailing_Zip6:
+          type: string
+        primary_State_Association_Id:
+          format: int32
+          type: integer
+        primaryStateAssociation:
+          $ref: '#/components/schemas/Association'
+        street_Address_Line_1:
+          type: string
+        street_Address_Line_2:
+          type: string
+        street_City:
+          type: string
+        street_State:
+          type: string
+        street_Zip:
+          type: string
+        street_Zip6:
+          type: string
+        additional_Jurisdictional_State_Association_Id_1:
+          format: int32
+          type: integer
+        stateAssociation1:
+          $ref: '#/components/schemas/Association'
+        additional_Jurisdictional_State_Association_Id_2:
+          format: int32
+          type: integer
+        stateAssociation2:
+          $ref: '#/components/schemas/Association'
+        additional_Jurisdictional_State_Association_Id_3:
+          format: int32
+          type: integer
+        stateAssociation3:
+          $ref: '#/components/schemas/Association'
+        web_Page_Address:
+          type: string
+        association_Executive_Fax_Number:
+          type: string
+        current_President_Member_Id:
+          format: int32
+          type: integer
+        currentPresident:
+          type: string
+        current_President_Elect_Member_Id:
+          format: int32
+          type: integer
+        currentPresidentElect:
+          type: string
+        current_Secretary_Member_Id:
+          format: int32
+          type: integer
+        currentSecretary:
+          type: string
+        current_Treasurer_Member_Id:
+          format: int32
+          type: integer
+        currentTreasurer:
+          type: string
+        prior_President_Member_Id:
+          format: int32
+          type: integer
+        priorPresident:
+          type: string
+        prior_President_Elect_Member_Id:
+          format: int32
+          type: integer
+        priorPresidentElect:
+          type: string
+        prior_Secretary_Member_Id:
+          format: int32
+          type: integer
+        priorSecretary:
+          type: string
+        prior_Treasurer_Member_Id:
+          format: int32
+          type: integer
+        priorTreasurer:
+          type: string
+        future_President_Member_Id:
+          format: int32
+          type: integer
+        futurePresident:
+          type: string
+        future_President_Elect_Member_Id:
+          format: int32
+          type: integer
+        futurePresidentElect:
+          type: string
+        future_Secretary_Member_Id:
+          format: int32
+          type: integer
+        futureSecretary:
+          type: string
+        future_Treasurer_Member_Id:
+          format: int32
+          type: integer
+        futureTreasurer:
+          type: string
+        election_Month:
+          type: string
+        commercial_Affiliate_Flag:
+          type: string
+        timestamp_Seq:
+          format: int64
+          type: integer
+        single_Owned_MLS_Flag:
+          type: string
+        single_Owned_MLS_Name:
+          type: string
+        allow_Poe_Proxy:
+          type: string
+        charter_Date:
+          format: date-time
+          type: string
+        poeId:
+          format: int32
+          type: integer
+        poe:
+          type: string
+        assocMemberCount:
+          $ref: '#/components/schemas/AssocMemberCount'
+        assocIdName:
+          type: string
+        assocMemberListCount:
+          format: int32
+          type: integer
+        assocOfficeListCount:
+          format: int32
+          type: integer
+        boardsServicedList:
+          type: array
+          items:
+            $ref: '#/components/schemas/Association_Board_Serviced'
+        boardsServicedIds:
+          type: array
+          items:
+            format: int32
+            type: integer
+        aeEmailAddress:
+          type: string
+        currentPresidentEmailAddress:
+          type: string
+        currentPresidentElectEmailAddress:
+          type: string
+    AssociationOperation:
+      type: object
+      properties:
+        operationType:
+          $ref: '#/components/schemas/OperationType'
+        path:
+          type: string
+        op:
+          type: string
+        from:
+          type: string
+        value: {}
+    Association_Board_Serviced:
+      type: object
+      properties:
+        first_Inserted_By:
+          type: string
+        first_Inserted_Datetime:
+          format: date-time
+          type: string
+        last_Changed_By:
+          type: string
+        last_Changed_Datetime:
+          format: date-time
+          type: string
+        source_System_Id:
+          format: int32
+          type: integer
+        source_Method_Id:
+          format: int32
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        coreEntityStatusCode:
+          type: string
+        canEdit:
+          type: string
+        sourceSystemDisplayName:
+          type: string
+        isInternal:
+          type: boolean
+        returnField:
+          type: boolean
+        isPubSub:
+          type: boolean
+        id:
+          format: int32
+          type: integer
+        association_Id:
+          format: int32
+          type: integer
+        board_Serviced_Association_Id:
+          format: int32
+          type: integer
+        assocIdName:
+          type: string
+        assocNameState:
+          type: string
+    BizAssociationSearch:
+      type: object
+      properties:
+        associationId:
+          format: int32
+          type: integer
+        associationTypeCode:
+          type: string
+        associationName:
+          type: string
+        associationState:
+          type: string
+        associationCity:
+          type: string
+        associationZip:
+          type: string
+        includeDissolvedFlag:
+          type: string
+    AssociationPatch:
+      type: object
+      properties:
+        associationId:
+          format: int32
+          type: integer
+        updates:
+          $ref: '#/components/schemas/AssociationJsonPatchDocument'
+    IContractResolver:
+      type: object
+    AssociationJsonPatchDocument:
+      type: object
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssociationOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
+  securitySchemes:
+    basic:
+      type: http
+      scheme: basic
+      description: Basic Authorization header using user and password

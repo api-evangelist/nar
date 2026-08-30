@@ -1,0 +1,160 @@
+openapi: 3.2.0
+info:
+  title: M1Gateway - External Member Military Service API
+  version: v1
+security:
+- basic: []
+tags:
+- name: MemberMilitaryService
+paths:
+  /ext/MemberMilitaryService/MemberId/{memberId}:
+    get:
+      tags:
+      - MemberMilitaryService
+      parameters:
+      - in: path
+        name: memberId
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items: {}
+            application/json:
+              schema:
+                type: array
+                items: {}
+            text/json:
+              schema:
+                type: array
+                items: {}
+  /ext/MemberMilitaryService:
+    post:
+      tags:
+      - MemberMilitaryService
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Member_Military_Service'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Member_Military_Service'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Member_Military_Service'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Member_Military_Service'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Member_Military_Service'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Member_Military_Service'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Member_Military_Service'
+    delete:
+      tags:
+      - MemberMilitaryService
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Member_Military_Service'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Member_Military_Service'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Member_Military_Service'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Member_Military_Service'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Member_Military_Service'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Member_Military_Service'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Member_Military_Service'
+components:
+  schemas:
+    Member_Military_Service:
+      type: object
+      properties:
+        first_Inserted_By:
+          type: string
+        first_Inserted_Datetime:
+          format: date-time
+          type: string
+        last_Changed_By:
+          type: string
+        last_Changed_Datetime:
+          format: date-time
+          type: string
+        source_System_Id:
+          format: int32
+          type: integer
+        source_Method_Id:
+          format: int32
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        coreEntityStatusCode:
+          type: string
+        canEdit:
+          type: string
+        sourceSystemDisplayName:
+          type: string
+        isInternal:
+          type: boolean
+        returnField:
+          type: boolean
+        isPubSub:
+          type: boolean
+        id:
+          format: int32
+          type: integer
+        member_Id:
+          format: int32
+          type: integer
+        entered_By_Association_Id:
+          format: int32
+          type: integer
+        military_Service_Code:
+          type: string
+        timestamp_Seq:
+          format: int64
+          type: integer
+        owning_Poe_Id:
+          format: int32
+          type: integer
+        militaryServiceDescription:
+          type: string
+        enteredByAssociationName:
+          type: string
+  securitySchemes:
+    basic:
+      type: http
+      scheme: basic
+      description: Basic Authorization header using user and password

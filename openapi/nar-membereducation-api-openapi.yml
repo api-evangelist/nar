@@ -1,0 +1,314 @@
+openapi: 3.2.0
+info:
+  title: M1Gateway - External Member Education API
+  version: v1
+security:
+- basic: []
+tags:
+- name: MemberEducation
+paths:
+  /ext/MemberEducation/MemberId/{memberId}:
+    get:
+      tags:
+      - MemberEducation
+      parameters:
+      - in: path
+        name: memberId
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items: {}
+            application/json:
+              schema:
+                type: array
+                items: {}
+            text/json:
+              schema:
+                type: array
+                items: {}
+  /ext/MemberEducation:
+    patch:
+      tags:
+      - MemberEducation
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Member_Education'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Member_Education'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Member_Education'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/MemberEducationPatch'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemberEducationPatch'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MemberEducationPatch'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/MemberEducationPatch'
+    post:
+      tags:
+      - MemberEducation
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Member_Education'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Member_Education'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Member_Education'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Member_Education'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Member_Education'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Member_Education'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Member_Education'
+    delete:
+      tags:
+      - MemberEducation
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Member_Education'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Member_Education'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Member_Education'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Member_Education'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Member_Education'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Member_Education'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Member_Education'
+components:
+  schemas:
+    Member_EducationJsonPatchDocument:
+      type: object
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member_EducationOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
+    Member_EducationOperation:
+      type: object
+      properties:
+        operationType:
+          $ref: '#/components/schemas/OperationType'
+        path:
+          type: string
+        op:
+          type: string
+        from:
+          type: string
+        value: {}
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+    Member_Education:
+      type: object
+      properties:
+        first_Inserted_By:
+          type: string
+        first_Inserted_Datetime:
+          format: date-time
+          type: string
+        last_Changed_By:
+          type: string
+        last_Changed_Datetime:
+          format: date-time
+          type: string
+        source_System_Id:
+          format: int32
+          type: integer
+        source_Method_Id:
+          format: int32
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        coreEntityStatusCode:
+          type: string
+        canEdit:
+          type: string
+        sourceSystemDisplayName:
+          type: string
+        isInternal:
+          type: boolean
+        returnField:
+          type: boolean
+        isPubSub:
+          type: boolean
+        id:
+          format: int32
+          type: integer
+        member_Id:
+          format: int32
+          type: integer
+        entered_By_Association_Id:
+          format: int32
+          type: integer
+        group_Code:
+          type: string
+        course_Code:
+          type: string
+        course_Number:
+          type: string
+        certificate_Name:
+          type: string
+        course_Description:
+          type: string
+        designation_Credit_Hours:
+          format: double
+          type: number
+        state_Ce_Hours:
+          format: double
+          type: number
+        total_Hours_Earned:
+          format: double
+          type: number
+        course_Start_Date:
+          format: date-time
+          type: string
+        course_Complete_Date:
+          format: date-time
+          type: string
+        sponsoring_Entity_Id:
+          format: int32
+          type: integer
+        hosting_Entity_Id:
+          format: int32
+          type: integer
+        instructor_1_Name:
+          type: string
+        instructor_1_State_License:
+          type: string
+        instructor_2_Name:
+          type: string
+        instructor_2_State_License:
+          type: string
+        delivery_Method:
+          type: string
+        test_Score:
+          format: int32
+          type: integer
+        test_Status:
+          type: string
+        test_Score_Date:
+          format: date-time
+          type: string
+        test_Score_Operator:
+          type: string
+        test_Mailing_Address_Type:
+          type: string
+        state_Agency_Date:
+          format: date-time
+          type: string
+        state_Agency_Course_Code:
+          type: string
+        local_Association_Date:
+          format: date-time
+          type: string
+        state_Association_Date:
+          format: date-time
+          type: string
+        comments:
+          type: string
+        payment_Amount:
+          format: double
+          type: number
+        poe_Id:
+          format: int32
+          type: integer
+        timestamp_Seq:
+          format: int64
+          type: integer
+        owning_Poe_Id:
+          format: int32
+          type: integer
+        enteredByAssociationName:
+          type: string
+        sponsoringEntityName:
+          type: string
+        hostingEntityName:
+          type: string
+    IContractResolver:
+      type: object
+    MemberEducationPatch:
+      type: object
+      properties:
+        member_Id:
+          format: int32
+          type: integer
+        entered_By_Association_Id:
+          format: int32
+          type: integer
+        group_Code:
+          type: string
+        course_Code:
+          type: string
+        course_Number:
+          type: string
+        updates:
+          $ref: '#/components/schemas/Member_EducationJsonPatchDocument'
+  securitySchemes:
+    basic:
+      type: http
+      scheme: basic
+      description: Basic Authorization header using user and password

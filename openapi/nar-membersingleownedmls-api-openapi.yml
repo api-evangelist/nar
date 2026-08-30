@@ -1,0 +1,107 @@
+openapi: 3.2.0
+info:
+  title: M1Gateway - External Member Single Owned MLS API
+  version: v1
+security:
+- basic: []
+tags:
+- name: MemberSingleOwnedMLS
+paths:
+  /ext/MemberSingleOwnedMLS:
+    post:
+      tags:
+      - MemberSingleOwnedMLS
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Member_Single_Owned_MLS'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Member_Single_Owned_MLS'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Member_Single_Owned_MLS'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Member_Single_Owned_MLS'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Member_Single_Owned_MLS'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Member_Single_Owned_MLS'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Member_Single_Owned_MLS'
+components:
+  schemas:
+    Member_Single_Owned_MLS:
+      type: object
+      properties:
+        first_Inserted_By:
+          type: string
+        first_Inserted_Datetime:
+          format: date-time
+          type: string
+        last_Changed_By:
+          type: string
+        last_Changed_Datetime:
+          format: date-time
+          type: string
+        source_System_Id:
+          format: int32
+          type: integer
+        source_Method_Id:
+          format: int32
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        coreEntityStatusCode:
+          type: string
+        canEdit:
+          type: string
+        sourceSystemDisplayName:
+          type: string
+        isInternal:
+          type: boolean
+        returnField:
+          type: boolean
+        isPubSub:
+          type: boolean
+        id:
+          format: int32
+          type: integer
+        member_Id:
+          format: int32
+          type: integer
+        association_Id:
+          format: int32
+          type: integer
+        member_Status_Code:
+          type: string
+        member_Status_Date:
+          format: date-time
+          type: string
+        associationName:
+          type: string
+        associationState:
+          type: string
+        singleOwnedMLSName:
+          type: string
+        memberStatusCodeDescription:
+          type: string
+        historyCount:
+          format: int32
+          type: integer
+  securitySchemes:
+    basic:
+      type: http
+      scheme: basic
+      description: Basic Authorization header using user and password

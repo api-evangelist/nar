@@ -1,0 +1,207 @@
+openapi: 3.2.0
+info:
+  title: M1Gateway - External Member Field Of Business API
+  version: v1
+security:
+- basic: []
+tags:
+- name: MemberFieldOfBusiness
+paths:
+  /ext/MemberFieldOfBusiness/MemberId/{memberId}:
+    get:
+      tags:
+      - MemberFieldOfBusiness
+      parameters:
+      - in: path
+        name: memberId
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items: {}
+            application/json:
+              schema:
+                type: array
+                items: {}
+            text/json:
+              schema:
+                type: array
+                items: {}
+  /ext/MemberFieldOfBusiness:
+    post:
+      tags:
+      - MemberFieldOfBusiness
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Member_Field_Of_Business'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Member_Field_Of_Business'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Member_Field_Of_Business'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Member_Field_Of_Business'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Member_Field_Of_Business'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Member_Field_Of_Business'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Member_Field_Of_Business'
+    patch:
+      tags:
+      - MemberFieldOfBusiness
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Member_Field_Of_Business'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Member_Field_Of_Business'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Member_Field_Of_Business'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/MemberFieldOfBusinessPatch'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemberFieldOfBusinessPatch'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MemberFieldOfBusinessPatch'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/MemberFieldOfBusinessPatch'
+components:
+  schemas:
+    Member_Field_Of_BusinessJsonPatchDocument:
+      type: object
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member_Field_Of_BusinessOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
+    Member_Field_Of_Business:
+      type: object
+      properties:
+        first_Inserted_By:
+          type: string
+        first_Inserted_Datetime:
+          format: date-time
+          type: string
+        last_Changed_By:
+          type: string
+        last_Changed_Datetime:
+          format: date-time
+          type: string
+        source_System_Id:
+          format: int32
+          type: integer
+        source_Method_Id:
+          format: int32
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        coreEntityStatusCode:
+          type: string
+        canEdit:
+          type: string
+        sourceSystemDisplayName:
+          type: string
+        isInternal:
+          type: boolean
+        returnField:
+          type: boolean
+        isPubSub:
+          type: boolean
+        id:
+          format: int32
+          type: integer
+        member_Id:
+          format: int32
+          type: integer
+        field_Of_Business_Id:
+          format: int32
+          type: integer
+        relationship_Type_Code:
+          type: string
+        field_Order:
+          format: int32
+          type: integer
+        timestamp_Seq:
+          format: int64
+          type: integer
+        fieldOfBusinessName:
+          type: string
+    Member_Field_Of_BusinessOperation:
+      type: object
+      properties:
+        operationType:
+          $ref: '#/components/schemas/OperationType'
+        path:
+          type: string
+        op:
+          type: string
+        from:
+          type: string
+        value: {}
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+    MemberFieldOfBusinessPatch:
+      type: object
+      properties:
+        member_Id:
+          format: int32
+          type: integer
+        field_Order:
+          format: int32
+          type: integer
+        source_Method_Id:
+          format: int32
+          type: integer
+        updates:
+          $ref: '#/components/schemas/Member_Field_Of_BusinessJsonPatchDocument'
+    IContractResolver:
+      type: object
+  securitySchemes:
+    basic:
+      type: http
+      scheme: basic
+      description: Basic Authorization header using user and password

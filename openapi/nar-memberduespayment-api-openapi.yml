@@ -1,0 +1,167 @@
+openapi: 3.2.0
+info:
+  title: M1Gateway - External Member Dues Payment API
+  version: v1
+security:
+- basic: []
+tags:
+- name: MemberDuesPayment
+paths:
+  /ext/MemberDuesPayment/MemberId/{memberId}:
+    get:
+      tags:
+      - MemberDuesPayment
+      parameters:
+      - in: path
+        name: memberId
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items: {}
+            application/json:
+              schema:
+                type: array
+                items: {}
+            text/json:
+              schema:
+                type: array
+                items: {}
+  /ext/MemberDuesPayment:
+    post:
+      tags:
+      - MemberDuesPayment
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Member_Dues_Payment'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Member_Dues_Payment'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Member_Dues_Payment'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Member_Dues_Payment'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Member_Dues_Payment'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Member_Dues_Payment'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Member_Dues_Payment'
+components:
+  schemas:
+    Member_Dues_Payment:
+      type: object
+      properties:
+        first_Inserted_By:
+          type: string
+        first_Inserted_Datetime:
+          format: date-time
+          type: string
+        last_Changed_By:
+          type: string
+        last_Changed_Datetime:
+          format: date-time
+          type: string
+        source_System_Id:
+          format: int32
+          type: integer
+        source_Method_Id:
+          format: int32
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        coreEntityStatusCode:
+          type: string
+        canEdit:
+          type: string
+        sourceSystemDisplayName:
+          type: string
+        isInternal:
+          type: boolean
+        returnField:
+          type: boolean
+        isPubSub:
+          type: boolean
+        id:
+          format: int32
+          type: integer
+        member_Id:
+          format: int32
+          type: integer
+        billing_Association_Id:
+          format: int32
+          type: integer
+        billing_Year:
+          format: int32
+          type: integer
+        payment_Type_Code:
+          type: string
+        contribution_Type_Code:
+          type: string
+        dues_Paid_Date:
+          format: date-time
+          type: string
+        incurring_Member_Id:
+          format: int32
+          type: integer
+        office_Id:
+          format: int32
+          type: integer
+        payment_Amount:
+          format: double
+          type: number
+        payment_Source_Code:
+          type: string
+        ec_Control_Number:
+          type: string
+        association_Fee_Id:
+          format: int32
+          type: integer
+        primary_Association_Id:
+          format: int32
+          type: integer
+        primary_State_Association_Id:
+          format: int32
+          type: integer
+        timestamp_Seq:
+          format: int64
+          type: integer
+        billingAssociationName:
+          type: string
+        incurringMemberFirstName:
+          type: string
+        incurringMemberLastName:
+          type: string
+        officeName:
+          type: string
+        primaryAssociationName:
+          type: string
+        primaryStateAssociationName:
+          type: string
+        paymentTypeCodeDescription:
+          type: string
+  securitySchemes:
+    basic:
+      type: http
+      scheme: basic
+      description: Basic Authorization header using user and password

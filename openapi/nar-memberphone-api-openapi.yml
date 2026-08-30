@@ -1,0 +1,204 @@
+openapi: 3.2.0
+info:
+  title: M1Gateway - External Member Phone API
+  version: v1
+security:
+- basic: []
+tags:
+- name: MemberPhone
+paths:
+  /ext/MemberPhone/MemberId/{memberId}:
+    get:
+      tags:
+      - MemberPhone
+      parameters:
+      - in: path
+        name: memberId
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Member_Phone'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Member_Phone'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Member_Phone'
+  /ext/MemberPhone:
+    post:
+      tags:
+      - MemberPhone
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Member_Phone'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Member_Phone'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Member_Phone'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Member_Phone'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Member_Phone'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Member_Phone'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Member_Phone'
+    patch:
+      tags:
+      - MemberPhone
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Member_Phone'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Member_Phone'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Member_Phone'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/MemberPhonePatch'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemberPhonePatch'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MemberPhonePatch'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/MemberPhonePatch'
+components:
+  schemas:
+    MemberPhonePatch:
+      type: object
+      properties:
+        member_Id:
+          format: int32
+          type: integer
+        phone_Type:
+          type: string
+        source_Method_Id:
+          format: int32
+          type: integer
+        updates:
+          $ref: '#/components/schemas/Member_PhoneJsonPatchDocument'
+    Member_PhoneJsonPatchDocument:
+      type: object
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member_PhoneOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+    Member_Phone:
+      type: object
+      properties:
+        first_Inserted_By:
+          type: string
+        first_Inserted_Datetime:
+          format: date-time
+          type: string
+        last_Changed_By:
+          type: string
+        last_Changed_Datetime:
+          format: date-time
+          type: string
+        source_System_Id:
+          format: int32
+          type: integer
+        source_Method_Id:
+          format: int32
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        coreEntityStatusCode:
+          type: string
+        canEdit:
+          type: string
+        sourceSystemDisplayName:
+          type: string
+        isInternal:
+          type: boolean
+        returnField:
+          type: boolean
+        isPubSub:
+          type: boolean
+        id:
+          format: int32
+          type: integer
+        member_Id:
+          format: int32
+          type: integer
+        phone_Number:
+          type: string
+        phone_Type:
+          type: string
+        is_Active_Flag:
+          type: string
+        phoneTypeDescription:
+          type: string
+    Member_PhoneOperation:
+      type: object
+      properties:
+        operationType:
+          $ref: '#/components/schemas/OperationType'
+        path:
+          type: string
+        op:
+          type: string
+        from:
+          type: string
+        value: {}
+    IContractResolver:
+      type: object
+  securitySchemes:
+    basic:
+      type: http
+      scheme: basic
+      description: Basic Authorization header using user and password

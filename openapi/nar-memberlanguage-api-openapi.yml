@@ -1,0 +1,162 @@
+openapi: 3.2.0
+info:
+  title: M1Gateway - External Member Language API
+  version: v1
+security:
+- basic: []
+tags:
+- name: MemberLanguage
+paths:
+  /ext/MemberLanguage/MemberId/{memberId}:
+    get:
+      tags:
+      - MemberLanguage
+      parameters:
+      - in: path
+        name: memberId
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items: {}
+            application/json:
+              schema:
+                type: array
+                items: {}
+            text/json:
+              schema:
+                type: array
+                items: {}
+  /ext/MemberLanguage:
+    post:
+      tags:
+      - MemberLanguage
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Member_Language'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Member_Language'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Member_Language'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Member_Language'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Member_Language'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Member_Language'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Member_Language'
+    delete:
+      tags:
+      - MemberLanguage
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Member_Language'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Member_Language'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Member_Language'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Member_Language'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Member_Language'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Member_Language'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Member_Language'
+components:
+  schemas:
+    Member_Language:
+      type: object
+      properties:
+        first_Inserted_By:
+          type: string
+        first_Inserted_Datetime:
+          format: date-time
+          type: string
+        last_Changed_By:
+          type: string
+        last_Changed_Datetime:
+          format: date-time
+          type: string
+        source_System_Id:
+          format: int32
+          type: integer
+        source_Method_Id:
+          format: int32
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        coreEntityStatusCode:
+          type: string
+        canEdit:
+          type: string
+        sourceSystemDisplayName:
+          type: string
+        isInternal:
+          type: boolean
+        returnField:
+          type: boolean
+        isPubSub:
+          type: boolean
+        id:
+          format: int32
+          type: integer
+        member_Id:
+          format: int32
+          type: integer
+        entered_By_Association_Id:
+          format: int32
+          type: integer
+        language_Code:
+          type: string
+        timestamp_Seq:
+          format: int64
+          type: integer
+        owning_Poe_Id:
+          format: int32
+          type: integer
+        languageName:
+          type: string
+        enteredByAssociationName:
+          type: string
+        associationTypeCode:
+          type: string
+  securitySchemes:
+    basic:
+      type: http
+      scheme: basic
+      description: Basic Authorization header using user and password

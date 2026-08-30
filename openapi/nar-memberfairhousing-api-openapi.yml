@@ -1,0 +1,253 @@
+openapi: 3.2.0
+info:
+  title: M1Gateway - External Member Fair Housing API
+  version: v1
+security:
+- basic: []
+tags:
+- name: MemberFairHousing
+paths:
+  /ext/MemberFairHousing/MemberId/{memberId}:
+    get:
+      tags:
+      - MemberFairHousing
+      parameters:
+      - in: path
+        name: memberId
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items: {}
+            application/json:
+              schema:
+                type: array
+                items: {}
+            text/json:
+              schema:
+                type: array
+                items: {}
+  /ext/MemberFairHousing:
+    patch:
+      tags:
+      - MemberFairHousing
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Member_Fair_Housing'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Member_Fair_Housing'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Member_Fair_Housing'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/MemberFairHousingPatch'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemberFairHousingPatch'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MemberFairHousingPatch'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/MemberFairHousingPatch'
+    post:
+      tags:
+      - MemberFairHousing
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Member_Fair_Housing'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Member_Fair_Housing'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Member_Fair_Housing'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Member_Fair_Housing'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Member_Fair_Housing'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Member_Fair_Housing'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Member_Fair_Housing'
+    delete:
+      tags:
+      - MemberFairHousing
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Member_Fair_Housing'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Member_Fair_Housing'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Member_Fair_Housing'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Member_Fair_Housing'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Member_Fair_Housing'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Member_Fair_Housing'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Member_Fair_Housing'
+components:
+  schemas:
+    Member_Fair_HousingJsonPatchDocument:
+      type: object
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member_Fair_HousingOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
+    Member_Fair_Housing:
+      type: object
+      properties:
+        first_Inserted_By:
+          type: string
+        first_Inserted_Datetime:
+          format: date-time
+          type: string
+        last_Changed_By:
+          type: string
+        last_Changed_Datetime:
+          format: date-time
+          type: string
+        source_System_Id:
+          format: int32
+          type: integer
+        source_Method_Id:
+          format: int32
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        coreEntityStatusCode:
+          type: string
+        canEdit:
+          type: string
+        sourceSystemDisplayName:
+          type: string
+        isInternal:
+          type: boolean
+        returnField:
+          type: boolean
+        isPubSub:
+          type: boolean
+        id:
+          format: int32
+          type: integer
+        member_Id:
+          format: int32
+          type: integer
+        course_Code:
+          type: string
+        year_Taken:
+          type: string
+        cycle_Number:
+          type: string
+        course_Completion_Date:
+          format: date-time
+          type: string
+        course_Description:
+          type: string
+        owning_Poe_Id:
+          format: int32
+          type: integer
+        entering_Association_Id:
+          format: int32
+          type: integer
+        courseName:
+          type: string
+        cycleDescription:
+          type: string
+        courseNumber:
+          type: string
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+    Member_Fair_HousingOperation:
+      type: object
+      properties:
+        operationType:
+          $ref: '#/components/schemas/OperationType'
+        path:
+          type: string
+        op:
+          type: string
+        from:
+          type: string
+        value: {}
+    IContractResolver:
+      type: object
+    MemberFairHousingPatch:
+      type: object
+      properties:
+        member_Id:
+          format: int32
+          type: integer
+        course_Code:
+          type: string
+        cycle_Number:
+          type: string
+        year_Taken:
+          type: string
+        course_Completion_Date:
+          format: date-time
+          type: string
+        entering_Association_Id:
+          format: int32
+          type: integer
+        updates:
+          $ref: '#/components/schemas/Member_Fair_HousingJsonPatchDocument'
+  securitySchemes:
+    basic:
+      type: http
+      scheme: basic
+      description: Basic Authorization header using user and password

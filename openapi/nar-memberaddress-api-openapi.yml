@@ -1,0 +1,211 @@
+openapi: 3.2.0
+info:
+  title: M1Gateway - External Member Address API
+  version: v1
+security:
+- basic: []
+tags:
+- name: MemberAddress
+paths:
+  /ext/MemberAddress/MemberId/{memberId}:
+    get:
+      tags:
+      - MemberAddress
+      parameters:
+      - in: path
+        name: memberId
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items: {}
+            application/json:
+              schema:
+                type: array
+                items: {}
+            text/json:
+              schema:
+                type: array
+                items: {}
+  /ext/MemberAddress:
+    patch:
+      tags:
+      - MemberAddress
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Member_Address'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Member_Address'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Member_Address'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/MemberAddressPatch'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemberAddressPatch'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MemberAddressPatch'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/MemberAddressPatch'
+    post:
+      tags:
+      - MemberAddress
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Member_Address'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Member_Address'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Member_Address'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Member_Address'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Member_Address'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Member_Address'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Member_Address'
+components:
+  schemas:
+    Member_AddressOperation:
+      type: object
+      properties:
+        operationType:
+          $ref: '#/components/schemas/OperationType'
+        path:
+          type: string
+        op:
+          type: string
+        from:
+          type: string
+        value: {}
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+    Member_Address:
+      type: object
+      properties:
+        first_Inserted_By:
+          type: string
+        first_Inserted_Datetime:
+          format: date-time
+          type: string
+        last_Changed_By:
+          type: string
+        last_Changed_Datetime:
+          format: date-time
+          type: string
+        source_System_Id:
+          format: int32
+          type: integer
+        source_Method_Id:
+          format: int32
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        coreEntityStatusCode:
+          type: string
+        canEdit:
+          type: string
+        sourceSystemDisplayName:
+          type: string
+        isInternal:
+          type: boolean
+        returnField:
+          type: boolean
+        isPubSub:
+          type: boolean
+        id:
+          format: int32
+          type: integer
+        member_Id:
+          format: int32
+          type: integer
+        address_Line_1:
+          type: string
+        address_Line_2:
+          type: string
+        address_City:
+          type: string
+        address_State:
+          type: string
+        address_Zip:
+          type: string
+        address_Zip6:
+          type: string
+        address_Type_Code:
+          type: string
+        addressTypeDescription:
+          type: string
+        is_Active_Flag:
+          type: string
+    MemberAddressPatch:
+      type: object
+      properties:
+        member_Id:
+          format: int32
+          type: integer
+        address_Type_Code:
+          type: string
+        source_Method_Id:
+          format: int32
+          type: integer
+        updates:
+          $ref: '#/components/schemas/Member_AddressJsonPatchDocument'
+    Member_AddressJsonPatchDocument:
+      type: object
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member_AddressOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
+    IContractResolver:
+      type: object
+  securitySchemes:
+    basic:
+      type: http
+      scheme: basic
+      description: Basic Authorization header using user and password

@@ -1,0 +1,218 @@
+openapi: 3.2.0
+info:
+  title: M1Gateway - External Member Isc Affiliation API
+  version: v1
+security:
+- basic: []
+tags:
+- name: MemberIscAffiliation
+paths:
+  /ext/MemberIscAffiliation/MemberId/{memberId}:
+    get:
+      tags:
+      - MemberIscAffiliation
+      parameters:
+      - in: path
+        name: memberId
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items: {}
+            application/json:
+              schema:
+                type: array
+                items: {}
+            text/json:
+              schema:
+                type: array
+                items: {}
+  /ext/MemberIscAffiliation:
+    patch:
+      tags:
+      - MemberIscAffiliation
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Member_Isc_Affiliation'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Member_Isc_Affiliation'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Member_Isc_Affiliation'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/MemberIscAffiliationPatch'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemberIscAffiliationPatch'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MemberIscAffiliationPatch'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/MemberIscAffiliationPatch'
+    post:
+      tags:
+      - MemberIscAffiliation
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Member_Isc_Affiliation'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Member_Isc_Affiliation'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Member_Isc_Affiliation'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Member_Isc_Affiliation'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Member_Isc_Affiliation'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Member_Isc_Affiliation'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Member_Isc_Affiliation'
+components:
+  schemas:
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+    Member_Isc_AffiliationOperation:
+      type: object
+      properties:
+        operationType:
+          $ref: '#/components/schemas/OperationType'
+        path:
+          type: string
+        op:
+          type: string
+        from:
+          type: string
+        value: {}
+    Member_Isc_AffiliationJsonPatchDocument:
+      type: object
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member_Isc_AffiliationOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
+    MemberIscAffiliationPatch:
+      type: object
+      properties:
+        member_Id:
+          format: int32
+          type: integer
+        association_Id:
+          format: int32
+          type: integer
+        updates:
+          $ref: '#/components/schemas/Member_Isc_AffiliationJsonPatchDocument'
+    Member_Isc_Affiliation:
+      type: object
+      properties:
+        first_Inserted_By:
+          type: string
+        first_Inserted_Datetime:
+          format: date-time
+          type: string
+        last_Changed_By:
+          type: string
+        last_Changed_Datetime:
+          format: date-time
+          type: string
+        source_System_Id:
+          format: int32
+          type: integer
+        source_Method_Id:
+          format: int32
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        coreEntityStatusCode:
+          type: string
+        canEdit:
+          type: string
+        sourceSystemDisplayName:
+          type: string
+        isInternal:
+          type: boolean
+        returnField:
+          type: boolean
+        isPubSub:
+          type: boolean
+        id:
+          format: int32
+          type: integer
+        member_Id:
+          format: int32
+          type: integer
+        association_Id:
+          format: int32
+          type: integer
+        local_Join_Date:
+          format: date-time
+          type: string
+        member_Status_Code:
+          type: string
+        member_Status_Date:
+          format: date-time
+          type: string
+        timestamp_Seq:
+          format: int64
+          type: integer
+        associationName:
+          type: string
+        associationState:
+          type: string
+        associationTypeCode:
+          type: string
+        associationTypeDescription:
+          type: string
+        memberStatusDescription:
+          type: string
+        historyCount:
+          format: int32
+          type: integer
+    IContractResolver:
+      type: object
+  securitySchemes:
+    basic:
+      type: http
+      scheme: basic
+      description: Basic Authorization header using user and password
