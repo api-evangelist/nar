@@ -34,6 +34,10 @@ paths:
               schema:
                 type: array
                 items: {}
+      summary: Get ext member coe member id by member id
+      x-summary-source: derived
+      operationId: getExtMemberCoeMemberIdByMemberId
+      x-operation-id-source: derived
   /ext/MemberCoe:
     patch:
       tags:
@@ -65,6 +69,10 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/MemberCoePatch'
+      summary: Update ext member coe
+      x-summary-source: derived
+      operationId: patchExtMemberCoe
+      x-operation-id-source: derived
     post:
       tags:
       - MemberCoe
@@ -95,6 +103,10 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/Member_Coe'
+      summary: Create ext member coe
+      x-summary-source: derived
+      operationId: postExtMemberCoe
+      x-operation-id-source: derived
     delete:
       tags:
       - MemberCoe
@@ -125,29 +137,14 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/Member_Coe'
+      summary: Delete ext member coe
+      x-summary-source: derived
+      operationId: deleteExtMemberCoe
+      x-operation-id-source: derived
 components:
   schemas:
-    Member_CoeJsonPatchDocument:
+    IContractResolver:
       type: object
-      properties:
-        operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Member_CoeOperation'
-          readOnly: true
-        contractResolver:
-          $ref: '#/components/schemas/IContractResolver'
-    OperationType:
-      format: int32
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
     Member_Coe:
       type: object
       properties:
@@ -228,6 +225,16 @@ components:
           type: string
         courseNumber:
           type: string
+    Member_CoeJsonPatchDocument:
+      type: object
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member_CoeOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
     MemberCoePatch:
       type: object
       properties:
@@ -248,6 +255,17 @@ components:
           type: string
         updates:
           $ref: '#/components/schemas/Member_CoeJsonPatchDocument'
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
     Member_CoeOperation:
       type: object
       properties:
@@ -260,8 +278,6 @@ components:
         from:
           type: string
         value: {}
-    IContractResolver:
-      type: object
   securitySchemes:
     basic:
       type: http

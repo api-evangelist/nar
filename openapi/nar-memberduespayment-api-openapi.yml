@@ -34,6 +34,10 @@ paths:
               schema:
                 type: array
                 items: {}
+      summary: Get ext member dues payment member id by member id
+      x-summary-source: derived
+      operationId: getExtMemberDuesPaymentMemberIdByMemberId
+      x-operation-id-source: derived
   /ext/MemberDuesPayment:
     post:
       tags:
@@ -65,6 +69,10 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/Member_Dues_Payment'
+      summary: Create ext member dues payment
+      x-summary-source: derived
+      operationId: postExtMemberDuesPayment
+      x-operation-id-source: derived
 components:
   schemas:
     Member_Dues_Payment:

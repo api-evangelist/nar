@@ -37,6 +37,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Member_Email'
+      summary: Get ext member email member id by member id
+      x-summary-source: derived
+      operationId: getExtMemberEmailMemberIdByMemberId
+      x-operation-id-source: derived
   /ext/MemberEmail:
     patch:
       tags:
@@ -68,6 +72,10 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/MemberEmailPatch'
+      summary: Update ext member email
+      x-summary-source: derived
+      operationId: patchExtMemberEmail
+      x-operation-id-source: derived
     post:
       tags:
       - MemberEmail
@@ -98,8 +106,14 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/Member_Email'
+      summary: Create ext member email
+      x-summary-source: derived
+      operationId: postExtMemberEmail
+      x-operation-id-source: derived
 components:
   schemas:
+    IContractResolver:
+      type: object
     Member_Email:
       type: object
       properties:
@@ -151,17 +165,16 @@ components:
           type: string
         emailTypeDescription:
           type: string
-    OperationType:
-      format: int32
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
+    Member_EmailJsonPatchDocument:
+      type: object
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member_EmailOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
     MemberEmailPatch:
       type: object
       properties:
@@ -175,16 +188,6 @@ components:
           type: integer
         updates:
           $ref: '#/components/schemas/Member_EmailJsonPatchDocument'
-    Member_EmailJsonPatchDocument:
-      type: object
-      properties:
-        operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Member_EmailOperation'
-          readOnly: true
-        contractResolver:
-          $ref: '#/components/schemas/IContractResolver'
     Member_EmailOperation:
       type: object
       properties:
@@ -197,8 +200,17 @@ components:
         from:
           type: string
         value: {}
-    IContractResolver:
-      type: object
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
   securitySchemes:
     basic:
       type: http

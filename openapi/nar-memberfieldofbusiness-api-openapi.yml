@@ -34,6 +34,10 @@ paths:
               schema:
                 type: array
                 items: {}
+      summary: Get ext member field of business member id by member id
+      x-summary-source: derived
+      operationId: getExtMemberFieldOfBusinessMemberIdByMemberId
+      x-operation-id-source: derived
   /ext/MemberFieldOfBusiness:
     post:
       tags:
@@ -65,6 +69,10 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/Member_Field_Of_Business'
+      summary: Create ext member field of business
+      x-summary-source: derived
+      operationId: postExtMemberFieldOfBusiness
+      x-operation-id-source: derived
     patch:
       tags:
       - MemberFieldOfBusiness
@@ -95,18 +103,14 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/MemberFieldOfBusinessPatch'
+      summary: Update ext member field of business
+      x-summary-source: derived
+      operationId: patchExtMemberFieldOfBusiness
+      x-operation-id-source: derived
 components:
   schemas:
-    Member_Field_Of_BusinessJsonPatchDocument:
+    IContractResolver:
       type: object
-      properties:
-        operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Member_Field_Of_BusinessOperation'
-          readOnly: true
-        contractResolver:
-          $ref: '#/components/schemas/IContractResolver'
     Member_Field_Of_Business:
       type: object
       properties:
@@ -161,29 +165,16 @@ components:
           type: integer
         fieldOfBusinessName:
           type: string
-    Member_Field_Of_BusinessOperation:
+    Member_Field_Of_BusinessJsonPatchDocument:
       type: object
       properties:
-        operationType:
-          $ref: '#/components/schemas/OperationType'
-        path:
-          type: string
-        op:
-          type: string
-        from:
-          type: string
-        value: {}
-    OperationType:
-      format: int32
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member_Field_Of_BusinessOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
     MemberFieldOfBusinessPatch:
       type: object
       properties:
@@ -198,8 +189,29 @@ components:
           type: integer
         updates:
           $ref: '#/components/schemas/Member_Field_Of_BusinessJsonPatchDocument'
-    IContractResolver:
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+    Member_Field_Of_BusinessOperation:
       type: object
+      properties:
+        operationType:
+          $ref: '#/components/schemas/OperationType'
+        path:
+          type: string
+        op:
+          type: string
+        from:
+          type: string
+        value: {}
   securitySchemes:
     basic:
       type: http

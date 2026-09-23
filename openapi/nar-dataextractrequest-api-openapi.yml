@@ -30,6 +30,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Data_Extract_Request'
+      summary: Get ext data extract request requester
+      x-summary-source: derived
+      operationId: getExtDataExtractRequestRequester
+      x-operation-id-source: derived
   /ext/DataExtractRequest:
     post:
       tags:
@@ -61,6 +65,10 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/Data_Extract_Request'
+      summary: Create ext data extract request
+      x-summary-source: derived
+      operationId: postExtDataExtractRequest
+      x-operation-id-source: derived
   /ext/DataExtractRequest/DownloadFile/{id}:
     get:
       tags:
@@ -75,6 +83,10 @@ paths:
       responses:
         '200':
           description: Success
+      summary: Get ext data extract request download file by id
+      x-summary-source: derived
+      operationId: getExtDataExtractRequestDownloadFileById
+      x-operation-id-source: derived
   /ext/DataExtractRequest/FileLocation:
     get:
       tags:
@@ -92,6 +104,10 @@ paths:
             text/json:
               schema:
                 type: string
+      summary: Get ext data extract request file location
+      x-summary-source: derived
+      operationId: getExtDataExtractRequestFileLocation
+      x-operation-id-source: derived
 components:
   schemas:
     Data_Extract_Request:

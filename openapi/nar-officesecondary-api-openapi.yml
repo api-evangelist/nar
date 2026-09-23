@@ -34,6 +34,10 @@ paths:
               schema:
                 type: array
                 items: {}
+      summary: Get ext office secondary office id by office id
+      x-summary-source: derived
+      operationId: getExtOfficeSecondaryOfficeIdByOfficeId
+      x-operation-id-source: derived
   /ext/OfficeSecondary:
     post:
       tags:
@@ -65,6 +69,10 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/OfficeSecondary'
+      summary: Create ext office secondary
+      x-summary-source: derived
+      operationId: postExtOfficeSecondary
+      x-operation-id-source: derived
     patch:
       tags:
       - OfficeSecondary
@@ -95,60 +103,16 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/OfficeSecondaryPatch'
+      summary: Update ext office secondary
+      x-summary-source: derived
+      operationId: patchExtOfficeSecondary
+      x-operation-id-source: derived
 components:
   schemas:
-    RefOfficeStatusType:
+    IContractResolver:
       type: object
-      properties:
-        first_Inserted_By:
-          type: string
-        first_Inserted_Datetime:
-          format: date-time
-          type: string
-        last_Changed_By:
-          type: string
-        last_Changed_Datetime:
-          format: date-time
-          type: string
-        source_System_Id:
-          format: int32
-          type: integer
-        source_Method_Id:
-          format: int32
-          type: integer
-        firstName:
-          type: string
-        lastName:
-          type: string
-        coreEntityStatusCode:
-          type: string
-        canEdit:
-          type: string
-        sourceSystemDisplayName:
-          type: string
-        isInternal:
-          type: boolean
-        returnField:
-          type: boolean
-        isPubSub:
-          type: boolean
-        officeStatusCode:
-          type: string
-        officeStatusDescription:
-          type: string
     AssocMemberCount:
       type: object
-    OperationType:
-      format: int32
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
     OfficeSecondaryOperation:
       type: object
       properties:
@@ -161,70 +125,16 @@ components:
         from:
           type: string
         value: {}
-    OfficeSecondary:
+    OfficeSecondaryJsonPatchDocument:
       type: object
       properties:
-        first_Inserted_By:
-          type: string
-        first_Inserted_Datetime:
-          format: date-time
-          type: string
-        last_Changed_By:
-          type: string
-        last_Changed_Datetime:
-          format: date-time
-          type: string
-        source_System_Id:
-          format: int32
-          type: integer
-        source_Method_Id:
-          format: int32
-          type: integer
-        firstName:
-          type: string
-        lastName:
-          type: string
-        coreEntityStatusCode:
-          type: string
-        canEdit:
-          type: string
-        sourceSystemDisplayName:
-          type: string
-        isInternal:
-          type: boolean
-        returnField:
-          type: boolean
-        isPubSub:
-          type: boolean
-        id:
-          format: int32
-          type: integer
-        officeId:
-          format: int32
-          type: integer
-        associationId:
-          format: int32
-          type: integer
-        officeStatusCode:
-          type: string
-        officeStatusDate:
-          format: date-time
-          type: string
-        nmSalespersonCount:
-          format: int32
-          type: integer
-        timeStampSeq:
-          format: int64
-          type: integer
-        association:
-          $ref: '#/components/schemas/Association'
-        refOfficeStatusType:
-          $ref: '#/components/schemas/RefOfficeStatusType'
-        refAssociationType:
-          $ref: '#/components/schemas/Ref_Association_Type'
-        historyCount:
-          format: int32
-          type: integer
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/OfficeSecondaryOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
     Association:
       type: object
       properties:
@@ -440,6 +350,59 @@ components:
           type: string
         currentPresidentElectEmailAddress:
           type: string
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+    Ref_Association_Type:
+      type: object
+      properties:
+        first_Inserted_By:
+          type: string
+        first_Inserted_Datetime:
+          format: date-time
+          type: string
+        last_Changed_By:
+          type: string
+        last_Changed_Datetime:
+          format: date-time
+          type: string
+        source_System_Id:
+          format: int32
+          type: integer
+        source_Method_Id:
+          format: int32
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        coreEntityStatusCode:
+          type: string
+        canEdit:
+          type: string
+        sourceSystemDisplayName:
+          type: string
+        isInternal:
+          type: boolean
+        returnField:
+          type: boolean
+        isPubSub:
+          type: boolean
+        association_Type_Code:
+          type: string
+        association_Type_Description:
+          type: string
+        association_Type_Sort_Order:
+          format: int32
+          type: integer
     Association_Board_Serviced:
       type: object
       properties:
@@ -488,28 +451,7 @@ components:
           type: string
         assocNameState:
           type: string
-    OfficeSecondaryPatch:
-      type: object
-      properties:
-        officeId:
-          format: int32
-          type: integer
-        association_Id:
-          format: int32
-          type: integer
-        updates:
-          $ref: '#/components/schemas/OfficeSecondaryJsonPatchDocument'
-    OfficeSecondaryJsonPatchDocument:
-      type: object
-      properties:
-        operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/OfficeSecondaryOperation'
-          readOnly: true
-        contractResolver:
-          $ref: '#/components/schemas/IContractResolver'
-    Ref_Association_Type:
+    OfficeSecondary:
       type: object
       properties:
         first_Inserted_By:
@@ -544,15 +486,85 @@ components:
           type: boolean
         isPubSub:
           type: boolean
-        association_Type_Code:
-          type: string
-        association_Type_Description:
-          type: string
-        association_Type_Sort_Order:
+        id:
           format: int32
           type: integer
-    IContractResolver:
+        officeId:
+          format: int32
+          type: integer
+        associationId:
+          format: int32
+          type: integer
+        officeStatusCode:
+          type: string
+        officeStatusDate:
+          format: date-time
+          type: string
+        nmSalespersonCount:
+          format: int32
+          type: integer
+        timeStampSeq:
+          format: int64
+          type: integer
+        association:
+          $ref: '#/components/schemas/Association'
+        refOfficeStatusType:
+          $ref: '#/components/schemas/RefOfficeStatusType'
+        refAssociationType:
+          $ref: '#/components/schemas/Ref_Association_Type'
+        historyCount:
+          format: int32
+          type: integer
+    OfficeSecondaryPatch:
       type: object
+      properties:
+        officeId:
+          format: int32
+          type: integer
+        association_Id:
+          format: int32
+          type: integer
+        updates:
+          $ref: '#/components/schemas/OfficeSecondaryJsonPatchDocument'
+    RefOfficeStatusType:
+      type: object
+      properties:
+        first_Inserted_By:
+          type: string
+        first_Inserted_Datetime:
+          format: date-time
+          type: string
+        last_Changed_By:
+          type: string
+        last_Changed_Datetime:
+          format: date-time
+          type: string
+        source_System_Id:
+          format: int32
+          type: integer
+        source_Method_Id:
+          format: int32
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        coreEntityStatusCode:
+          type: string
+        canEdit:
+          type: string
+        sourceSystemDisplayName:
+          type: string
+        isInternal:
+          type: boolean
+        returnField:
+          type: boolean
+        isPubSub:
+          type: boolean
+        officeStatusCode:
+          type: string
+        officeStatusDescription:
+          type: string
   securitySchemes:
     basic:
       type: http

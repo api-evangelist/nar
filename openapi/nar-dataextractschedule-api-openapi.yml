@@ -37,6 +37,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Data_Extract_Schedule'
+      summary: Get ext data extract schedule association id by association id
+      x-summary-source: derived
+      operationId: getExtDataExtractScheduleAssociationIdByAssociationId
+      x-operation-id-source: derived
   /ext/DataExtractSchedule:
     post:
       tags:
@@ -68,6 +72,10 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/Data_Extract_Schedule'
+      summary: Create ext data extract schedule
+      x-summary-source: derived
+      operationId: postExtDataExtractSchedule
+      x-operation-id-source: derived
   /ext/DataExtractSchedule/{scheduleId}:
     put:
       tags:
@@ -96,6 +104,10 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/Data_Extract_Schedule'
+      summary: Replace ext data extract schedule by schedule id
+      x-summary-source: derived
+      operationId: putExtDataExtractScheduleByScheduleId
+      x-operation-id-source: derived
   /ext/DataExtractSchedule/{id}:
     delete:
       tags:
@@ -120,6 +132,10 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Data_Extract_Schedule'
+      summary: Delete ext data extract schedule by id
+      x-summary-source: derived
+      operationId: deleteExtDataExtractScheduleById
+      x-operation-id-source: derived
 components:
   schemas:
     Data_Extract_Schedule:

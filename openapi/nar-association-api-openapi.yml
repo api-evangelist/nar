@@ -31,6 +31,10 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Association'
+      summary: Get ext association by id
+      x-summary-source: derived
+      operationId: getExtAssociationById
+      x-operation-id-source: derived
   /ext/Association/Search:
     post:
       tags:
@@ -65,6 +69,10 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/BizAssociationSearch'
+      summary: Create ext association search
+      x-summary-source: derived
+      operationId: postExtAssociationSearch
+      x-operation-id-source: derived
   /ext/Association:
     patch:
       tags:
@@ -96,21 +104,34 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/AssociationPatch'
+      summary: Update ext association
+      x-summary-source: derived
+      operationId: patchExtAssociation
+      x-operation-id-source: derived
 components:
   schemas:
+    IContractResolver:
+      type: object
     AssocMemberCount:
       type: object
-    OperationType:
-      format: int32
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
+    BizAssociationSearch:
+      type: object
+      properties:
+        associationId:
+          format: int32
+          type: integer
+        associationTypeCode:
+          type: string
+        associationName:
+          type: string
+        associationState:
+          type: string
+        associationCity:
+          type: string
+        associationZip:
+          type: string
+        includeDissolvedFlag:
+          type: string
     Association:
       type: object
       properties:
@@ -326,18 +347,27 @@ components:
           type: string
         currentPresidentElectEmailAddress:
           type: string
-    AssociationOperation:
+    AssociationJsonPatchDocument:
       type: object
       properties:
-        operationType:
-          $ref: '#/components/schemas/OperationType'
-        path:
-          type: string
-        op:
-          type: string
-        from:
-          type: string
-        value: {}
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssociationOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
     Association_Board_Serviced:
       type: object
       properties:
@@ -386,24 +416,6 @@ components:
           type: string
         assocNameState:
           type: string
-    BizAssociationSearch:
-      type: object
-      properties:
-        associationId:
-          format: int32
-          type: integer
-        associationTypeCode:
-          type: string
-        associationName:
-          type: string
-        associationState:
-          type: string
-        associationCity:
-          type: string
-        associationZip:
-          type: string
-        includeDissolvedFlag:
-          type: string
     AssociationPatch:
       type: object
       properties:
@@ -412,18 +424,18 @@ components:
           type: integer
         updates:
           $ref: '#/components/schemas/AssociationJsonPatchDocument'
-    IContractResolver:
-      type: object
-    AssociationJsonPatchDocument:
+    AssociationOperation:
       type: object
       properties:
-        operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/AssociationOperation'
-          readOnly: true
-        contractResolver:
-          $ref: '#/components/schemas/IContractResolver'
+        operationType:
+          $ref: '#/components/schemas/OperationType'
+        path:
+          type: string
+        op:
+          type: string
+        from:
+          type: string
+        value: {}
   securitySchemes:
     basic:
       type: http

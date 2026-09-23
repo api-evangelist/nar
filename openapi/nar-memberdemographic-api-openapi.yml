@@ -34,6 +34,10 @@ paths:
               schema:
                 type: array
                 items: {}
+      summary: Get ext member demographic member id by member id
+      x-summary-source: derived
+      operationId: getExtMemberDemographicMemberIdByMemberId
+      x-operation-id-source: derived
   /ext/MemberDemographic:
     patch:
       tags:
@@ -65,6 +69,10 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/MemberDemographicPatch'
+      summary: Update ext member demographic
+      x-summary-source: derived
+      operationId: patchExtMemberDemographic
+      x-operation-id-source: derived
     post:
       tags:
       - MemberDemographic
@@ -95,6 +103,10 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/Member_Demographic'
+      summary: Create ext member demographic
+      x-summary-source: derived
+      operationId: postExtMemberDemographic
+      x-operation-id-source: derived
     delete:
       tags:
       - MemberDemographic
@@ -125,19 +137,24 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/Member_Demographic'
+      summary: Delete ext member demographic
+      x-summary-source: derived
+      operationId: deleteExtMemberDemographic
+      x-operation-id-source: derived
 components:
   schemas:
-    OperationType:
-      format: int32
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
+    Member_DemographicJsonPatchDocument:
+      type: object
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member_DemographicOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
+    IContractResolver:
+      type: object
     Member_DemographicOperation:
       type: object
       properties:
@@ -150,6 +167,17 @@ components:
         from:
           type: string
         value: {}
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
     Member_Demographic:
       type: object
       properties:
@@ -231,18 +259,6 @@ components:
           type: string
         updates:
           $ref: '#/components/schemas/Member_DemographicJsonPatchDocument'
-    IContractResolver:
-      type: object
-    Member_DemographicJsonPatchDocument:
-      type: object
-      properties:
-        operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Member_DemographicOperation'
-          readOnly: true
-        contractResolver:
-          $ref: '#/components/schemas/IContractResolver'
   securitySchemes:
     basic:
       type: http

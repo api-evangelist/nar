@@ -38,6 +38,10 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/Member_Single_Owned_MLS'
+      summary: Create ext member single owned mls
+      x-summary-source: derived
+      operationId: postExtMemberSingleOwnedMLS
+      x-operation-id-source: derived
 components:
   schemas:
     Member_Single_Owned_MLS:

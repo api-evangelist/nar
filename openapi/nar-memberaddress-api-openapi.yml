@@ -34,6 +34,10 @@ paths:
               schema:
                 type: array
                 items: {}
+      summary: Get ext member address member id by member id
+      x-summary-source: derived
+      operationId: getExtMemberAddressMemberIdByMemberId
+      x-operation-id-source: derived
   /ext/MemberAddress:
     patch:
       tags:
@@ -65,6 +69,10 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/MemberAddressPatch'
+      summary: Update ext member address
+      x-summary-source: derived
+      operationId: patchExtMemberAddress
+      x-operation-id-source: derived
     post:
       tags:
       - MemberAddress
@@ -95,8 +103,14 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/Member_Address'
+      summary: Create ext member address
+      x-summary-source: derived
+      operationId: postExtMemberAddress
+      x-operation-id-source: derived
 components:
   schemas:
+    IContractResolver:
+      type: object
     Member_AddressOperation:
       type: object
       properties:
@@ -109,17 +123,6 @@ components:
         from:
           type: string
         value: {}
-    OperationType:
-      format: int32
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
     Member_Address:
       type: object
       properties:
@@ -179,6 +182,27 @@ components:
           type: string
         is_Active_Flag:
           type: string
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+    Member_AddressJsonPatchDocument:
+      type: object
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member_AddressOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
     MemberAddressPatch:
       type: object
       properties:
@@ -192,18 +216,6 @@ components:
           type: integer
         updates:
           $ref: '#/components/schemas/Member_AddressJsonPatchDocument'
-    Member_AddressJsonPatchDocument:
-      type: object
-      properties:
-        operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Member_AddressOperation'
-          readOnly: true
-        contractResolver:
-          $ref: '#/components/schemas/IContractResolver'
-    IContractResolver:
-      type: object
   securitySchemes:
     basic:
       type: http

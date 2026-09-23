@@ -37,6 +37,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Member_Phone'
+      summary: Get ext member phone member id by member id
+      x-summary-source: derived
+      operationId: getExtMemberPhoneMemberIdByMemberId
+      x-operation-id-source: derived
   /ext/MemberPhone:
     post:
       tags:
@@ -68,6 +72,10 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/Member_Phone'
+      summary: Create ext member phone
+      x-summary-source: derived
+      operationId: postExtMemberPhone
+      x-operation-id-source: derived
     patch:
       tags:
       - MemberPhone
@@ -98,21 +106,14 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/MemberPhonePatch'
+      summary: Update ext member phone
+      x-summary-source: derived
+      operationId: patchExtMemberPhone
+      x-operation-id-source: derived
 components:
   schemas:
-    MemberPhonePatch:
+    IContractResolver:
       type: object
-      properties:
-        member_Id:
-          format: int32
-          type: integer
-        phone_Type:
-          type: string
-        source_Method_Id:
-          format: int32
-          type: integer
-        updates:
-          $ref: '#/components/schemas/Member_PhoneJsonPatchDocument'
     Member_PhoneJsonPatchDocument:
       type: object
       properties:
@@ -123,17 +124,18 @@ components:
           readOnly: true
         contractResolver:
           $ref: '#/components/schemas/IContractResolver'
-    OperationType:
-      format: int32
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
+    Member_PhoneOperation:
+      type: object
+      properties:
+        operationType:
+          $ref: '#/components/schemas/OperationType'
+        path:
+          type: string
+        op:
+          type: string
+        from:
+          type: string
+        value: {}
     Member_Phone:
       type: object
       properties:
@@ -183,20 +185,30 @@ components:
           type: string
         phoneTypeDescription:
           type: string
-    Member_PhoneOperation:
+    MemberPhonePatch:
       type: object
       properties:
-        operationType:
-          $ref: '#/components/schemas/OperationType'
-        path:
+        member_Id:
+          format: int32
+          type: integer
+        phone_Type:
           type: string
-        op:
-          type: string
-        from:
-          type: string
-        value: {}
-    IContractResolver:
-      type: object
+        source_Method_Id:
+          format: int32
+          type: integer
+        updates:
+          $ref: '#/components/schemas/Member_PhoneJsonPatchDocument'
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
   securitySchemes:
     basic:
       type: http

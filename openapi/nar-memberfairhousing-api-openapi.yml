@@ -34,6 +34,10 @@ paths:
               schema:
                 type: array
                 items: {}
+      summary: Get ext member fair housing member id by member id
+      x-summary-source: derived
+      operationId: getExtMemberFairHousingMemberIdByMemberId
+      x-operation-id-source: derived
   /ext/MemberFairHousing:
     patch:
       tags:
@@ -65,6 +69,10 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/MemberFairHousingPatch'
+      summary: Update ext member fair housing
+      x-summary-source: derived
+      operationId: patchExtMemberFairHousing
+      x-operation-id-source: derived
     post:
       tags:
       - MemberFairHousing
@@ -95,6 +103,10 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/Member_Fair_Housing'
+      summary: Create ext member fair housing
+      x-summary-source: derived
+      operationId: postExtMemberFairHousing
+      x-operation-id-source: derived
     delete:
       tags:
       - MemberFairHousing
@@ -125,18 +137,12 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/Member_Fair_Housing'
+      summary: Delete ext member fair housing
+      x-summary-source: derived
+      operationId: deleteExtMemberFairHousing
+      x-operation-id-source: derived
 components:
   schemas:
-    Member_Fair_HousingJsonPatchDocument:
-      type: object
-      properties:
-        operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Member_Fair_HousingOperation'
-          readOnly: true
-        contractResolver:
-          $ref: '#/components/schemas/IContractResolver'
     Member_Fair_Housing:
       type: object
       properties:
@@ -201,6 +207,38 @@ components:
           type: string
         courseNumber:
           type: string
+    IContractResolver:
+      type: object
+    MemberFairHousingPatch:
+      type: object
+      properties:
+        member_Id:
+          format: int32
+          type: integer
+        course_Code:
+          type: string
+        cycle_Number:
+          type: string
+        year_Taken:
+          type: string
+        course_Completion_Date:
+          format: date-time
+          type: string
+        entering_Association_Id:
+          format: int32
+          type: integer
+        updates:
+          $ref: '#/components/schemas/Member_Fair_HousingJsonPatchDocument'
+    Member_Fair_HousingJsonPatchDocument:
+      type: object
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member_Fair_HousingOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
     OperationType:
       format: int32
       enum:
@@ -224,28 +262,6 @@ components:
         from:
           type: string
         value: {}
-    IContractResolver:
-      type: object
-    MemberFairHousingPatch:
-      type: object
-      properties:
-        member_Id:
-          format: int32
-          type: integer
-        course_Code:
-          type: string
-        cycle_Number:
-          type: string
-        year_Taken:
-          type: string
-        course_Completion_Date:
-          format: date-time
-          type: string
-        entering_Association_Id:
-          format: int32
-          type: integer
-        updates:
-          $ref: '#/components/schemas/Member_Fair_HousingJsonPatchDocument'
   securitySchemes:
     basic:
       type: http

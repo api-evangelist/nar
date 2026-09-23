@@ -34,6 +34,10 @@ paths:
               schema:
                 type: array
                 items: {}
+      summary: Get ext member language member id by member id
+      x-summary-source: derived
+      operationId: getExtMemberLanguageMemberIdByMemberId
+      x-operation-id-source: derived
   /ext/MemberLanguage:
     post:
       tags:
@@ -65,6 +69,10 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/Member_Language'
+      summary: Create ext member language
+      x-summary-source: derived
+      operationId: postExtMemberLanguage
+      x-operation-id-source: derived
     delete:
       tags:
       - MemberLanguage
@@ -95,6 +103,10 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/Member_Language'
+      summary: Delete ext member language
+      x-summary-source: derived
+      operationId: deleteExtMemberLanguage
+      x-operation-id-source: derived
 components:
   schemas:
     Member_Language:

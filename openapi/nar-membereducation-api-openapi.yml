@@ -34,6 +34,10 @@ paths:
               schema:
                 type: array
                 items: {}
+      summary: Get ext member education member id by member id
+      x-summary-source: derived
+      operationId: getExtMemberEducationMemberIdByMemberId
+      x-operation-id-source: derived
   /ext/MemberEducation:
     patch:
       tags:
@@ -65,6 +69,10 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/MemberEducationPatch'
+      summary: Update ext member education
+      x-summary-source: derived
+      operationId: patchExtMemberEducation
+      x-operation-id-source: derived
     post:
       tags:
       - MemberEducation
@@ -95,6 +103,10 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/Member_Education'
+      summary: Create ext member education
+      x-summary-source: derived
+      operationId: postExtMemberEducation
+      x-operation-id-source: derived
     delete:
       tags:
       - MemberEducation
@@ -125,8 +137,31 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/Member_Education'
+      summary: Delete ext member education
+      x-summary-source: derived
+      operationId: deleteExtMemberEducation
+      x-operation-id-source: derived
 components:
   schemas:
+    MemberEducationPatch:
+      type: object
+      properties:
+        member_Id:
+          format: int32
+          type: integer
+        entered_By_Association_Id:
+          format: int32
+          type: integer
+        group_Code:
+          type: string
+        course_Code:
+          type: string
+        course_Number:
+          type: string
+        updates:
+          $ref: '#/components/schemas/Member_EducationJsonPatchDocument'
+    IContractResolver:
+      type: object
     Member_EducationJsonPatchDocument:
       type: object
       properties:
@@ -137,29 +172,6 @@ components:
           readOnly: true
         contractResolver:
           $ref: '#/components/schemas/IContractResolver'
-    Member_EducationOperation:
-      type: object
-      properties:
-        operationType:
-          $ref: '#/components/schemas/OperationType'
-        path:
-          type: string
-        op:
-          type: string
-        from:
-          type: string
-        value: {}
-    OperationType:
-      format: int32
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
     Member_Education:
       type: object
       properties:
@@ -288,25 +300,29 @@ components:
           type: string
         hostingEntityName:
           type: string
-    IContractResolver:
-      type: object
-    MemberEducationPatch:
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+    Member_EducationOperation:
       type: object
       properties:
-        member_Id:
-          format: int32
-          type: integer
-        entered_By_Association_Id:
-          format: int32
-          type: integer
-        group_Code:
+        operationType:
+          $ref: '#/components/schemas/OperationType'
+        path:
           type: string
-        course_Code:
+        op:
           type: string
-        course_Number:
+        from:
           type: string
-        updates:
-          $ref: '#/components/schemas/Member_EducationJsonPatchDocument'
+        value: {}
   securitySchemes:
     basic:
       type: http
