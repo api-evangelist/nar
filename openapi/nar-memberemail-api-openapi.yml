@@ -112,8 +112,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    IContractResolver:
-      type: object
     Member_Email:
       type: object
       properties:
@@ -175,6 +173,19 @@ components:
           readOnly: true
         contractResolver:
           $ref: '#/components/schemas/IContractResolver'
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+    IContractResolver:
+      type: object
     MemberEmailPatch:
       type: object
       properties:
@@ -200,17 +211,6 @@ components:
         from:
           type: string
         value: {}
-    OperationType:
-      format: int32
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
   securitySchemes:
     basic:
       type: http

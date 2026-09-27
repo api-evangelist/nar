@@ -109,20 +109,42 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    IContractResolver:
-      type: object
-    Member_AddressOperation:
+    Member_AddressJsonPatchDocument:
       type: object
       properties:
-        operationType:
-          $ref: '#/components/schemas/OperationType'
-        path:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member_AddressOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
+    MemberAddressPatch:
+      type: object
+      properties:
+        member_Id:
+          format: int32
+          type: integer
+        address_Type_Code:
           type: string
-        op:
-          type: string
-        from:
-          type: string
-        value: {}
+        source_Method_Id:
+          format: int32
+          type: integer
+        updates:
+          $ref: '#/components/schemas/Member_AddressJsonPatchDocument'
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+    IContractResolver:
+      type: object
     Member_Address:
       type: object
       properties:
@@ -182,40 +204,18 @@ components:
           type: string
         is_Active_Flag:
           type: string
-    OperationType:
-      format: int32
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
-    Member_AddressJsonPatchDocument:
+    Member_AddressOperation:
       type: object
       properties:
-        operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Member_AddressOperation'
-          readOnly: true
-        contractResolver:
-          $ref: '#/components/schemas/IContractResolver'
-    MemberAddressPatch:
-      type: object
-      properties:
-        member_Id:
-          format: int32
-          type: integer
-        address_Type_Code:
+        operationType:
+          $ref: '#/components/schemas/OperationType'
+        path:
           type: string
-        source_Method_Id:
-          format: int32
-          type: integer
-        updates:
-          $ref: '#/components/schemas/Member_AddressJsonPatchDocument'
+        op:
+          type: string
+        from:
+          type: string
+        value: {}
   securitySchemes:
     basic:
       type: http

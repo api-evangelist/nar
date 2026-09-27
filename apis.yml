@@ -47,7 +47,7 @@ accessModel:
   method: derived
 image: https://avatars.githubusercontent.com/u/7168861?v=4
 tags:
-- Real-Estate
+- Real Estate
 - United States
 - Industry Body
 - MLS
@@ -68,6 +68,7 @@ tags_raw:
 - Property Listings
 - IDX
 - PropTech
+- Real-Estate
 created: '2026-07-26'
 modified: '2026-07-26'
 specificationVersion: '0.23'

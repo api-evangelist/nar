@@ -143,18 +143,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Member_DemographicJsonPatchDocument:
-      type: object
-      properties:
-        operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Member_DemographicOperation'
-          readOnly: true
-        contractResolver:
-          $ref: '#/components/schemas/IContractResolver'
-    IContractResolver:
-      type: object
     Member_DemographicOperation:
       type: object
       properties:
@@ -167,6 +155,23 @@ components:
         from:
           type: string
         value: {}
+    IContractResolver:
+      type: object
+    MemberDemographicPatch:
+      type: object
+      properties:
+        member_Id:
+          format: int32
+          type: integer
+        entered_By_Association_Id:
+          format: int32
+          type: integer
+        category:
+          type: string
+        group_Code:
+          type: string
+        updates:
+          $ref: '#/components/schemas/Member_DemographicJsonPatchDocument'
     OperationType:
       format: int32
       enum:
@@ -244,21 +249,16 @@ components:
           type: integer
         enteredByAssociationName:
           type: string
-    MemberDemographicPatch:
+    Member_DemographicJsonPatchDocument:
       type: object
       properties:
-        member_Id:
-          format: int32
-          type: integer
-        entered_By_Association_Id:
-          format: int32
-          type: integer
-        category:
-          type: string
-        group_Code:
-          type: string
-        updates:
-          $ref: '#/components/schemas/Member_DemographicJsonPatchDocument'
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member_DemographicOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
   securitySchemes:
     basic:
       type: http

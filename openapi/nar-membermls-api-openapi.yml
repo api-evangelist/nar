@@ -120,6 +120,29 @@ components:
           type: integer
         updates:
           $ref: '#/components/schemas/Member_MLSJsonPatchDocument'
+    Member_MLSOperation:
+      type: object
+      properties:
+        operationType:
+          $ref: '#/components/schemas/OperationType'
+        path:
+          type: string
+        op:
+          type: string
+        from:
+          type: string
+        value: {}
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
     IContractResolver:
       type: object
     Member_MLS:
@@ -191,29 +214,6 @@ components:
         historyCount:
           format: int32
           type: integer
-    Member_MLSOperation:
-      type: object
-      properties:
-        operationType:
-          $ref: '#/components/schemas/OperationType'
-        path:
-          type: string
-        op:
-          type: string
-        from:
-          type: string
-        value: {}
-    OperationType:
-      format: int32
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
     Member_MLSJsonPatchDocument:
       type: object
       properties:

@@ -126,81 +126,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    IContractResolver:
-      type: object
-    Member_DesignationJsonPatchDocument:
-      type: object
-      properties:
-        operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Member_DesignationOperation'
-          readOnly: true
-        contractResolver:
-          $ref: '#/components/schemas/IContractResolver'
-    Member_Designation:
-      type: object
-      properties:
-        first_Inserted_By:
-          type: string
-        first_Inserted_Datetime:
-          format: date-time
-          type: string
-        last_Changed_By:
-          type: string
-        last_Changed_Datetime:
-          format: date-time
-          type: string
-        source_System_Id:
-          format: int32
-          type: integer
-        source_Method_Id:
-          format: int32
-          type: integer
-        firstName:
-          type: string
-        lastName:
-          type: string
-        coreEntityStatusCode:
-          type: string
-        canEdit:
-          type: string
-        sourceSystemDisplayName:
-          type: string
-        isInternal:
-          type: boolean
-        returnField:
-          type: boolean
-        isPubSub:
-          type: boolean
-        id:
-          format: int32
-          type: integer
-        member_Id:
-          format: int32
-          type: integer
-        designation_Code:
-          type: string
-        designation_Status_Code:
-          type: string
-        designation_Status_Date:
-          format: date-time
-          type: string
-        timestamp_Seq:
-          format: int64
-          type: integer
-        designationDescription:
-          type: string
-    MemberDesignationPatch:
-      type: object
-      properties:
-        member_Id:
-          format: int32
-          type: integer
-        designation_Code:
-          type: string
-        updates:
-          $ref: '#/components/schemas/Member_DesignationJsonPatchDocument'
     OperationType:
       format: int32
       enum:
@@ -212,6 +137,18 @@ components:
       - 5
       - 6
       type: integer
+    IContractResolver:
+      type: object
+    MemberDesignationPatch:
+      type: object
+      properties:
+        member_Id:
+          format: int32
+          type: integer
+        designation_Code:
+          type: string
+        updates:
+          $ref: '#/components/schemas/Member_DesignationJsonPatchDocument'
     BizMemberDesignation:
       type: object
       properties:
@@ -276,6 +213,59 @@ components:
           type: integer
         memberStatusCode:
           type: string
+    Member_Designation:
+      type: object
+      properties:
+        first_Inserted_By:
+          type: string
+        first_Inserted_Datetime:
+          format: date-time
+          type: string
+        last_Changed_By:
+          type: string
+        last_Changed_Datetime:
+          format: date-time
+          type: string
+        source_System_Id:
+          format: int32
+          type: integer
+        source_Method_Id:
+          format: int32
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        coreEntityStatusCode:
+          type: string
+        canEdit:
+          type: string
+        sourceSystemDisplayName:
+          type: string
+        isInternal:
+          type: boolean
+        returnField:
+          type: boolean
+        isPubSub:
+          type: boolean
+        id:
+          format: int32
+          type: integer
+        member_Id:
+          format: int32
+          type: integer
+        designation_Code:
+          type: string
+        designation_Status_Code:
+          type: string
+        designation_Status_Date:
+          format: date-time
+          type: string
+        timestamp_Seq:
+          format: int64
+          type: integer
+        designationDescription:
+          type: string
     Member_DesignationOperation:
       type: object
       properties:
@@ -288,6 +278,16 @@ components:
         from:
           type: string
         value: {}
+    Member_DesignationJsonPatchDocument:
+      type: object
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member_DesignationOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
   securitySchemes:
     basic:
       type: http
