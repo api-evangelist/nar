@@ -143,46 +143,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Member_EducationJsonPatchDocument:
-      type: object
-      properties:
-        operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Member_EducationOperation'
-          readOnly: true
-        contractResolver:
-          $ref: '#/components/schemas/IContractResolver'
-    OperationType:
-      format: int32
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
-    IContractResolver:
-      type: object
-    MemberEducationPatch:
-      type: object
-      properties:
-        member_Id:
-          format: int32
-          type: integer
-        entered_By_Association_Id:
-          format: int32
-          type: integer
-        group_Code:
-          type: string
-        course_Code:
-          type: string
-        course_Number:
-          type: string
-        updates:
-          $ref: '#/components/schemas/Member_EducationJsonPatchDocument'
     Member_Education:
       type: object
       properties:
@@ -311,6 +271,46 @@ components:
           type: string
         hostingEntityName:
           type: string
+    IContractResolver:
+      type: object
+    Member_EducationJsonPatchDocument:
+      type: object
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member_EducationOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+    MemberEducationPatch:
+      type: object
+      properties:
+        member_Id:
+          format: int32
+          type: integer
+        entered_By_Association_Id:
+          format: int32
+          type: integer
+        group_Code:
+          type: string
+        course_Code:
+          type: string
+        course_Number:
+          type: string
+        updates:
+          $ref: '#/components/schemas/Member_EducationJsonPatchDocument'
     Member_EducationOperation:
       type: object
       properties:

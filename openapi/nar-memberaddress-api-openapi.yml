@@ -109,16 +109,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Member_AddressJsonPatchDocument:
-      type: object
-      properties:
-        operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Member_AddressOperation'
-          readOnly: true
-        contractResolver:
-          $ref: '#/components/schemas/IContractResolver'
     MemberAddressPatch:
       type: object
       properties:
@@ -132,19 +122,6 @@ components:
           type: integer
         updates:
           $ref: '#/components/schemas/Member_AddressJsonPatchDocument'
-    OperationType:
-      format: int32
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
-    IContractResolver:
-      type: object
     Member_Address:
       type: object
       properties:
@@ -216,6 +193,29 @@ components:
         from:
           type: string
         value: {}
+    IContractResolver:
+      type: object
+    Member_AddressJsonPatchDocument:
+      type: object
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member_AddressOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
   securitySchemes:
     basic:
       type: http

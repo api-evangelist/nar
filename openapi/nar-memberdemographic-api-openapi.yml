@@ -143,6 +143,16 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Member_DemographicJsonPatchDocument:
+      type: object
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member_DemographicOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
     Member_DemographicOperation:
       type: object
       properties:
@@ -155,34 +165,6 @@ components:
         from:
           type: string
         value: {}
-    IContractResolver:
-      type: object
-    MemberDemographicPatch:
-      type: object
-      properties:
-        member_Id:
-          format: int32
-          type: integer
-        entered_By_Association_Id:
-          format: int32
-          type: integer
-        category:
-          type: string
-        group_Code:
-          type: string
-        updates:
-          $ref: '#/components/schemas/Member_DemographicJsonPatchDocument'
-    OperationType:
-      format: int32
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
     Member_Demographic:
       type: object
       properties:
@@ -249,16 +231,34 @@ components:
           type: integer
         enteredByAssociationName:
           type: string
-    Member_DemographicJsonPatchDocument:
+    IContractResolver:
+      type: object
+    MemberDemographicPatch:
       type: object
       properties:
-        operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Member_DemographicOperation'
-          readOnly: true
-        contractResolver:
-          $ref: '#/components/schemas/IContractResolver'
+        member_Id:
+          format: int32
+          type: integer
+        entered_By_Association_Id:
+          format: int32
+          type: integer
+        category:
+          type: string
+        group_Code:
+          type: string
+        updates:
+          $ref: '#/components/schemas/Member_DemographicJsonPatchDocument'
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
   securitySchemes:
     basic:
       type: http

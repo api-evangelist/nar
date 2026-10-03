@@ -109,6 +109,32 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Member_SecondaryJsonPatchDocument:
+      type: object
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member_SecondaryOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
+    MemberSecondaryPatch:
+      type: object
+      properties:
+        member_Id:
+          format: int32
+          type: integer
+        association_Id:
+          format: int32
+          type: integer
+        office_Id:
+          format: int32
+          type: integer
+        member_Type_Code:
+          type: string
+        updates:
+          $ref: '#/components/schemas/Member_SecondaryJsonPatchDocument'
     Member_Secondary:
       type: object
       properties:
@@ -203,32 +229,8 @@ components:
         historyCount:
           format: int32
           type: integer
-    Member_SecondaryJsonPatchDocument:
+    IContractResolver:
       type: object
-      properties:
-        operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Member_SecondaryOperation'
-          readOnly: true
-        contractResolver:
-          $ref: '#/components/schemas/IContractResolver'
-    MemberSecondaryPatch:
-      type: object
-      properties:
-        member_Id:
-          format: int32
-          type: integer
-        association_Id:
-          format: int32
-          type: integer
-        office_Id:
-          format: int32
-          type: integer
-        member_Type_Code:
-          type: string
-        updates:
-          $ref: '#/components/schemas/Member_SecondaryJsonPatchDocument'
     OperationType:
       format: int32
       enum:
@@ -240,8 +242,6 @@ components:
       - 5
       - 6
       type: integer
-    IContractResolver:
-      type: object
     Member_SecondaryOperation:
       type: object
       properties:

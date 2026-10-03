@@ -143,61 +143,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Member_CoeJsonPatchDocument:
-      type: object
-      properties:
-        operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Member_CoeOperation'
-          readOnly: true
-        contractResolver:
-          $ref: '#/components/schemas/IContractResolver'
-    MemberCoePatch:
-      type: object
-      properties:
-        member_Id:
-          format: int32
-          type: integer
-        entering_Association_Id:
-          format: int32
-          type: integer
-        course_Code:
-          type: string
-        cycle_Number:
-          type: string
-        year_Taken:
-          type: string
-        course_Completion_Date:
-          format: date-time
-          type: string
-        updates:
-          $ref: '#/components/schemas/Member_CoeJsonPatchDocument'
-    OperationType:
-      format: int32
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
-    IContractResolver:
-      type: object
-    Member_CoeOperation:
-      type: object
-      properties:
-        operationType:
-          $ref: '#/components/schemas/OperationType'
-        path:
-          type: string
-        op:
-          type: string
-        from:
-          type: string
-        value: {}
     Member_Coe:
       type: object
       properties:
@@ -278,6 +223,61 @@ components:
           type: string
         courseNumber:
           type: string
+    Member_CoeJsonPatchDocument:
+      type: object
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member_CoeOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
+    MemberCoePatch:
+      type: object
+      properties:
+        member_Id:
+          format: int32
+          type: integer
+        entering_Association_Id:
+          format: int32
+          type: integer
+        course_Code:
+          type: string
+        cycle_Number:
+          type: string
+        year_Taken:
+          type: string
+        course_Completion_Date:
+          format: date-time
+          type: string
+        updates:
+          $ref: '#/components/schemas/Member_CoeJsonPatchDocument'
+    IContractResolver:
+      type: object
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+    Member_CoeOperation:
+      type: object
+      properties:
+        operationType:
+          $ref: '#/components/schemas/OperationType'
+        path:
+          type: string
+        op:
+          type: string
+        from:
+          type: string
+        value: {}
   securitySchemes:
     basic:
       type: http

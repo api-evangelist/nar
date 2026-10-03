@@ -112,32 +112,16 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    MemberPhonePatch:
+    Member_PhoneJsonPatchDocument:
       type: object
       properties:
-        member_Id:
-          format: int32
-          type: integer
-        phone_Type:
-          type: string
-        source_Method_Id:
-          format: int32
-          type: integer
-        updates:
-          $ref: '#/components/schemas/Member_PhoneJsonPatchDocument'
-    OperationType:
-      format: int32
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
-    IContractResolver:
-      type: object
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member_PhoneOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
     Member_Phone:
       type: object
       properties:
@@ -187,6 +171,32 @@ components:
           type: string
         phoneTypeDescription:
           type: string
+    MemberPhonePatch:
+      type: object
+      properties:
+        member_Id:
+          format: int32
+          type: integer
+        phone_Type:
+          type: string
+        source_Method_Id:
+          format: int32
+          type: integer
+        updates:
+          $ref: '#/components/schemas/Member_PhoneJsonPatchDocument'
+    IContractResolver:
+      type: object
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
     Member_PhoneOperation:
       type: object
       properties:
@@ -199,16 +209,6 @@ components:
         from:
           type: string
         value: {}
-    Member_PhoneJsonPatchDocument:
-      type: object
-      properties:
-        operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Member_PhoneOperation'
-          readOnly: true
-        contractResolver:
-          $ref: '#/components/schemas/IContractResolver'
   securitySchemes:
     basic:
       type: http
