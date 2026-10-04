@@ -143,6 +143,16 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Member_Fair_HousingJsonPatchDocument:
+      type: object
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member_Fair_HousingOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
     Member_Fair_HousingOperation:
       type: object
       properties:
@@ -155,36 +165,6 @@ components:
         from:
           type: string
         value: {}
-    Member_Fair_HousingJsonPatchDocument:
-      type: object
-      properties:
-        operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Member_Fair_HousingOperation'
-          readOnly: true
-        contractResolver:
-          $ref: '#/components/schemas/IContractResolver'
-    MemberFairHousingPatch:
-      type: object
-      properties:
-        member_Id:
-          format: int32
-          type: integer
-        course_Code:
-          type: string
-        cycle_Number:
-          type: string
-        year_Taken:
-          type: string
-        course_Completion_Date:
-          format: date-time
-          type: string
-        entering_Association_Id:
-          format: int32
-          type: integer
-        updates:
-          $ref: '#/components/schemas/Member_Fair_HousingJsonPatchDocument'
     IContractResolver:
       type: object
     Member_Fair_Housing:
@@ -262,6 +242,26 @@ components:
       - 5
       - 6
       type: integer
+    MemberFairHousingPatch:
+      type: object
+      properties:
+        member_Id:
+          format: int32
+          type: integer
+        course_Code:
+          type: string
+        cycle_Number:
+          type: string
+        year_Taken:
+          type: string
+        course_Completion_Date:
+          format: date-time
+          type: string
+        entering_Association_Id:
+          format: int32
+          type: integer
+        updates:
+          $ref: '#/components/schemas/Member_Fair_HousingJsonPatchDocument'
   securitySchemes:
     basic:
       type: http

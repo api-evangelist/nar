@@ -194,507 +194,8 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    TransferOffice:
-      type: object
-      properties:
-        first_Inserted_By:
-          type: string
-        first_Inserted_Datetime:
-          format: date-time
-          type: string
-        last_Changed_By:
-          type: string
-        last_Changed_Datetime:
-          format: date-time
-          type: string
-        source_System_Id:
-          format: int32
-          type: integer
-        source_Method_Id:
-          format: int32
-          type: integer
-        firstName:
-          type: string
-        lastName:
-          type: string
-        coreEntityStatusCode:
-          type: string
-        canEdit:
-          type: string
-        sourceSystemDisplayName:
-          type: string
-        isInternal:
-          type: boolean
-        returnField:
-          type: boolean
-        isPubSub:
-          type: boolean
-        officeId:
-          format: int32
-          type: integer
-        officeBusinessName:
-          type: string
-        billingOfficeId:
-          format: int32
-          type: integer
-        branchType:
-          type: string
-        primaryLocalAssociationId:
-          format: int32
-          type: integer
-        primaryStateAssociationId:
-          format: int32
-          type: integer
-        officeStatusCode:
-          type: string
-        officeStatusDate:
-          format: date-time
-          type: string
-        corporateLicenseNumber:
-          type: string
-        officeEmailAddress:
-          type: string
-        franchiseOfficeId:
-          format: int32
-          type: integer
-        joinedDate:
-          format: date-time
-          type: string
-        streetAddressLine1:
-          type: string
-        streetAddressLine2:
-          type: string
-        streetCity:
-          type: string
-        streetState:
-          type: string
-        streetZip:
-          type: string
-        streetZip6:
-          type: string
-        mainOfficeId:
-          format: int32
-          type: integer
-        regionalMlsId:
-          type: string
-        mlsOnlineStatus:
-          type: string
-        mlsOnlineStatusDate:
-          format: date-time
-          type: string
-        nmSalespersonCount:
-          format: int32
-          type: integer
-        directMarketingMailFlag:
-          type: string
-        mailingAddressLine1:
-          type: string
-        mailingAddressLine2:
-          type: string
-        mailingCity:
-          type: string
-        mailingState:
-          type: string
-        mailingZip:
-          type: string
-        mailingZip6:
-          type: string
-        officeContactDrId:
-          format: int32
-          type: integer
-        officeContactDrName:
-          type: string
-        officeContactManagerId:
-          format: int32
-          type: integer
-        officeContactManagerName:
-          type: string
-        officeContactUnlicensed:
-          type: string
-        officeCorporateName:
-          type: string
-        officeFaxNumber:
-          type: string
-        officePhoneNumber:
-          type: string
-        officeStopFaxFlag:
-          type: string
-        officeTypeDescription:
-          type: string
-        officePrimaryIndicator:
-          type: string
-        parentCompanyOfficeId:
-          format: int32
-          type: integer
-        officeStopMailFlag:
-          type: string
-        taxIdNumber:
-          type: string
-        webPageAddress:
-          type: string
-        transferDate:
-          format: date-time
-          type: string
-        additionalPhoneNumber:
-          type: string
-        officeFormalName:
-          type: string
-        timeStampSeq:
-          format: int64
-          type: integer
-        billingOffice:
-          $ref: '#/components/schemas/Office'
-        mainOffice:
-          $ref: '#/components/schemas/Office'
-        franchiseOffice:
-          $ref: '#/components/schemas/Office'
-        parentCompanyOffice:
-          $ref: '#/components/schemas/Office'
-        refOfficeStatusType:
-          $ref: '#/components/schemas/RefOfficeStatusType'
-        refBranchType:
-          $ref: '#/components/schemas/Ref_Branch_Type'
-        officeContactDr:
-          $ref: '#/components/schemas/Member'
-        officeContactManager:
-          $ref: '#/components/schemas/Member'
-        primaryLocalAssociation:
-          $ref: '#/components/schemas/Association'
-        primaryStateAssociation:
-          $ref: '#/components/schemas/Association'
-        refStreetState:
-          $ref: '#/components/schemas/Ref_State'
-        refMailState:
-          $ref: '#/components/schemas/Ref_State'
-        officeSecondaries:
-          type: array
-          items:
-            $ref: '#/components/schemas/OfficeSecondary'
-        transferPrimaryLocalAssociationId:
-          format: int32
-          type: integer
-        transferPrimaryStateAssociationId:
-          format: int32
-          type: integer
-        transferAssignedDate:
-          format: date-time
-          type: string
-    OfficeJsonPatchDocument:
-      type: object
-      properties:
-        operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/OfficeOperation'
-          readOnly: true
-        contractResolver:
-          $ref: '#/components/schemas/IContractResolver'
     AssocMemberCount:
       type: object
-    BizOfficeSearch:
-      type: object
-      properties:
-        officeId:
-          format: int32
-          type: integer
-        officeBusinessName:
-          type: string
-        streetCity:
-          type: string
-        streetState:
-          type: string
-        streetZip:
-          type: string
-        officeStreetCountry:
-          type: string
-        officeContactDrFirstName:
-          type: string
-        officeContactDrLastName:
-          type: string
-        officeContactDrId:
-          format: int32
-          type: integer
-    OfficeSecondary:
-      type: object
-      properties:
-        first_Inserted_By:
-          type: string
-        first_Inserted_Datetime:
-          format: date-time
-          type: string
-        last_Changed_By:
-          type: string
-        last_Changed_Datetime:
-          format: date-time
-          type: string
-        source_System_Id:
-          format: int32
-          type: integer
-        source_Method_Id:
-          format: int32
-          type: integer
-        firstName:
-          type: string
-        lastName:
-          type: string
-        coreEntityStatusCode:
-          type: string
-        canEdit:
-          type: string
-        sourceSystemDisplayName:
-          type: string
-        isInternal:
-          type: boolean
-        returnField:
-          type: boolean
-        isPubSub:
-          type: boolean
-        id:
-          format: int32
-          type: integer
-        officeId:
-          format: int32
-          type: integer
-        associationId:
-          format: int32
-          type: integer
-        officeStatusCode:
-          type: string
-        officeStatusDate:
-          format: date-time
-          type: string
-        nmSalespersonCount:
-          format: int32
-          type: integer
-        timeStampSeq:
-          format: int64
-          type: integer
-        association:
-          $ref: '#/components/schemas/Association'
-        refOfficeStatusType:
-          $ref: '#/components/schemas/RefOfficeStatusType'
-        refAssociationType:
-          $ref: '#/components/schemas/Ref_Association_Type'
-        historyCount:
-          format: int32
-          type: integer
-    IContractResolver:
-      type: object
-    Office:
-      type: object
-      properties:
-        first_Inserted_By:
-          type: string
-        first_Inserted_Datetime:
-          format: date-time
-          type: string
-        last_Changed_By:
-          type: string
-        last_Changed_Datetime:
-          format: date-time
-          type: string
-        source_System_Id:
-          format: int32
-          type: integer
-        source_Method_Id:
-          format: int32
-          type: integer
-        firstName:
-          type: string
-        lastName:
-          type: string
-        coreEntityStatusCode:
-          type: string
-        canEdit:
-          type: string
-        sourceSystemDisplayName:
-          type: string
-        isInternal:
-          type: boolean
-        returnField:
-          type: boolean
-        isPubSub:
-          type: boolean
-        officeId:
-          format: int32
-          type: integer
-        officeBusinessName:
-          type: string
-        billingOfficeId:
-          format: int32
-          type: integer
-        branchType:
-          type: string
-        primaryLocalAssociationId:
-          format: int32
-          type: integer
-        primaryStateAssociationId:
-          format: int32
-          type: integer
-        officeStatusCode:
-          type: string
-        officeStatusDate:
-          format: date-time
-          type: string
-        corporateLicenseNumber:
-          type: string
-        officeEmailAddress:
-          type: string
-        franchiseOfficeId:
-          format: int32
-          type: integer
-        joinedDate:
-          format: date-time
-          type: string
-        streetAddressLine1:
-          type: string
-        streetAddressLine2:
-          type: string
-        streetCity:
-          type: string
-        streetState:
-          type: string
-        streetZip:
-          type: string
-        streetZip6:
-          type: string
-        mainOfficeId:
-          format: int32
-          type: integer
-        regionalMlsId:
-          type: string
-        mlsOnlineStatus:
-          type: string
-        mlsOnlineStatusDate:
-          format: date-time
-          type: string
-        nmSalespersonCount:
-          format: int32
-          type: integer
-        directMarketingMailFlag:
-          type: string
-        mailingAddressLine1:
-          type: string
-        mailingAddressLine2:
-          type: string
-        mailingCity:
-          type: string
-        mailingState:
-          type: string
-        mailingZip:
-          type: string
-        mailingZip6:
-          type: string
-        officeContactDrId:
-          format: int32
-          type: integer
-        officeContactDrName:
-          type: string
-        officeContactManagerId:
-          format: int32
-          type: integer
-        officeContactManagerName:
-          type: string
-        officeContactUnlicensed:
-          type: string
-        officeCorporateName:
-          type: string
-        officeFaxNumber:
-          type: string
-        officePhoneNumber:
-          type: string
-        officeStopFaxFlag:
-          type: string
-        officeTypeDescription:
-          type: string
-        officePrimaryIndicator:
-          type: string
-        parentCompanyOfficeId:
-          format: int32
-          type: integer
-        officeStopMailFlag:
-          type: string
-        taxIdNumber:
-          type: string
-        webPageAddress:
-          type: string
-        transferDate:
-          format: date-time
-          type: string
-        additionalPhoneNumber:
-          type: string
-        officeFormalName:
-          type: string
-        timeStampSeq:
-          format: int64
-          type: integer
-        billingOffice:
-          $ref: '#/components/schemas/Office'
-        mainOffice:
-          $ref: '#/components/schemas/Office'
-        franchiseOffice:
-          $ref: '#/components/schemas/Office'
-        parentCompanyOffice:
-          $ref: '#/components/schemas/Office'
-        refOfficeStatusType:
-          $ref: '#/components/schemas/RefOfficeStatusType'
-        refBranchType:
-          $ref: '#/components/schemas/Ref_Branch_Type'
-        officeContactDr:
-          $ref: '#/components/schemas/Member'
-        officeContactManager:
-          $ref: '#/components/schemas/Member'
-        primaryLocalAssociation:
-          $ref: '#/components/schemas/Association'
-        primaryStateAssociation:
-          $ref: '#/components/schemas/Association'
-        refStreetState:
-          $ref: '#/components/schemas/Ref_State'
-        refMailState:
-          $ref: '#/components/schemas/Ref_State'
-        officeSecondaries:
-          type: array
-          items:
-            $ref: '#/components/schemas/OfficeSecondary'
-    Ref_State:
-      type: object
-      properties:
-        first_Inserted_By:
-          type: string
-        first_Inserted_Datetime:
-          format: date-time
-          type: string
-        last_Changed_By:
-          type: string
-        last_Changed_Datetime:
-          format: date-time
-          type: string
-        source_System_Id:
-          format: int32
-          type: integer
-        source_Method_Id:
-          format: int32
-          type: integer
-        firstName:
-          type: string
-        lastName:
-          type: string
-        coreEntityStatusCode:
-          type: string
-        canEdit:
-          type: string
-        sourceSystemDisplayName:
-          type: string
-        isInternal:
-          type: boolean
-        returnField:
-          type: boolean
-        isPubSub:
-          type: boolean
-        state_Code:
-          type: string
-        state_Description:
-          type: string
     Association:
       type: object
       properties:
@@ -910,45 +411,8 @@ components:
           type: string
         currentPresidentElectEmailAddress:
           type: string
-    RefOfficeStatusType:
+    IContractResolver:
       type: object
-      properties:
-        first_Inserted_By:
-          type: string
-        first_Inserted_Datetime:
-          format: date-time
-          type: string
-        last_Changed_By:
-          type: string
-        last_Changed_Datetime:
-          format: date-time
-          type: string
-        source_System_Id:
-          format: int32
-          type: integer
-        source_Method_Id:
-          format: int32
-          type: integer
-        firstName:
-          type: string
-        lastName:
-          type: string
-        coreEntityStatusCode:
-          type: string
-        canEdit:
-          type: string
-        sourceSystemDisplayName:
-          type: string
-        isInternal:
-          type: boolean
-        returnField:
-          type: boolean
-        isPubSub:
-          type: boolean
-        officeStatusCode:
-          type: string
-        officeStatusDescription:
-          type: string
     Association_Board_Serviced:
       type: object
       properties:
@@ -997,7 +461,7 @@ components:
           type: string
         assocNameState:
           type: string
-    Ref_Branch_Type:
+    OfficeSecondary:
       type: object
       properties:
         first_Inserted_By:
@@ -1032,10 +496,35 @@ components:
           type: boolean
         isPubSub:
           type: boolean
-        branch_Type_Code:
+        id:
+          format: int32
+          type: integer
+        officeId:
+          format: int32
+          type: integer
+        associationId:
+          format: int32
+          type: integer
+        officeStatusCode:
           type: string
-        branch_Type_Description:
+        officeStatusDate:
+          format: date-time
           type: string
+        nmSalespersonCount:
+          format: int32
+          type: integer
+        timeStampSeq:
+          format: int64
+          type: integer
+        association:
+          $ref: '#/components/schemas/Association'
+        refOfficeStatusType:
+          $ref: '#/components/schemas/RefOfficeStatusType'
+        refAssociationType:
+          $ref: '#/components/schemas/Ref_Association_Type'
+        historyCount:
+          format: int32
+          type: integer
     Ref_Association_Type:
       type: object
       properties:
@@ -1078,6 +567,244 @@ components:
         association_Type_Sort_Order:
           format: int32
           type: integer
+    BizOfficeSearch:
+      type: object
+      properties:
+        officeId:
+          format: int32
+          type: integer
+        officeBusinessName:
+          type: string
+        streetCity:
+          type: string
+        streetState:
+          type: string
+        streetZip:
+          type: string
+        officeStreetCountry:
+          type: string
+        officeContactDrFirstName:
+          type: string
+        officeContactDrLastName:
+          type: string
+        officeContactDrId:
+          format: int32
+          type: integer
+    Office:
+      type: object
+      properties:
+        first_Inserted_By:
+          type: string
+        first_Inserted_Datetime:
+          format: date-time
+          type: string
+        last_Changed_By:
+          type: string
+        last_Changed_Datetime:
+          format: date-time
+          type: string
+        source_System_Id:
+          format: int32
+          type: integer
+        source_Method_Id:
+          format: int32
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        coreEntityStatusCode:
+          type: string
+        canEdit:
+          type: string
+        sourceSystemDisplayName:
+          type: string
+        isInternal:
+          type: boolean
+        returnField:
+          type: boolean
+        isPubSub:
+          type: boolean
+        officeId:
+          format: int32
+          type: integer
+        officeBusinessName:
+          type: string
+        billingOfficeId:
+          format: int32
+          type: integer
+        branchType:
+          type: string
+        primaryLocalAssociationId:
+          format: int32
+          type: integer
+        primaryStateAssociationId:
+          format: int32
+          type: integer
+        officeStatusCode:
+          type: string
+        officeStatusDate:
+          format: date-time
+          type: string
+        corporateLicenseNumber:
+          type: string
+        officeEmailAddress:
+          type: string
+        franchiseOfficeId:
+          format: int32
+          type: integer
+        joinedDate:
+          format: date-time
+          type: string
+        streetAddressLine1:
+          type: string
+        streetAddressLine2:
+          type: string
+        streetCity:
+          type: string
+        streetState:
+          type: string
+        streetZip:
+          type: string
+        streetZip6:
+          type: string
+        mainOfficeId:
+          format: int32
+          type: integer
+        regionalMlsId:
+          type: string
+        mlsOnlineStatus:
+          type: string
+        mlsOnlineStatusDate:
+          format: date-time
+          type: string
+        nmSalespersonCount:
+          format: int32
+          type: integer
+        directMarketingMailFlag:
+          type: string
+        mailingAddressLine1:
+          type: string
+        mailingAddressLine2:
+          type: string
+        mailingCity:
+          type: string
+        mailingState:
+          type: string
+        mailingZip:
+          type: string
+        mailingZip6:
+          type: string
+        officeContactDrId:
+          format: int32
+          type: integer
+        officeContactDrName:
+          type: string
+        officeContactManagerId:
+          format: int32
+          type: integer
+        officeContactManagerName:
+          type: string
+        officeContactUnlicensed:
+          type: string
+        officeCorporateName:
+          type: string
+        officeFaxNumber:
+          type: string
+        officePhoneNumber:
+          type: string
+        officeStopFaxFlag:
+          type: string
+        officeTypeDescription:
+          type: string
+        officePrimaryIndicator:
+          type: string
+        parentCompanyOfficeId:
+          format: int32
+          type: integer
+        officeStopMailFlag:
+          type: string
+        taxIdNumber:
+          type: string
+        webPageAddress:
+          type: string
+        transferDate:
+          format: date-time
+          type: string
+        additionalPhoneNumber:
+          type: string
+        officeFormalName:
+          type: string
+        timeStampSeq:
+          format: int64
+          type: integer
+        billingOffice:
+          $ref: '#/components/schemas/Office'
+        mainOffice:
+          $ref: '#/components/schemas/Office'
+        franchiseOffice:
+          $ref: '#/components/schemas/Office'
+        parentCompanyOffice:
+          $ref: '#/components/schemas/Office'
+        refOfficeStatusType:
+          $ref: '#/components/schemas/RefOfficeStatusType'
+        refBranchType:
+          $ref: '#/components/schemas/Ref_Branch_Type'
+        officeContactDr:
+          $ref: '#/components/schemas/Member'
+        officeContactManager:
+          $ref: '#/components/schemas/Member'
+        primaryLocalAssociation:
+          $ref: '#/components/schemas/Association'
+        primaryStateAssociation:
+          $ref: '#/components/schemas/Association'
+        refStreetState:
+          $ref: '#/components/schemas/Ref_State'
+        refMailState:
+          $ref: '#/components/schemas/Ref_State'
+        officeSecondaries:
+          type: array
+          items:
+            $ref: '#/components/schemas/OfficeSecondary'
+    RefOfficeStatusType:
+      type: object
+      properties:
+        first_Inserted_By:
+          type: string
+        first_Inserted_Datetime:
+          format: date-time
+          type: string
+        last_Changed_By:
+          type: string
+        last_Changed_Datetime:
+          format: date-time
+          type: string
+        source_System_Id:
+          format: int32
+          type: integer
+        source_Method_Id:
+          format: int32
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        coreEntityStatusCode:
+          type: string
+        canEdit:
+          type: string
+        sourceSystemDisplayName:
+          type: string
+        isInternal:
+          type: boolean
+        returnField:
+          type: boolean
+        isPubSub:
+          type: boolean
+        officeStatusCode:
+          type: string
+        officeStatusDescription:
+          type: string
     OperationType:
       format: int32
       enum:
@@ -1089,6 +816,63 @@ components:
       - 5
       - 6
       type: integer
+    Ref_State:
+      type: object
+      properties:
+        first_Inserted_By:
+          type: string
+        first_Inserted_Datetime:
+          format: date-time
+          type: string
+        last_Changed_By:
+          type: string
+        last_Changed_Datetime:
+          format: date-time
+          type: string
+        source_System_Id:
+          format: int32
+          type: integer
+        source_Method_Id:
+          format: int32
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        coreEntityStatusCode:
+          type: string
+        canEdit:
+          type: string
+        sourceSystemDisplayName:
+          type: string
+        isInternal:
+          type: boolean
+        returnField:
+          type: boolean
+        isPubSub:
+          type: boolean
+        state_Code:
+          type: string
+        state_Description:
+          type: string
+    OfficeJsonPatchDocument:
+      type: object
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/OfficeOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
+    OfficePatch:
+      type: object
+      properties:
+        officeId:
+          format: int32
+          type: integer
+        updates:
+          $ref: '#/components/schemas/OfficeJsonPatchDocument'
     Member:
       type: object
       properties:
@@ -1246,6 +1030,45 @@ components:
         historyCount:
           format: int32
           type: integer
+    Ref_Branch_Type:
+      type: object
+      properties:
+        first_Inserted_By:
+          type: string
+        first_Inserted_Datetime:
+          format: date-time
+          type: string
+        last_Changed_By:
+          type: string
+        last_Changed_Datetime:
+          format: date-time
+          type: string
+        source_System_Id:
+          format: int32
+          type: integer
+        source_Method_Id:
+          format: int32
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        coreEntityStatusCode:
+          type: string
+        canEdit:
+          type: string
+        sourceSystemDisplayName:
+          type: string
+        isInternal:
+          type: boolean
+        returnField:
+          type: boolean
+        isPubSub:
+          type: boolean
+        branch_Type_Code:
+          type: string
+        branch_Type_Description:
+          type: string
     OfficeOperation:
       type: object
       properties:
@@ -1258,14 +1081,191 @@ components:
         from:
           type: string
         value: {}
-    OfficePatch:
+    TransferOffice:
       type: object
       properties:
+        first_Inserted_By:
+          type: string
+        first_Inserted_Datetime:
+          format: date-time
+          type: string
+        last_Changed_By:
+          type: string
+        last_Changed_Datetime:
+          format: date-time
+          type: string
+        source_System_Id:
+          format: int32
+          type: integer
+        source_Method_Id:
+          format: int32
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        coreEntityStatusCode:
+          type: string
+        canEdit:
+          type: string
+        sourceSystemDisplayName:
+          type: string
+        isInternal:
+          type: boolean
+        returnField:
+          type: boolean
+        isPubSub:
+          type: boolean
         officeId:
           format: int32
           type: integer
-        updates:
-          $ref: '#/components/schemas/OfficeJsonPatchDocument'
+        officeBusinessName:
+          type: string
+        billingOfficeId:
+          format: int32
+          type: integer
+        branchType:
+          type: string
+        primaryLocalAssociationId:
+          format: int32
+          type: integer
+        primaryStateAssociationId:
+          format: int32
+          type: integer
+        officeStatusCode:
+          type: string
+        officeStatusDate:
+          format: date-time
+          type: string
+        corporateLicenseNumber:
+          type: string
+        officeEmailAddress:
+          type: string
+        franchiseOfficeId:
+          format: int32
+          type: integer
+        joinedDate:
+          format: date-time
+          type: string
+        streetAddressLine1:
+          type: string
+        streetAddressLine2:
+          type: string
+        streetCity:
+          type: string
+        streetState:
+          type: string
+        streetZip:
+          type: string
+        streetZip6:
+          type: string
+        mainOfficeId:
+          format: int32
+          type: integer
+        regionalMlsId:
+          type: string
+        mlsOnlineStatus:
+          type: string
+        mlsOnlineStatusDate:
+          format: date-time
+          type: string
+        nmSalespersonCount:
+          format: int32
+          type: integer
+        directMarketingMailFlag:
+          type: string
+        mailingAddressLine1:
+          type: string
+        mailingAddressLine2:
+          type: string
+        mailingCity:
+          type: string
+        mailingState:
+          type: string
+        mailingZip:
+          type: string
+        mailingZip6:
+          type: string
+        officeContactDrId:
+          format: int32
+          type: integer
+        officeContactDrName:
+          type: string
+        officeContactManagerId:
+          format: int32
+          type: integer
+        officeContactManagerName:
+          type: string
+        officeContactUnlicensed:
+          type: string
+        officeCorporateName:
+          type: string
+        officeFaxNumber:
+          type: string
+        officePhoneNumber:
+          type: string
+        officeStopFaxFlag:
+          type: string
+        officeTypeDescription:
+          type: string
+        officePrimaryIndicator:
+          type: string
+        parentCompanyOfficeId:
+          format: int32
+          type: integer
+        officeStopMailFlag:
+          type: string
+        taxIdNumber:
+          type: string
+        webPageAddress:
+          type: string
+        transferDate:
+          format: date-time
+          type: string
+        additionalPhoneNumber:
+          type: string
+        officeFormalName:
+          type: string
+        timeStampSeq:
+          format: int64
+          type: integer
+        billingOffice:
+          $ref: '#/components/schemas/Office'
+        mainOffice:
+          $ref: '#/components/schemas/Office'
+        franchiseOffice:
+          $ref: '#/components/schemas/Office'
+        parentCompanyOffice:
+          $ref: '#/components/schemas/Office'
+        refOfficeStatusType:
+          $ref: '#/components/schemas/RefOfficeStatusType'
+        refBranchType:
+          $ref: '#/components/schemas/Ref_Branch_Type'
+        officeContactDr:
+          $ref: '#/components/schemas/Member'
+        officeContactManager:
+          $ref: '#/components/schemas/Member'
+        primaryLocalAssociation:
+          $ref: '#/components/schemas/Association'
+        primaryStateAssociation:
+          $ref: '#/components/schemas/Association'
+        refStreetState:
+          $ref: '#/components/schemas/Ref_State'
+        refMailState:
+          $ref: '#/components/schemas/Ref_State'
+        officeSecondaries:
+          type: array
+          items:
+            $ref: '#/components/schemas/OfficeSecondary'
+        transferPrimaryLocalAssociationId:
+          format: int32
+          type: integer
+        transferPrimaryStateAssociationId:
+          format: int32
+          type: integer
+        transferAssignedDate:
+          format: date-time
+          type: string
   securitySchemes:
     basic:
       type: http

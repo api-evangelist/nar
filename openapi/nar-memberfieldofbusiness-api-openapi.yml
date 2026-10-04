@@ -109,6 +109,8 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    IContractResolver:
+      type: object
     Member_Field_Of_BusinessOperation:
       type: object
       properties:
@@ -145,19 +147,6 @@ components:
           readOnly: true
         contractResolver:
           $ref: '#/components/schemas/IContractResolver'
-    IContractResolver:
-      type: object
-    OperationType:
-      format: int32
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
     Member_Field_Of_Business:
       type: object
       properties:
@@ -212,6 +201,17 @@ components:
           type: integer
         fieldOfBusinessName:
           type: string
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
   securitySchemes:
     basic:
       type: http

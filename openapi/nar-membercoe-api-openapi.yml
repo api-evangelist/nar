@@ -143,6 +143,8 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    IContractResolver:
+      type: object
     Member_Coe:
       type: object
       properties:
@@ -223,16 +225,6 @@ components:
           type: string
         courseNumber:
           type: string
-    Member_CoeJsonPatchDocument:
-      type: object
-      properties:
-        operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Member_CoeOperation'
-          readOnly: true
-        contractResolver:
-          $ref: '#/components/schemas/IContractResolver'
     MemberCoePatch:
       type: object
       properties:
@@ -253,8 +245,6 @@ components:
           type: string
         updates:
           $ref: '#/components/schemas/Member_CoeJsonPatchDocument'
-    IContractResolver:
-      type: object
     OperationType:
       format: int32
       enum:
@@ -278,6 +268,16 @@ components:
         from:
           type: string
         value: {}
+    Member_CoeJsonPatchDocument:
+      type: object
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member_CoeOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
   securitySchemes:
     basic:
       type: http

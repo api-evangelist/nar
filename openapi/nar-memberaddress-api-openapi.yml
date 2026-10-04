@@ -109,19 +109,18 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    MemberAddressPatch:
+    Member_AddressJsonPatchDocument:
       type: object
       properties:
-        member_Id:
-          format: int32
-          type: integer
-        address_Type_Code:
-          type: string
-        source_Method_Id:
-          format: int32
-          type: integer
-        updates:
-          $ref: '#/components/schemas/Member_AddressJsonPatchDocument'
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member_AddressOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
+    IContractResolver:
+      type: object
     Member_Address:
       type: object
       properties:
@@ -181,6 +180,17 @@ components:
           type: string
         is_Active_Flag:
           type: string
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
     Member_AddressOperation:
       type: object
       properties:
@@ -193,29 +203,19 @@ components:
         from:
           type: string
         value: {}
-    IContractResolver:
-      type: object
-    Member_AddressJsonPatchDocument:
+    MemberAddressPatch:
       type: object
       properties:
-        operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Member_AddressOperation'
-          readOnly: true
-        contractResolver:
-          $ref: '#/components/schemas/IContractResolver'
-    OperationType:
-      format: int32
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
+        member_Id:
+          format: int32
+          type: integer
+        address_Type_Code:
+          type: string
+        source_Method_Id:
+          format: int32
+          type: integer
+        updates:
+          $ref: '#/components/schemas/Member_AddressJsonPatchDocument'
   securitySchemes:
     basic:
       type: http
