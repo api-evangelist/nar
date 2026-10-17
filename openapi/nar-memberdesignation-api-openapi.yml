@@ -126,6 +126,26 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    MemberDesignationPatch:
+      type: object
+      properties:
+        member_Id:
+          format: int32
+          type: integer
+        designation_Code:
+          type: string
+        updates:
+          $ref: '#/components/schemas/Member_DesignationJsonPatchDocument'
+    Member_DesignationJsonPatchDocument:
+      type: object
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member_DesignationOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
     Member_DesignationOperation:
       type: object
       properties:
@@ -138,29 +158,6 @@ components:
         from:
           type: string
         value: {}
-    IContractResolver:
-      type: object
-    Member_DesignationJsonPatchDocument:
-      type: object
-      properties:
-        operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Member_DesignationOperation'
-          readOnly: true
-        contractResolver:
-          $ref: '#/components/schemas/IContractResolver'
-    OperationType:
-      format: int32
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
     Member_Designation:
       type: object
       properties:
@@ -214,16 +211,19 @@ components:
           type: integer
         designationDescription:
           type: string
-    MemberDesignationPatch:
+    IContractResolver:
       type: object
-      properties:
-        member_Id:
-          format: int32
-          type: integer
-        designation_Code:
-          type: string
-        updates:
-          $ref: '#/components/schemas/Member_DesignationJsonPatchDocument'
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
     BizMemberDesignation:
       type: object
       properties:

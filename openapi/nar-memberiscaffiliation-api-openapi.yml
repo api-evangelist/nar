@@ -109,40 +109,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Member_Isc_AffiliationJsonPatchDocument:
-      type: object
-      properties:
-        operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Member_Isc_AffiliationOperation'
-          readOnly: true
-        contractResolver:
-          $ref: '#/components/schemas/IContractResolver'
-    MemberIscAffiliationPatch:
-      type: object
-      properties:
-        member_Id:
-          format: int32
-          type: integer
-        association_Id:
-          format: int32
-          type: integer
-        updates:
-          $ref: '#/components/schemas/Member_Isc_AffiliationJsonPatchDocument'
-    IContractResolver:
-      type: object
-    OperationType:
-      format: int32
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      type: integer
     Member_Isc_AffiliationOperation:
       type: object
       properties:
@@ -155,6 +121,27 @@ components:
         from:
           type: string
         value: {}
+    MemberIscAffiliationPatch:
+      type: object
+      properties:
+        member_Id:
+          format: int32
+          type: integer
+        association_Id:
+          format: int32
+          type: integer
+        updates:
+          $ref: '#/components/schemas/Member_Isc_AffiliationJsonPatchDocument'
+    Member_Isc_AffiliationJsonPatchDocument:
+      type: object
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member_Isc_AffiliationOperation'
+          readOnly: true
+        contractResolver:
+          $ref: '#/components/schemas/IContractResolver'
     Member_Isc_Affiliation:
       type: object
       properties:
@@ -223,6 +210,19 @@ components:
         historyCount:
           format: int32
           type: integer
+    IContractResolver:
+      type: object
+    OperationType:
+      format: int32
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
   securitySchemes:
     basic:
       type: http
