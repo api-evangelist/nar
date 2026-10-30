@@ -1,4 +1,4 @@
-# National Association of REALTORS (nar)
+# National Association of REALTORS
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,76 +64,143 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-The National Association of REALTORS (NAR) is the largest trade association in the United States, representing roughly one million members across residential and commercial real estate. NAR is the industry body that sits above the roughly 500 local Multiple Listing Services, and it is the reason the US residential market has a machine-readable contract at all: MLS Policy Statement 7.90 requires MLS organizations owned and operated by associations of REALTORS to implement the RESO Data Dictionary and the RESO Web API and to stay current within one year of each ratification, with compliance demonstrated through the RESO Certification Process. NAR mandates that standard rather than operating it — RESO is a separate organization, and the listing data behind every certified endpoint is licensed through MLS membership, an IDX or VOW agreement, a broker relationship, or a reseller. NAR itself holds no RESO certification and publishes no self-serve developer portal. Its own API surface is REALTORS M1, the members-first engagement system that replaces NRDS: the M1 Gateway External API is a live, HTTP-Basic-authenticated REST API over member, office, association and data-extract records, whose Swagger 2.0 definition and Postman collection NAR publishes openly on GitHub for external association management system vendors and NAR partners, but whose credentials NAR issues only under a partner relationship.
+The National Association of REALTORS (NAR) is the largest trade association in the United States, representing roughly one million members across residential and commercial real estate. NAR is the industry body that sits above the roughly 500 local Multiple Listing Services, and it is the reason the US residential market has a machine-readable contract at all: MLS Policy Statement 7.90 requires MLS organizations owned and operated by associations of REALTORS to implement the RESO Data Dictionary and the RESO Web API and to stay current within one year of each ratification, with compliance demonstrated through the RESO Certification Process. NAR mandates that standard rather than operating it - RESO is a separate organization, and the listing data behind every certified endpoint is licensed through MLS membership, an IDX or VOW agreement, a broker relationship, or a reseller. NAR itself holds no RESO certification and publishes no self-serve developer portal. Its own API surface is REALTORS M1, the members-first engagement system that replaces NRDS: the M1 Gateway External API is a live, HTTP-Basic-authenticated REST API over member, office, association and data-extract records, whose Swagger 2.0 definition and Postman collection NAR publishes openly on GitHub for external association management system vendors and NAR partners, but whose credentials NAR issues only under a partner relationship.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/nar/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/nar/refs/heads/main/apis.yml)
+**Areas:** Real Estate · United States · Industry Body · MLS · RESO · Standards · Membership · Property Listings · IDX · PropTech
 
-## Tags
+## National Association of REALTORS on APIs.io
 
-- Real Estate
-- United States
-- Industry Body
-- MLS
-- RESO
-- Standards
-- Membership
-- Property Listings
-- IDX
-- PropTech
+Everything profiled for National Association of REALTORS is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/nar/](https://apis.io/providers/nar/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (24)
 
-- **Created:** 2026-07-26
-- **Modified:** 2026-07-26
+- [National Association of REALTORS Association API](https://apis.io/apis/nar/nar-association-api/) — The Association API from National Association of REALTORS — 3 operation(s) for association.
+- [National Association of REALTORS Data Extract Request API](https://apis.io/apis/nar/nar-dataextractrequest-api/) — The DataExtractRequest API from National Association of REALTORS — 4 operation(s) for dataextractrequest.
+- [National Association of REALTORS Data Extract Schedule API](https://apis.io/apis/nar/nar-dataextractschedule-api/) — The DataExtractSchedule API from National Association of REALTORS — 4 operation(s) for dataextractschedule.
+- [National Association of REALTORS Member API](https://apis.io/apis/nar/nar-member-api/) — The Member API from National Association of REALTORS — 11 operation(s) for member.
+- [National Association of REALTORS Member Address API](https://apis.io/apis/nar/nar-memberaddress-api/) — The MemberAddress API from National Association of REALTORS — 2 operation(s) for memberaddress.
+- [National Association of REALTORS Member Certification API](https://apis.io/apis/nar/nar-membercertification-api/) — The MemberCertification API from National Association of REALTORS — 2 operation(s) for membercertification.
+- [National Association of REALTORS Member Coe API](https://apis.io/apis/nar/nar-membercoe-api/) — The MemberCoe API from National Association of REALTORS — 2 operation(s) for membercoe.
+- [National Association of REALTORS Member Demographic API](https://apis.io/apis/nar/nar-memberdemographic-api/) — The MemberDemographic API from National Association of REALTORS — 2 operation(s) for memberdemographic.
+- [National Association of REALTORS Member Designation API](https://apis.io/apis/nar/nar-memberdesignation-api/) — The MemberDesignation API from National Association of REALTORS — 2 operation(s) for memberdesignation.
+- [National Association of REALTORS Member Dues Payment API](https://apis.io/apis/nar/nar-memberduespayment-api/) — The MemberDuesPayment API from National Association of REALTORS — 2 operation(s) for memberduespayment.
+- [National Association of REALTORS Member Education API](https://apis.io/apis/nar/nar-membereducation-api/) — The MemberEducation API from National Association of REALTORS — 2 operation(s) for membereducation.
+- [National Association of REALTORS Member Education Level API](https://apis.io/apis/nar/nar-membereducationlevel-api/) — The MemberEducationLevel API from National Association of REALTORS — 2 operation(s) for membereducationlevel.
+- [National Association of REALTORS Member Email API](https://apis.io/apis/nar/nar-memberemail-api/) — The MemberEmail API from National Association of REALTORS — 2 operation(s) for memberemail.
+- [National Association of REALTORS Member Fair Housing API](https://apis.io/apis/nar/nar-memberfairhousing-api/) — The MemberFairHousing API from National Association of REALTORS — 2 operation(s) for memberfairhousing.
+- [National Association of REALTORS Member Field Of Business API](https://apis.io/apis/nar/nar-memberfieldofbusiness-api/) — The MemberFieldOfBusiness API from National Association of REALTORS — 2 operation(s) for memberfieldofbusiness.
+- [National Association of REALTORS Member Isc Affiliation API](https://apis.io/apis/nar/nar-memberiscaffiliation-api/) — The MemberIscAffiliation API from National Association of REALTORS — 2 operation(s) for memberiscaffiliation.
+- [National Association of REALTORS Member Language API](https://apis.io/apis/nar/nar-memberlanguage-api/) — The MemberLanguage API from National Association of REALTORS — 2 operation(s) for memberlanguage.
+- [National Association of REALTORS Member Military Service API](https://apis.io/apis/nar/nar-membermilitaryservice-api/) — The MemberMilitaryService API from National Association of REALTORS — 2 operation(s) for membermilitaryservice.
+- [National Association of REALTORS Member MLS API](https://apis.io/apis/nar/nar-membermls-api/) — The MemberMLS API from National Association of REALTORS — 2 operation(s) for membermls.
+- [National Association of REALTORS Member Phone API](https://apis.io/apis/nar/nar-memberphone-api/) — The MemberPhone API from National Association of REALTORS — 2 operation(s) for memberphone.
+- [National Association of REALTORS Member Secondary API](https://apis.io/apis/nar/nar-membersecondary-api/) — The MemberSecondary API from National Association of REALTORS — 2 operation(s) for membersecondary.
+- [National Association of REALTORS Member Single Owned MLS API](https://apis.io/apis/nar/nar-membersingleownedmls-api/) — The MemberSingleOwnedMLS API from National Association of REALTORS — 1 operation(s) for membersingleownedmls.
+- [National Association of REALTORS Office API](https://apis.io/apis/nar/nar-office-api/) — The Office API from National Association of REALTORS — 5 operation(s) for office.
+- [National Association of REALTORS Office Secondary API](https://apis.io/apis/nar/nar-officesecondary-api/) — The OfficeSecondary API from National Association of REALTORS — 2 operation(s) for officesecondary.
 
-## APIs
+### Published properties
 
-### REALTORS M1 Gateway External API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-The external surface of NAR's REALTORS M1 Gateway — the members-first engagement system that is the single source of truth for REALTOR member data across state and local associations. The published Swagger 2.0 definition documents 64 paths under `/ext/` covering Association, Member, Member Address, Certification, Code of Ethics, Demographic, Designation, Dues Payment, Education, Email, Fair Housing, Field of Business, ISC Affiliation, Language, MLS, Military Service, Phone, Secondary and Single-Owned MLS records, plus Office, Office Secondary, Data Extract Request and Data Extract Schedule. All calls require HTTP Basic authentication with environment-specific credentials issued by NAR; PATCH operations use a test/replace JSON Patch pattern where the test value must match the current stored value. The definition and a Postman collection are published openly by NAR on GitHub for external AMS vendors and NAR partners; the API host itself answers 401 without credentials and enforces a documented rate limit.
+#### MCP servers (1)
 
-- **Human URL:** [https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs](https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs)
-- **Base URL:** `https://m1gateway.realtor`
+Model Context Protocol servers that expose the API to agents.
 
-#### Tags
+- [nar-mcp.yml](https://apis.io/servers/nar/nar-mcp-yml/)
 
-- Real Estate
-- Membership
-- Associations
-- Members
-- Offices
-- United States
+#### Agentic access (1)
 
-#### Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [OpenAPI](openapi/nar-m1-gateway-external-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/nar-m1-gateway-external.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Documentation](https://github.com/NationalAssociationOfRealtors/M1-Developer-Guide-Supplemental-Docs)
-- [Documentation](https://www.nar.realtor/ae/manage-your-association/realtors-m1-members-first-engagement-system)
+- [Nar Agentic Access](https://apis.io/agentic-access/nar/nar-agentic-access/)
 
-## RESO Posture
+#### Collections (1)
 
-NAR is a **mandator, not a certificand**. MLS Policy Statement 7.90 requires association-owned MLSs to implement the RESO Data Dictionary (by January 1, 2016) and the RESO Web API (by June 30, 2016), and to keep current within one year of each ratification, with compliance demonstrated through the RESO Certification Process. NAR holds **no RESO certification of its own** — it operates no MLS, and it does not appear in the public RESO certificate directory at [reso.org/certificates](https://www.reso.org/certificates/).
+Postman and Open Collection request collections.
 
-The RESO specifications are freely readable ([dd.reso.org](https://dd.reso.org/), [transport.reso.org](https://transport.reso.org/)) and the certificate directory is public. The **data** behind a certified endpoint is not: access runs through MLS membership, an IDX or VOW agreement, a broker or agent sponsorship, or a reseller such as Bridge, Trestle, MLS Grid or Spark.
+- [M1Gateway - External](https://apis.io/collections/nar/open-nar-m1-gateway-external/)
 
-## Access Gate
+#### Overlays (1)
 
-**partner-only.** There is no self-serve sign-up on any NAR host. M1 Gateway credentials are supplied directly by NAR to external association management system vendors and NAR partners. REALTORS Property Resource (narrpr.com) is gated behind NAR membership, and its `api.` and `developer.` subdomains serve a wildcard holding page rather than a developer portal. No open data API is published.
+OpenAPI overlays, including conversational phrasing for each operation.
 
-## Common Properties
+- [Nar M1 Gateway External Overlay](https://apis.io/overlays/nar/nar-m1-gateway-external-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Nar Authentication](https://apis.io/security/nar/nar-authentication/)
+- [Nar Domain Security](https://apis.io/security/nar/nar-domain-security/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Nar Rate Limits](https://apis.io/rate-limits/nar/nar-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.nar.realtor/)
-- [GitHub Organization](https://github.com/NationalAssociationOfRealtors)
-- [LinkedIn](https://www.linkedin.com/company/national-association-of-realtors)
+- [Documentation](https://www.nar.realtor/real-estate-transaction-standards-rets)
+- [Support](https://www.nar.realtor/contact-us)
 - [Blog](https://www.nar.realtor/blogs)
-- [Newsroom](https://www.nar.realtor/newsroom)
-- [Policy — MLS Policy Statement 7.90 (RETS/RESO)](https://www.nar.realtor/handbook-on-multiple-listing-policy/operational-issues-section-12-real-estate-transaction-standards-rets-policy-statement-790)
-- [Policy — RETS Web API](https://www.nar.realtor/about-nar/policies/mls-policy/real-estate-transaction-standards-rets-web-api)
-- [Documentation — Real Estate Transaction Standards (RETS)](https://www.nar.realtor/real-estate-transaction-standards-rets)
-- [Research and Statistics](https://www.nar.realtor/research-and-statistics)
+- [Terms of service](https://www.nar.realtor/terms-of-use)
+- [Privacy policy](https://www.nar.realtor/privacy-policy)
+- [GitHub](https://github.com/NationalAssociationOfRealtors)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 32.0** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 67.0 |
+| Contract quality | 39.5 |
+| Contract governance | 4.5 |
+| Operational transparency | 23.7 |
+| Developer ergonomics | 34.6 |
+| Access clarity | 21.1 |
+
+**Agent readiness 24.8** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 24.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/nar/](https://apis.io/providers/nar/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for National Association of REALTORS: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/nar/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
